@@ -1,0 +1,156 @@
+[
+  {
+    "id": "q1",
+    "title": "ما حكم جمع الصلوات أثناء السفر؟",
+    "body": "أسافر أسبوعيًا للعمل، فهل يجوز لي جمع الظهر مع العصر؟",
+    "authorName": "أحمد",
+    "tags": ["Fiqh"],
+    "votes": 7,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T10:00:00.000Z",
+    "answers": [
+      {
+        "id": "a1",
+        "text": "نعم، يجوز للمسافر جمع الظهر مع العصر والمغرب مع العشاء إذا تحققت شروط السفر المعتبرة.",
+        "authorName": "المشرف",
+        "authorRole": "admin",
+        "votes": 10,
+        "isBest": true,
+        "isVisible": true,
+        "createdAt": "2026-03-27T10:15:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "q2",
+    "title": "كيف ألتزم بأذكار الصباح يوميًا؟",
+    "body": "أنشغل كثيرًا في الصباح وأنسى الذكر، ما أفضل طريقة عملية للثبات؟",
+    "authorName": "فاطمة",
+    "tags": ["Quran", "Hadith"],
+    "votes": 6,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T11:00:00.000Z",
+    "answers": [
+      {
+        "id": "a2",
+        "text": "اربطي الأذكار بعادة ثابتة مثل ما بعد صلاة الفجر مباشرة، وابدئي بقائمة قصيرة ثم زيديها تدريجيًا.",
+        "authorName": "مستخدم",
+        "authorRole": "user",
+        "votes": 5,
+        "isBest": false,
+        "isVisible": true,
+        "createdAt": "2026-03-27T11:20:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "q3",
+    "title": "ما معنى الإخلاص في العبادة؟",
+    "body": "كيف يحقق المسلم الإخلاص ويتجنب الرياء في الأعمال الصالحة؟",
+    "authorName": "سارة",
+    "tags": ["Aqeedah"],
+    "votes": 5,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T12:00:00.000Z",
+    "answers": [
+      {
+        "id": "a3",
+        "text": "الإخلاص يكون بتجديد النية قبل العمل وأثناءه وبعده، واستحضار أن القبول من الله وحده لا من الناس.",
+        "authorName": "المشرف",
+        "authorRole": "admin",
+        "votes": 8,
+        "isBest": true,
+        "isVisible": true,
+        "createdAt": "2026-03-27T12:18:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "q4",
+    "title": "هل يجوز قراءة القرآن من الهاتف بدون وضوء؟",
+    "body": "أحيانًا أقرأ من تطبيق المصحف في الهاتف، فهل يلزم الوضوء؟",
+    "authorName": "يوسف",
+    "tags": ["Fiqh", "Quran"],
+    "votes": 4,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T13:05:00.000Z",
+    "answers": [
+      {
+        "id": "a4",
+        "text": "قراءة القرآن من الهاتف جائزة بدون وضوء عند كثير من أهل العلم، لأن الهاتف لا يأخذ حكم المصحف الورقي.",
+        "authorName": "المشرف",
+        "authorRole": "admin",
+        "votes": 7,
+        "isBest": true,
+        "isVisible": true,
+        "createdAt": "2026-03-27T13:22:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "q5",
+    "title": "كيف أحسن الخشوع في الصلاة؟",
+    "body": "أعاني من تشتت الذهن أثناء الصلاة، فما النصائح العملية لذلك؟",
+    "authorName": "مريم",
+    "tags": ["Hadith", "Fiqh"],
+    "votes": 9,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T14:00:00.000Z",
+    "answers": [
+      {
+        "id": "a5",
+        "text": "حضّري قلبك قبل التكبير بلحظات، واقرئي ما تحفظينه بتدبر، وحاولي تقليل الملهيات قبل الصلاة.",
+        "authorName": "نورة",
+        "authorRole": "user",
+        "votes": 6,
+        "isBest": false,
+        "isVisible": true,
+        "createdAt": "2026-03-27T14:16:00.000Z"
+      },
+      {
+        "id": "a6",
+        "text": "من أفضل الأسباب معرفة معاني الأذكار والآيات المقروءة في الصلاة، فهذا يعين على حضور القلب.",
+        "authorName": "المشرف",
+        "authorRole": "admin",
+        "votes": 11,
+        "isBest": true,
+        "isVisible": true,
+        "createdAt": "2026-03-27T14:25:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "q6",
+    "title": "ما أبرز الدروس من سيرة النبي في الصبر؟",
+    "body": "أحتاج نقاطًا عملية من السيرة تساعدني في الثبات وقت الشدة.",
+    "authorName": "خالد",
+    "tags": ["Seerah"],
+    "votes": 5,
+    "status": "approved",
+    "isLocked": false,
+    "isVisible": true,
+    "createdAt": "2026-03-27T15:10:00.000Z",
+    "answers": [
+      {
+        "id": "a7",
+        "text": "من أعظم الدروس: الثقة بوعد الله، والأخذ بالأسباب، والصبر الطويل دون استعجال النتائج.",
+        "authorName": "المشرف",
+        "authorRole": "admin",
+        "votes": 8,
+        "isBest": true,
+        "isVisible": true,
+        "createdAt": "2026-03-27T15:30:00.000Z"
+      }
+    ]
+  }
+]

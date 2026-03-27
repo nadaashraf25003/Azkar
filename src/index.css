@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --bg: #f6f9ff;
+  --panel: #ffffff;
+  --text: #374151;
+  --text-strong: #111827;
+  --muted: #6b7280;
+  --line: #d7e3f5;
+  --brand-100: #dbeafe;
+  --brand-500: #2563eb;
+  --brand-600: #1d4ed8;
+  --brand-700: #1e40af;
+  --ok: #2563eb;
+  --warn: #b45309;
+}
+
+:root[data-theme='dark'] {
+  --bg: #050b1a;
+  --panel: #0b1630;
+  --text: #dbeafe;
+  --text-strong: #eff6ff;
+  --muted: #a8bbdd;
+  --line: #213659;
+  --brand-100: #0d2342;
+  --brand-500: #3b82f6;
+  --brand-600: #60a5fa;
+  --brand-700: #93c5fd;
+  --ok: #3b82f6;
+  --warn: #fbbf24;
+}
+
+@theme {
+  --font-sans: 'Cairo', ui-sans-serif, sans-serif;
+  --font-title: 'Fraunces', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[dir='rtl'] body {
+  text-align: right;
+}
+
+html[dir='rtl'] input,
+html[dir='rtl'] textarea,
+html[dir='rtl'] select {
+  direction: rtl;
+}
+
+.font-title {
+  font-family: var(--font-title);
+}

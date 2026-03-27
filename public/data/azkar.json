@@ -1,0 +1,236 @@
+[
+  {
+    "id": "m1",
+    "category": "morning",
+    "text": "أَصْـبَحْنا وَأَصْـبَحَ المُـلكُ لله، والحَمْـدُ لله...",
+    "textEn": "We have reached the morning and all sovereignty belongs to Allah...",
+    "count": 1,
+    "reference": "Muslim",
+    "benefit": "افتتاح اليوم بذكر الله."
+  },
+  {
+    "id": "m2",
+    "category": "morning",
+    "text": "اللّهـمَّ أَنْتَ رَبِّـي لا إلهَ إلاّ أَنْتَ...",
+    "textEn": "O Allah, You are my Lord, none has the right to be worshipped except You...",
+    "count": 1,
+    "reference": "Bukhari",
+    "benefit": "سيد الاستغفار."
+  },
+  {
+    "id": "m3",
+    "category": "morning",
+    "text": "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",
+    "textEn": "Glory is to Allah and praise is to Him.",
+    "count": 100,
+    "reference": "Bukhari, Muslim",
+    "benefit": "حط الخطايا."
+  },
+  {
+    "id": "m4",
+    "category": "morning",
+    "text": "اللّهـمَّ بِكَ أَصْبَحْنا وَبِكَ أَمْسَيْنا...",
+    "textEn": "O Allah, by You we enter the morning...",
+    "count": 1,
+    "reference": "Tirmidhi",
+    "benefit": "التوكل على الله."
+  },
+  {
+    "id": "m5",
+    "category": "morning",
+    "text": "اللّهـمَّ عافِني في بدني...",
+    "textEn": "O Allah, grant my body health...",
+    "count": 3,
+    "reference": "Abu Dawood",
+    "benefit": "طلب العافية."
+  },
+  {
+    "id": "m6",
+    "category": "morning",
+    "text": "اللّهـمَّ إني أسألك العفو والعافية...",
+    "textEn": "O Allah, I ask You for pardon and well-being...",
+    "count": 1,
+    "reference": "Ibn Majah",
+    "benefit": "دعاء شامل."
+  },
+  {
+    "id": "m7",
+    "category": "morning",
+    "text": "حَسْبِيَ اللَّهُ لا إِلَهَ إِلَّا هُوَ...",
+    "textEn": "Allah is sufficient for me...",
+    "count": 7,
+    "reference": "Abu Dawood",
+    "benefit": "كفاية الهموم."
+  },
+  {
+    "id": "e1",
+    "category": "evening",
+    "text": "أَمْسَيْنا وَأَمْسَى المُـلكُ لله...",
+    "textEn": "We have reached the evening...",
+    "count": 1,
+    "reference": "Muslim",
+    "benefit": "ذكر المساء."
+  },
+  {
+    "id": "e2",
+    "category": "evening",
+    "text": "اللّهـمَّ إني أمسيت أشهدك...",
+    "textEn": "O Allah, I have reached evening...",
+    "count": 4,
+    "reference": "Abu Dawood",
+    "benefit": "تجديد الإيمان."
+  },
+  {
+    "id": "e3",
+    "category": "evening",
+    "text": "حَسْبِيَ اللَّهُ لا إِلَهَ إِلَّا هُوَ...",
+    "textEn": "Allah is sufficient for me...",
+    "count": 33,
+    "reference": "Abu Dawood",
+    "benefit": "راحة القلب."
+  },
+  {
+    "id": "e4",
+    "category": "evening",
+    "text": "اللّهـمَّ بِكَ أَمْسَيْنا وَبِكَ أَصْبَحْنا...",
+    "textEn": "O Allah, by You we enter the evening...",
+    "count": 1,
+    "reference": "Tirmidhi",
+    "benefit": "التوكل."
+  },
+  {
+    "id": "e5",
+    "category": "evening",
+    "text": "اللّهـمَّ أجرني من النار",
+    "textEn": "O Allah, protect me from the Fire.",
+    "count": 7,
+    "reference": "Abu Dawood",
+    "benefit": "نجاة من النار."
+  },
+  {
+    "id": "s1",
+    "category": "sleep",
+    "text": "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي...",
+    "textEn": "In Your name my Lord, I lie down...",
+    "count": 1,
+    "reference": "Bukhari",
+    "benefit": "راحة قبل النوم."
+  },
+  {
+    "id": "s2",
+    "category": "sleep",
+    "text": "اللّهـمَّ قني عذابك...",
+    "textEn": "O Allah, protect me from Your punishment...",
+    "count": 3,
+    "reference": "Tirmidhi",
+    "benefit": "دعاء النجاة."
+  },
+  {
+    "id": "s3",
+    "category": "sleep",
+    "text": "اللّهُـمَّ بِاسْمِكَ أَمُوتُ وَأَحْيا",
+    "textEn": "O Allah, in Your name I die and live.",
+    "count": 1,
+    "reference": "Bukhari",
+    "benefit": "التوكل عند النوم."
+  },
+  {
+    "id": "s4",
+    "category": "sleep",
+    "text": "سُبْحَانَ اللَّهِ 33، الحمد لله 33، الله أكبر 34",
+    "textEn": "SubhanAllah 33, Alhamdulillah 33, Allahu Akbar 34.",
+    "count": 1,
+    "reference": "Bukhari, Muslim",
+    "benefit": "راحة وقوة."
+  },
+  {
+    "id": "p1",
+    "category": "afterPrayer",
+    "text": "أستغفر الله",
+    "textEn": "I seek forgiveness from Allah.",
+    "count": 3,
+    "reference": "Muslim",
+    "benefit": "جبر النقص."
+  },
+  {
+    "id": "p2",
+    "category": "afterPrayer",
+    "text": "اللهم أنت السلام ومنك السلام...",
+    "textEn": "O Allah, You are Peace...",
+    "count": 1,
+    "reference": "Muslim",
+    "benefit": "تعظيم الله."
+  },
+  {
+    "id": "p3",
+    "category": "afterPrayer",
+    "text": "سُبْحَانَ اللَّهِ",
+    "textEn": "Glory is to Allah.",
+    "count": 33,
+    "reference": "Muslim",
+    "benefit": "زيادة الحسنات."
+  },
+  {
+    "id": "p4",
+    "category": "afterPrayer",
+    "text": "الْحَمْدُ لِلَّهِ",
+    "textEn": "Praise is to Allah.",
+    "count": 33,
+    "reference": "Muslim",
+    "benefit": "شكر الله."
+  },
+  {
+    "id": "p5",
+    "category": "afterPrayer",
+    "text": "اللَّهُ أَكْبَرُ",
+    "textEn": "Allah is the Greatest.",
+    "count": 34,
+    "reference": "Muslim",
+    "benefit": "تعظيم الله."
+  },
+  {
+    "id": "g1",
+    "category": "general",
+    "text": "لا حول ولا قوة إلا بالله",
+    "textEn": "There is no power except with Allah.",
+    "count": 100,
+    "reference": "Bukhari",
+    "benefit": "كنز من الجنة."
+  },
+  {
+    "id": "g2",
+    "category": "general",
+    "text": "اللهم صل وسلم على نبينا محمد",
+    "textEn": "O Allah, send peace upon Prophet Muhammad.",
+    "count": 10,
+    "reference": "Muslim",
+    "benefit": "بركة وأجر."
+  },
+  {
+    "id": "g3",
+    "category": "general",
+    "text": "أستغفر الله العظيم وأتوب إليه",
+    "textEn": "I seek forgiveness from Allah and repent.",
+    "count": 100,
+    "reference": "Muslim",
+    "benefit": "مغفرة الذنوب."
+  },
+  {
+    "id": "g4",
+    "category": "general",
+    "text": "سبحان الله والحمد لله ولا إله إلا الله والله أكبر",
+    "textEn": "Glory be to Allah, praise be to Allah...",
+    "count": 25,
+    "reference": "Muslim",
+    "benefit": "أحب الكلام إلى الله."
+  },
+  {
+    "id": "g5",
+    "category": "general",
+    "text": "اللهم إنك عفو تحب العفو فاعف عني",
+    "textEn": "O Allah, You love forgiveness, so forgive me.",
+    "count": 10,
+    "reference": "Tirmidhi",
+    "benefit": "دعاء المغفرة."
+  }
+]

@@ -1,0 +1,80 @@
+{
+  "stories": [
+    {
+      "id": "s1",
+      "titleAr": "قصة أمانة النبي محمد ﷺ",
+      "titleEn": "The Trustworthiness of Prophet Muhammad",
+      "summaryAr": "كان النبي ﷺ معروفًا بالصادق الأمين حتى قبل البعثة، وكان الناس يودعون عنده أماناتهم.",
+      "summaryEn": "Before prophethood, people called Muhammad (peace be upon him) the truthful and trustworthy and kept their belongings with him.",
+      "moralAr": "الدرس: كن أمينًا في كلامك وأفعالك، فالأمانة من صفات المؤمن.",
+      "moralEn": "Moral: Be trustworthy in words and actions. Trustworthiness is a key quality of a believer."
+    },
+    {
+      "id": "s2",
+      "titleAr": "قصة لطف النبي ﷺ مع الأطفال",
+      "titleEn": "The Prophet's Kindness with Children",
+      "summaryAr": "كان النبي ﷺ يلاطف الأطفال، يسلم عليهم، ويبتسم لهم، ويعلمهم برفق.",
+      "summaryEn": "The Prophet (peace be upon him) was gentle with children, greeted them, smiled at them, and taught them with kindness.",
+      "moralAr": "الدرس: اللطف والرحمة يجعلانا محبوبين عند الله والناس.",
+      "moralEn": "Moral: Kindness and mercy make us beloved to Allah and to people."
+    },
+    {
+      "id": "s3",
+      "titleAr": "قصة بلال بن رباح وثباته",
+      "titleEn": "Bilal ibn Rabah and Steadfast Faith",
+      "summaryAr": "ثبت بلال رضي الله عنه على التوحيد رغم الشدة، وكان يردد: أحدٌ أحد.",
+      "summaryEn": "Bilal remained firm in faith despite hardship and kept saying: One, One.",
+      "moralAr": "الدرس: الثبات على الحق يحتاج صبرًا وشجاعة.",
+      "moralEn": "Moral: Staying on truth requires patience and courage."
+    }
+  ],
+  "weeklyChallenges": [
+    {
+      "id": "c1",
+      "titleAr": "تحدي الصلاة في وقتها",
+      "titleEn": "Pray on Time Challenge",
+      "descriptionAr": "حاول أداء الصلوات الخمس في وقتها لمدة 3 أيام هذا الأسبوع.",
+      "descriptionEn": "Try to perform the five daily prayers on time for 3 days this week."
+    },
+    {
+      "id": "c2",
+      "titleAr": "تحدي الأذكار اليومية",
+      "titleEn": "Daily Adhkar Challenge",
+      "descriptionAr": "اقرأ أذكار الصباح والمساء يوميًا لمدة أسبوع.",
+      "descriptionEn": "Read morning and evening adhkar every day for one week."
+    },
+    {
+      "id": "c3",
+      "titleAr": "تحدي الابتسامة واللطف",
+      "titleEn": "Smile and Kindness Challenge",
+      "descriptionAr": "قم بثلاثة أعمال لطف مع العائلة أو الأصدقاء هذا الأسبوع.",
+      "descriptionEn": "Do three acts of kindness for family or friends this week."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "q1",
+      "questionAr": "كم عدد الصلوات المفروضة في اليوم؟",
+      "questionEn": "How many obligatory prayers are there each day?",
+      "optionsAr": ["3", "4", "5", "6"],
+      "optionsEn": ["3", "4", "5", "6"],
+      "correctIndex": 2
+    },
+    {
+      "id": "q2",
+      "questionAr": "ما اسم كتاب المسلمين؟",
+      "questionEn": "What is the holy book of Muslims?",
+      "optionsAr": ["القرآن", "الإنجيل", "التوراة", "الزبور"],
+      "optionsEn": ["Quran", "Injeel", "Torah", "Psalms"],
+      "correctIndex": 0
+    },
+    {
+      "id": "q3",
+      "questionAr": "من هو خاتم الأنبياء؟",
+      "questionEn": "Who is the final Prophet?",
+      "optionsAr": ["موسى عليه السلام", "عيسى عليه السلام", "محمد ﷺ", "إبراهيم عليه السلام"],
+      "optionsEn": ["Musa (AS)", "Isa (AS)", "Muhammad (PBUH)", "Ibrahim (AS)"],
+      "correctIndex": 2
+    }
+  ]
+}

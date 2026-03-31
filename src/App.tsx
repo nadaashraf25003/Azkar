@@ -13,6 +13,7 @@ import { MessagesPage } from './pages/MessagesPage'
 import { PrayerTimesPage } from './pages/PrayerTimesPage'
 import { QuranRecitationsPage } from './pages/QuranRecitationsPage'
 import { QuestionsPage } from './pages/QuestionsPage'
+import { ReligiousInfoPage } from './pages/ReligiousInfoPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { TasbeehCounterPage } from './pages/TasbeehCounterPage'
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="/kids" element={<KidsPage />} />
         <Route path="/prayer-times" element={<PrayerTimesPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
+        <Route path="/religious-info" element={<ReligiousInfoPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

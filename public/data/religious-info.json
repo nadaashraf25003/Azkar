@@ -1,0 +1,62 @@
+[
+  {
+    "id": "belief-1",
+    "category": "aqeedah",
+    "titleAr": "أركان الإيمان",
+    "titleEn": "Pillars of Faith",
+    "contentAr": "الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره.",
+    "contentEn": "Faith in Allah, His angels, His books, His messengers, the Last Day, and divine decree.",
+    "sourceAr": "حديث جبريل",
+    "sourceEn": "Hadith of Jibril"
+  },
+  {
+    "id": "worship-1",
+    "category": "fiqh",
+    "titleAr": "أركان الإسلام",
+    "titleEn": "Pillars of Islam",
+    "contentAr": "الشهادتان، إقامة الصلاة، إيتاء الزكاة، صوم رمضان، حج البيت لمن استطاع إليه سبيلا.",
+    "contentEn": "Shahadah, prayer, zakat, fasting Ramadan, and Hajj for those able.",
+    "sourceAr": "صحيح البخاري",
+    "sourceEn": "Sahih al-Bukhari"
+  },
+  {
+    "id": "quran-1",
+    "category": "quran",
+    "titleAr": "فضل تلاوة القرآن",
+    "titleEn": "Virtue of Quran Recitation",
+    "contentAr": "قراءة القرآن سبب للسكينة ورفعة الدرجات، وحرفه بعشر حسنات.",
+    "contentEn": "Reciting Quran brings tranquility and reward; each letter earns multiple rewards.",
+    "sourceAr": "سنن الترمذي",
+    "sourceEn": "Jami at-Tirmidhi"
+  },
+  {
+    "id": "seerah-1",
+    "category": "seerah",
+    "titleAr": "الهجرة النبوية",
+    "titleEn": "The Prophetic Migration",
+    "contentAr": "كانت الهجرة من مكة إلى المدينة بداية مرحلة بناء المجتمع المسلم والدولة.",
+    "contentEn": "The migration from Makkah to Madinah marked the beginning of building the Muslim community.",
+    "sourceAr": "السيرة النبوية",
+    "sourceEn": "Prophetic Biography"
+  },
+  {
+    "id": "manners-1",
+    "category": "akhlaq",
+    "titleAr": "حسن الخلق",
+    "titleEn": "Good Character",
+    "contentAr": "من أفضل الأعمال التحلي بالأخلاق الحسنة في القول والفعل والمعاملة.",
+    "contentEn": "Among the best deeds is excellent character in speech, action, and dealings.",
+    "sourceAr": "سنن أبي داود",
+    "sourceEn": "Sunan Abi Dawud"
+  },
+  {
+    "id": "dua-1",
+    "category": "dua",
+    "titleAr": "آداب الدعاء",
+    "titleEn": "Etiquette of Supplication",
+    "contentAr": "الإخلاص، وحضور القلب، والثناء على الله، والصلاة على النبي قبل الدعاء.",
+    "contentEn": "Sincerity, presence of heart, praising Allah, and sending blessings on the Prophet before supplication.",
+    "sourceAr": "كتب الأدعية",
+    "sourceEn": "Books of Supplication"
+  }
+]

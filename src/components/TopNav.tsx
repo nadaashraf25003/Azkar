@@ -4,6 +4,7 @@ import { type AccentColor, useSettings } from '../context/SettingsContext'
 const links = [
   { to: '/', labelAr: 'اليوم', labelEn: 'Today' },
   { to: '/ayat', labelAr: 'الآيات', labelEn: 'Ayat' },
+  { to: '/religious-info', labelAr: 'معلومات دينية', labelEn: 'Religious Info' },
   { to: '/recitations', labelAr: 'تلاوات', labelEn: 'Recitations' },
   { to: '/messages', labelAr: 'الرسائل', labelEn: 'Messages' },
   { to: '/favorites', labelAr: 'المفضلة', labelEn: 'Favorites' },

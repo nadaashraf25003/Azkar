@@ -1,9 +1,18 @@
 import { useState } from 'react'
-import { useSettings } from '../context/SettingsContext'
+import { type AccentColor, useSettings } from '../context/SettingsContext'
 import { calculateQiblaBearing, getQiblaMapsUrl } from '../utils/qibla'
+
+const COLOR_OPTIONS: Array<{ id: AccentColor; labelAr: string; labelEn: string; swatch: string }> = [
+  { id: 'blue', labelAr: 'أزرق', labelEn: 'Blue', swatch: '#2563eb' },
+  { id: 'emerald', labelAr: 'زمردي', labelEn: 'Emerald', swatch: '#059669' },
+  { id: 'amber', labelAr: 'عنبر', labelEn: 'Amber', swatch: '#d97706' },
+  { id: 'rose', labelAr: 'وردي', labelEn: 'Rose', swatch: '#e11d48' },
+]
 
 export function SettingsPage() {
   const {
+    accentColor,
+    setAccentColor,
     language,
     setLanguage,
     remindersEnabled,
@@ -109,6 +118,40 @@ export function SettingsPage() {
               ? 'ملاحظة: تعمل التذكيرات أثناء فتح التطبيق في المتصفح.'
               : 'Note: reminders work while the app is open in your browser.'}
           </p>
+        </article>
+
+        <article className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5">
+          <h2 className="text-lg font-semibold text-[var(--text-strong)]">
+            {language === 'ar' ? 'لون التطبيق' : 'App color'}
+          </h2>
+          <p className="mt-2 text-xs text-[var(--muted)]">
+            {language === 'ar'
+              ? 'اختر اللون الرئيسي الذي سيظهر في كل الصفحات.'
+              : 'Choose the main accent color used across all pages.'}
+          </p>
+
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {COLOR_OPTIONS.map((option) => (
+              <button
+                key={option.id}
+                type="button"
+                onClick={() => setAccentColor(option.id)}
+                className={[
+                  'flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-semibold transition',
+                  accentColor === option.id
+                    ? 'border-[var(--brand-500)] bg-[var(--brand-100)] text-[var(--text-strong)]'
+                    : 'border-[var(--line)] text-[var(--text)] hover:border-[var(--brand-500)]',
+                ].join(' ')}
+              >
+                <span
+                  aria-hidden
+                  className="h-3.5 w-3.5 rounded-full border border-white/60 shadow"
+                  style={{ backgroundColor: option.swatch }}
+                />
+                {language === 'ar' ? option.labelAr : option.labelEn}
+              </button>
+            ))}
+          </div>
         </article>
 
         <article className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 md:col-span-2">

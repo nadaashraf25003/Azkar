@@ -1,0 +1,62 @@
+[
+  {
+    "id": "msg-1",
+    "type": "religious",
+    "titleAr": "رسالة إيمانية",
+    "titleEn": "Faith Reminder",
+    "textAr": "اقترب من الله بخطوة، تجد الرحمة تسبقك بعشرات الخطوات.",
+    "textEn": "Take one step toward Allah, and mercy will meet you with many more.",
+    "authorAr": "تذكير يومي",
+    "authorEn": "Daily Reminder"
+  },
+  {
+    "id": "msg-2",
+    "type": "religious",
+    "titleAr": "ذكر واستغفار",
+    "titleEn": "Dhikr and Istighfar",
+    "textAr": "اجعل لسانك رطبًا بالذكر، فالقلوب تحيا بذكر الله.",
+    "textEn": "Keep your tongue busy with remembrance; hearts are revived by Allah's dhikr.",
+    "authorAr": "نصيحة",
+    "authorEn": "Advice"
+  },
+  {
+    "id": "msg-3",
+    "type": "reflection",
+    "titleAr": "خاطرة صباحية",
+    "titleEn": "Morning Reflection",
+    "textAr": "كل يوم جديد فرصة لإصلاح النية وبداية أجمل.",
+    "textEn": "Every new day is a chance to renew intention and begin better.",
+    "authorAr": "خواطر",
+    "authorEn": "Reflections"
+  },
+  {
+    "id": "msg-4",
+    "type": "reflection",
+    "titleAr": "طمأنينة",
+    "titleEn": "Inner Peace",
+    "textAr": "لا تحمل هم الغد كثيرًا، فرب الغد هو رب اليوم.",
+    "textEn": "Do not carry tomorrow's worry too heavily; the Lord of tomorrow is the Lord of today.",
+    "authorAr": "خواطر",
+    "authorEn": "Reflections"
+  },
+  {
+    "id": "msg-5",
+    "type": "religious",
+    "titleAr": "ثبات القلب",
+    "titleEn": "Steadfast Heart",
+    "textAr": "ادعُ الله دائمًا: يا مقلب القلوب ثبت قلبي على دينك.",
+    "textEn": "Always pray: O Turner of hearts, keep my heart firm upon Your religion.",
+    "authorAr": "دعاء",
+    "authorEn": "Dua"
+  },
+  {
+    "id": "msg-6",
+    "type": "reflection",
+    "titleAr": "أثر الكلمة",
+    "titleEn": "Power of Words",
+    "textAr": "كلمة طيبة قد تغيّر يومًا كاملًا، فلا تبخل بلطفك.",
+    "textEn": "A kind word can transform an entire day, so do not withhold your gentleness.",
+    "authorAr": "خواطر",
+    "authorEn": "Reflections"
+  }
+]

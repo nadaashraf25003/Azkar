@@ -8,10 +8,13 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 import type { Language } from '../types/azkar'
 
 export type ThemeMode = 'light' | 'dark'
+export type AccentColor = 'blue' | 'emerald' | 'amber' | 'rose'
 
 interface SettingsContextValue {
   theme: ThemeMode
   toggleTheme: () => void
+  accentColor: AccentColor
+  setAccentColor: (color: AccentColor) => void
   language: Language
   setLanguage: (language: Language) => void
   remindersEnabled: boolean
@@ -22,6 +25,7 @@ const SettingsContext = createContext<SettingsContextValue | null>(null)
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useLocalStorage<ThemeMode>('azkar-theme', 'light')
+  const [accentColor, setAccentColor] = useLocalStorage<AccentColor>('azkar-accent-color', 'blue')
   const [language, setLanguage] = useLocalStorage<Language>('azkar-language', 'ar')
   const [remindersEnabled, setRemindersEnabled] = useLocalStorage<boolean>(
     'azkar-reminders-enabled',
@@ -32,6 +36,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement
     root.dataset.theme = theme
   }, [theme])
+
+  useEffect(() => {
+    const root = document.documentElement
+    root.dataset.accent = accentColor
+  }, [accentColor])
 
   useEffect(() => {
     const root = document.documentElement
@@ -50,6 +59,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       value={{
         theme,
         toggleTheme,
+        accentColor,
+        setAccentColor,
         language,
         setLanguage,
         remindersEnabled,

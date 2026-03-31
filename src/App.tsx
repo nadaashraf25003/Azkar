@@ -2,10 +2,12 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppLayout } from './components/AppLayout'
 import { useSettings } from './context/SettingsContext'
 import { useDailyReminders } from './hooks/useDailyReminders'
+import { AyatPage } from './pages/AyatPage'
 import { CounterPage } from './pages/CounterPage'
 import { FavoritesPage } from './pages/FavoritesPage'
 import { HomePage } from './pages/HomePage'
 import { KidsPage } from './pages/KidsPage'
+import { MessagesPage } from './pages/MessagesPage'
 import { PrayerTimesPage } from './pages/PrayerTimesPage'
 import { QuestionsPage } from './pages/QuestionsPage'
 import { SettingsPage } from './pages/SettingsPage'
@@ -19,6 +21,8 @@ function App() {
     <Routes>
       <Route element={<AppLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/ayat" element={<AyatPage />} />
+        <Route path="/messages" element={<MessagesPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/counter" element={<CounterPage />} />
         <Route path="/kids" element={<KidsPage />} />

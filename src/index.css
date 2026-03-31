@@ -31,6 +31,54 @@
   --warn: #fbbf24;
 }
 
+:root[data-accent='emerald'] {
+  --brand-100: #d1fae5;
+  --brand-500: #059669;
+  --brand-600: #047857;
+  --brand-700: #065f46;
+  --ok: #059669;
+}
+
+:root[data-theme='dark'][data-accent='emerald'] {
+  --brand-100: #052e27;
+  --brand-500: #10b981;
+  --brand-600: #34d399;
+  --brand-700: #6ee7b7;
+  --ok: #10b981;
+}
+
+:root[data-accent='amber'] {
+  --brand-100: #fef3c7;
+  --brand-500: #d97706;
+  --brand-600: #b45309;
+  --brand-700: #92400e;
+  --ok: #d97706;
+}
+
+:root[data-theme='dark'][data-accent='amber'] {
+  --brand-100: #3a2508;
+  --brand-500: #f59e0b;
+  --brand-600: #fbbf24;
+  --brand-700: #fcd34d;
+  --ok: #f59e0b;
+}
+
+:root[data-accent='rose'] {
+  --brand-100: #ffe4e6;
+  --brand-500: #e11d48;
+  --brand-600: #be123c;
+  --brand-700: #9f1239;
+  --ok: #e11d48;
+}
+
+:root[data-theme='dark'][data-accent='rose'] {
+  --brand-100: #3f1022;
+  --brand-500: #f43f5e;
+  --brand-600: #fb7185;
+  --brand-700: #fda4af;
+  --ok: #f43f5e;
+}
+
 @theme {
   --font-sans: 'Cairo', ui-sans-serif, sans-serif;
   --font-title: 'Fraunces', serif;

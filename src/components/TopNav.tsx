@@ -3,6 +3,8 @@ import { useSettings } from '../context/SettingsContext'
 
 const links = [
   { to: '/', labelAr: 'اليوم', labelEn: 'Today' },
+  { to: '/ayat', labelAr: 'الآيات', labelEn: 'Ayat' },
+  { to: '/messages', labelAr: 'الرسائل', labelEn: 'Messages' },
   { to: '/favorites', labelAr: 'المفضلة', labelEn: 'Favorites' },
   { to: '/counter', labelAr: 'العداد', labelEn: 'Counter' },
   { to: '/kids', labelAr: 'الأطفال', labelEn: 'Kids' },

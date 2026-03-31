@@ -281,7 +281,9 @@ export function AyatPage() {
 
               {showTafsir[aya.id] ? (
                 <p className="mt-3 rounded-xl border border-[var(--line)] bg-[var(--bg)] p-3 text-sm text-[var(--text)]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-                  {language === 'ar' ? aya.tafsirAr : aya.tafsirEn}
+                  {language === 'ar'
+                    ? aya.tafsirAr || 'لا يوجد تفسير متاح لهذه الآية حالياً.'
+                    : aya.tafsirEn || 'No tafsir is currently available for this ayah.'}
                 </p>
               ) : null}
 

@@ -55,7 +55,7 @@ const TYPE_CARD_META: TypeCardMeta[] = [
     type: 'dua',
     titleAr: 'أدعية وأذكار',
     titleEn: 'Dua and Azkar',
-    imageUrl: 'https://images.unsplash.com/photo-1609592806596-4d55dfd0b5ed?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=900&q=80',
   },
   {
     type: 'hadith',

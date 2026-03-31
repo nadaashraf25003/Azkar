@@ -7,7 +7,9 @@
     "textAr": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
     "textEn": "In the name of Allah, the Entirely Merciful, the Especially Merciful.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "تبدأ السورة بالاستعانة باسم الله، وبيان سعة رحمته العامة والخاصة بعباده المؤمنين.",
+    "tafsirEn": "The surah opens by seeking help through Allah's name and affirming His vast mercy for all creation and especially for believers."
   },
   {
     "id": "fatiha-2",
@@ -17,7 +19,9 @@
     "textAr": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
     "textEn": "All praise is due to Allah, Lord of the worlds.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "كل أنواع الثناء والكمال لله وحده، فهو المربي والمدبر لجميع العوالم.",
+    "tafsirEn": "All praise and perfection belong to Allah alone, the Nurturer and Sustainer of every realm of existence."
   },
   {
     "id": "fatiha-3",
@@ -27,7 +31,9 @@
     "textAr": "الرَّحْمَٰنِ الرَّحِيمِ",
     "textEn": "The Entirely Merciful, the Especially Merciful.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "تأكيد متكرر على رحمة الله؛ رحمة عامة تشمل الخلق، ورحمة خاصة لأهل الإيمان.",
+    "tafsirEn": "This repeats and emphasizes Allah's mercy: a universal mercy for creation and a special mercy for the people of faith."
   },
   {
     "id": "fatiha-4",
@@ -37,7 +43,9 @@
     "textAr": "مَالِكِ يَوْمِ الدِّينِ",
     "textEn": "Sovereign of the Day of Recompense.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "الله هو المالك المتصرف يوم القيامة، يوم الجزاء والحساب العادل لكل إنسان.",
+    "tafsirEn": "Allah alone is the absolute Sovereign on the Day of Judgment, when every person is justly recompensed."
   },
   {
     "id": "fatiha-5",
@@ -47,7 +55,9 @@
     "textAr": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
     "textEn": "It is You we worship and You we ask for help.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "إفراد الله بالعبادة، والاعتراف بأن العون الحقيقي على كل أمر لا يكون إلا منه سبحانه.",
+    "tafsirEn": "This verse declares exclusive worship to Allah and dependence on Him alone for true help in all matters."
   },
   {
     "id": "fatiha-6",
@@ -57,7 +67,9 @@
     "textAr": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
     "textEn": "Guide us to the straight path.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "دعاء بالهداية المستمرة إلى طريق الحق الواضح في الاعتقاد والعمل والأخلاق.",
+    "tafsirEn": "A prayer for continuous guidance to the clear path of truth in belief, action, and character."
   },
   {
     "id": "fatiha-7",
@@ -67,6 +79,8 @@
     "textAr": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
     "textEn": "The path of those upon whom You have bestowed favor, not of those who have evoked anger or of those who are astray.",
     "audioUrl": "https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3",
-    "reciter": "مشاري بن راشد العفاسي"
+    "reciter": "مشاري بن راشد العفاسي",
+    "tafsirAr": "هو طريق أهل النعمة من النبيين والصالحين، بعيدًا عن طريق من عرف الحق وتركه أو ضل عنه.",
+    "tafsirEn": "It is the path of those favored by Allah, away from the way of those who rejected known truth or went astray from it."
   }
 ]

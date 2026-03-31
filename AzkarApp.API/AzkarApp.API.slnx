@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AzkarApp.API/AzkarApp.API.csproj" />
+  <Project Path="AzkarApp.Application/AzkarApp.Application.csproj" />
+  <Project Path="AzkarApp.Domain/AzkarApp.Domain.csproj" />
+  <Project Path="AzkarApp.Infrastructure/AzkarApp.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,17 @@
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.csproj.AssemblyReference.cache
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.AssemblyInfoInputs.cache
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.AssemblyInfo.cs
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.csproj.CoreCompileInputs.cache
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Application.deps.json
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Application.dll
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Application.pdb
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Domain.dll
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Infrastructure.dll
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Domain.pdb
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\bin\Debug\net10.0\AzkarApp.Infrastructure.pdb
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.3ED42D39.Up2Date
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.dll
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\refint\AzkarApp.Application.dll
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\AzkarApp.Application.pdb
+D:\Desktop\Azkar_website\Azkar_back\AzkarApp.API\AzkarApp.Application\obj\Debug\net10.0\ref\AzkarApp.Application.dll

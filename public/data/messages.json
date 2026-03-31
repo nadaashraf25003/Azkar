@@ -7,7 +7,8 @@
     "textAr": "اقترب من الله بخطوة، تجد الرحمة تسبقك بعشرات الخطوات.",
     "textEn": "Take one step toward Allah, and mercy will meet you with many more.",
     "authorAr": "تذكير يومي",
-    "authorEn": "Daily Reminder"
+    "authorEn": "Daily Reminder",
+    "createdAt": "2026-03-22T08:00:00.000Z"
   },
   {
     "id": "msg-2",
@@ -17,7 +18,8 @@
     "textAr": "اجعل لسانك رطبًا بالذكر، فالقلوب تحيا بذكر الله.",
     "textEn": "Keep your tongue busy with remembrance; hearts are revived by Allah's dhikr.",
     "authorAr": "نصيحة",
-    "authorEn": "Advice"
+    "authorEn": "Advice",
+    "createdAt": "2026-03-23T08:00:00.000Z"
   },
   {
     "id": "msg-3",
@@ -27,7 +29,8 @@
     "textAr": "كل يوم جديد فرصة لإصلاح النية وبداية أجمل.",
     "textEn": "Every new day is a chance to renew intention and begin better.",
     "authorAr": "خواطر",
-    "authorEn": "Reflections"
+    "authorEn": "Reflections",
+    "createdAt": "2026-03-24T08:00:00.000Z"
   },
   {
     "id": "msg-4",
@@ -37,7 +40,8 @@
     "textAr": "لا تحمل هم الغد كثيرًا، فرب الغد هو رب اليوم.",
     "textEn": "Do not carry tomorrow's worry too heavily; the Lord of tomorrow is the Lord of today.",
     "authorAr": "خواطر",
-    "authorEn": "Reflections"
+    "authorEn": "Reflections",
+    "createdAt": "2026-03-25T08:00:00.000Z"
   },
   {
     "id": "msg-5",
@@ -47,7 +51,8 @@
     "textAr": "ادعُ الله دائمًا: يا مقلب القلوب ثبت قلبي على دينك.",
     "textEn": "Always pray: O Turner of hearts, keep my heart firm upon Your religion.",
     "authorAr": "دعاء",
-    "authorEn": "Dua"
+    "authorEn": "Dua",
+    "createdAt": "2026-03-26T08:00:00.000Z"
   },
   {
     "id": "msg-6",
@@ -57,6 +62,51 @@
     "textAr": "كلمة طيبة قد تغيّر يومًا كاملًا، فلا تبخل بلطفك.",
     "textEn": "A kind word can transform an entire day, so do not withhold your gentleness.",
     "authorAr": "خواطر",
-    "authorEn": "Reflections"
+    "authorEn": "Reflections",
+    "createdAt": "2026-03-27T08:00:00.000Z"
+  },
+  {
+    "id": "msg-7",
+    "type": "quran",
+    "titleAr": "نور القرآن",
+    "titleEn": "Light of the Quran",
+    "textAr": "القرآن حياة للروح، فاجعل لك وِردًا ثابتًا ولو قليلًا.",
+    "textEn": "The Quran is life for the soul; keep a daily portion, even if small.",
+    "authorAr": "تدبر",
+    "authorEn": "Contemplation",
+    "createdAt": "2026-03-28T08:00:00.000Z"
+  },
+  {
+    "id": "msg-8",
+    "type": "hadith",
+    "titleAr": "حديث نبوي",
+    "titleEn": "Prophetic Guidance",
+    "textAr": "أحب الأعمال إلى الله أدومها وإن قل، فالثبات مفتاح الأثر.",
+    "textEn": "The most beloved deeds to Allah are those done consistently, even if small.",
+    "authorAr": "السنة",
+    "authorEn": "Sunnah",
+    "createdAt": "2026-03-29T08:00:00.000Z"
+  },
+  {
+    "id": "msg-9",
+    "type": "dua",
+    "titleAr": "دعاء اليوم",
+    "titleEn": "Dua of the Day",
+    "textAr": "اللهم أعني على ذكرك وشكرك وحسن عبادتك.",
+    "textEn": "O Allah, help me remember You, thank You, and worship You in the best way.",
+    "authorAr": "أدعية",
+    "authorEn": "Duas",
+    "createdAt": "2026-03-30T08:00:00.000Z"
+  },
+  {
+    "id": "msg-10",
+    "type": "motivation",
+    "titleAr": "رسالة تحفيزية",
+    "titleEn": "Motivational Note",
+    "textAr": "كل تقدّم صغير اليوم هو بناء ثابت لمستقبل أفضل بإذن الله.",
+    "textEn": "Every small progress today builds a stronger future, by Allah's permission.",
+    "authorAr": "إلهام",
+    "authorEn": "Inspiration",
+    "createdAt": "2026-03-31T08:00:00.000Z"
   }
 ]

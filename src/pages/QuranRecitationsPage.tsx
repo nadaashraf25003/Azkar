@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import { useSettings } from '../context/SettingsContext'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { ADMIN_AUTH } from '../config/adminAuth'
 
 type UserRole = 'user' | 'admin'
 type ModerationStatus = 'pending' | 'approved' | 'rejected'
@@ -67,6 +68,10 @@ export function QuranRecitationsPage() {
   const [openRatingForm, setOpenRatingForm] = useState<Record<string, boolean>>({})
   const [showAllRatings, setShowAllRatings] = useState(true)
   const [showEntryRatings, setShowEntryRatings] = useState<Record<string, boolean>>({})
+  const [showAdminLogin, setShowAdminLogin] = useState(false)
+  const [adminEmail, setAdminEmail] = useState('')
+  const [adminPassword, setAdminPassword] = useState('')
+  const [adminLoginError, setAdminLoginError] = useState('')
 
   const recorderRef = useRef<MediaRecorder | null>(null)
   const streamRef = useRef<MediaStream | null>(null)
@@ -192,6 +197,42 @@ export function QuranRecitationsPage() {
     return showEntryRatings[entryId] ?? true
   }
 
+  const handleRoleChange = (nextRole: UserRole) => {
+    if (nextRole === 'admin' && viewerRole !== 'admin') {
+      setShowAdminLogin(true)
+      setAdminLoginError('')
+      return
+    }
+
+    if (nextRole === 'user') {
+      setViewerRole('user')
+      setShowAdminLogin(false)
+      setAdminEmail('')
+      setAdminPassword('')
+      setAdminLoginError('')
+      return
+    }
+
+    setViewerRole(nextRole)
+  }
+
+  const loginAsAdmin = () => {
+    if (
+      adminEmail.trim().toLowerCase() === ADMIN_AUTH.email &&
+      adminPassword === ADMIN_AUTH.password
+    ) {
+      setViewerRole('admin')
+      setShowAdminLogin(false)
+      setAdminLoginError('')
+      setAdminPassword('')
+      return
+    }
+
+    setAdminLoginError(
+      language === 'ar' ? 'بيانات تسجيل الدخول غير صحيحة.' : 'Invalid admin credentials.',
+    )
+  }
+
   return (
     <section className="space-y-4 md:space-y-5">
       <div className="rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 md:p-5">
@@ -218,13 +259,63 @@ export function QuranRecitationsPage() {
             {language === 'ar' ? 'وضع العرض' : 'Viewer mode'}
             <select
               value={viewerRole}
-              onChange={(event) => setViewerRole(event.target.value as UserRole)}
+              onChange={(event) => handleRoleChange(event.target.value as UserRole)}
               className="mt-1 w-full rounded-xl border border-[var(--line)] bg-transparent px-3 py-2 text-sm"
             >
               <option value="user">{language === 'ar' ? 'مستخدم' : 'User'}</option>
               <option value="admin">{language === 'ar' ? 'مشرف' : 'Admin'}</option>
             </select>
           </label>
+
+          {showAdminLogin && viewerRole !== 'admin' ? (
+            <div className="space-y-2 rounded-xl border border-[var(--line)] bg-[var(--bg)] p-3 md:col-span-2">
+              <p className="text-xs font-semibold text-[var(--muted)]">
+                {language === 'ar'
+                  ? 'سجّل دخول المشرف أولاً لاستخدام وضع المشرف.'
+                  : 'Login as admin first to enable admin mode.'}
+              </p>
+              <div className="grid gap-2 md:grid-cols-2">
+                <input
+                  type="email"
+                  value={adminEmail}
+                  onChange={(event) => setAdminEmail(event.target.value)}
+                  placeholder={language === 'ar' ? 'البريد الإلكتروني' : 'Email'}
+                  className="w-full rounded-xl border border-[var(--line)] bg-transparent px-3 py-2 text-sm"
+                />
+                <input
+                  type="password"
+                  value={adminPassword}
+                  onChange={(event) => setAdminPassword(event.target.value)}
+                  placeholder={language === 'ar' ? 'كلمة المرور' : 'Password'}
+                  className="w-full rounded-xl border border-[var(--line)] bg-transparent px-3 py-2 text-sm"
+                />
+              </div>
+              {adminLoginError ? (
+                <p className="text-xs font-semibold text-[var(--warn)]">{adminLoginError}</p>
+              ) : null}
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={loginAsAdmin}
+                  className="rounded-lg bg-[var(--brand-500)] px-3 py-2 text-xs font-semibold text-white"
+                >
+                  {language === 'ar' ? 'تسجيل دخول المشرف' : 'Admin Login'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowAdminLogin(false)
+                    setAdminEmail('')
+                    setAdminPassword('')
+                    setAdminLoginError('')
+                  }}
+                  className="rounded-lg border border-[var(--line)] px-3 py-2 text-xs font-semibold"
+                >
+                  {language === 'ar' ? 'إلغاء' : 'Cancel'}
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           <label className="block text-sm text-[var(--muted)]">
             {language === 'ar' ? 'الاسم (اختياري)' : 'Name (optional)'}

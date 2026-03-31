@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { useSettings } from '../context/SettingsContext'
+import { type AccentColor, useSettings } from '../context/SettingsContext'
 
 const links = [
   { to: '/', labelAr: 'اليوم', labelEn: 'Today' },
@@ -15,7 +15,14 @@ const links = [
 ]
 
 export function TopNav() {
-  const { language, toggleTheme, theme } = useSettings()
+  const { language, toggleTheme, theme, accentColor, setAccentColor } = useSettings()
+
+  const cycleAccentColor = () => {
+    const order: AccentColor[] = ['blue', 'emerald', 'amber', 'rose']
+    const currentIndex = order.indexOf(accentColor)
+    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % order.length
+    setAccentColor(order[nextIndex])
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur-xl">
@@ -28,19 +35,43 @@ export function TopNav() {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="shrink-0 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--text)] transition hover:border-[var(--brand-500)] md:text-sm"
-          >
-            {theme === 'light'
-              ? language === 'ar'
-                ? 'الوضع الداكن'
-                : 'Dark mode'
-              : language === 'ar'
-                ? 'الوضع الفاتح'
-                : 'Light mode'}
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={cycleAccentColor}
+              title={language === 'ar' ? 'تغيير لون التطبيق' : 'Change app color'}
+              aria-label={language === 'ar' ? 'تغيير لون التطبيق' : 'Change app color'}
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[var(--line)] bg-[var(--panel)] text-[var(--text)] transition hover:border-[var(--brand-500)]"
+            >
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3c3 3.2 6 6.4 6 10a6 6 0 1 1-12 0c0-3.6 3-6.8 6-10Z" />
+                <path d="M9.5 14.5a2.5 2.5 0 0 0 5 0" />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="shrink-0 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--text)] transition hover:border-[var(--brand-500)] md:text-sm"
+            >
+              {theme === 'light'
+                ? language === 'ar'
+                  ? 'الوضع الداكن'
+                  : 'Dark mode'
+                : language === 'ar'
+                  ? 'الوضع الفاتح'
+                  : 'Light mode'}
+            </button>
+          </div>
         </div>
 
         <nav className="flex w-full items-center gap-1 overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

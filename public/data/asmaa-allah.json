@@ -1,0 +1,695 @@
+[
+  {
+    "id": 1,
+    "nameAr": "الله",
+    "transliteration": "Allah",
+    "meaningAr": "الاسم الجامع لكل صفات الكمال",
+    "meaningEn": "The Greatest Name"
+  },
+  {
+    "id": 2,
+    "nameAr": "الرحمن",
+    "transliteration": "Ar-Rahman",
+    "meaningAr": "واسع الرحمة",
+    "meaningEn": "The Most Compassionate"
+  },
+  {
+    "id": 3,
+    "nameAr": "الرحيم",
+    "transliteration": "Ar-Raheem",
+    "meaningAr": "الرحيم بعباده",
+    "meaningEn": "The Most Merciful"
+  },
+  {
+    "id": 4,
+    "nameAr": "الملك",
+    "transliteration": "Al-Malik",
+    "meaningAr": "مالك كل شيء",
+    "meaningEn": "The King"
+  },
+  {
+    "id": 5,
+    "nameAr": "القدوس",
+    "transliteration": "Al-Quddus",
+    "meaningAr": "المنزه عن كل نقص",
+    "meaningEn": "The Most Holy"
+  },
+  {
+    "id": 6,
+    "nameAr": "السلام",
+    "transliteration": "As-Salam",
+    "meaningAr": "مصدر السلام",
+    "meaningEn": "The Source of Peace"
+  },
+  {
+    "id": 7,
+    "nameAr": "المؤمن",
+    "transliteration": "Al-Mu'min",
+    "meaningAr": "المؤمِّن لعباده",
+    "meaningEn": "The Granter of Security"
+  },
+  {
+    "id": 8,
+    "nameAr": "المهيمن",
+    "transliteration": "Al-Muhaymin",
+    "meaningAr": "الرقيب الحافظ",
+    "meaningEn": "The Guardian"
+  },
+  {
+    "id": 9,
+    "nameAr": "العزيز",
+    "transliteration": "Al-Aziz",
+    "meaningAr": "الغالب الذي لا يُغلب",
+    "meaningEn": "The Almighty"
+  },
+  {
+    "id": 10,
+    "nameAr": "الجبار",
+    "transliteration": "Al-Jabbar",
+    "meaningAr": "العالي القهار",
+    "meaningEn": "The Compeller"
+  },
+  {
+    "id": 11,
+    "nameAr": "المتكبر",
+    "transliteration": "Al-Mutakabbir",
+    "meaningAr": "المتعالي بعظمته",
+    "meaningEn": "The Supreme"
+  },
+  {
+    "id": 12,
+    "nameAr": "الخالق",
+    "transliteration": "Al-Khaliq",
+    "meaningAr": "مُوجِد الخلق",
+    "meaningEn": "The Creator"
+  },
+  {
+    "id": 13,
+    "nameAr": "البارئ",
+    "transliteration": "Al-Bari",
+    "meaningAr": "خالق الخلق بريئًا من التفاوت",
+    "meaningEn": "The Evolver"
+  },
+  {
+    "id": 14,
+    "nameAr": "المصور",
+    "transliteration": "Al-Musawwir",
+    "meaningAr": "مُعطي كل شيء صورته",
+    "meaningEn": "The Fashioner"
+  },
+  {
+    "id": 15,
+    "nameAr": "الغفار",
+    "transliteration": "Al-Ghaffar",
+    "meaningAr": "كثير المغفرة",
+    "meaningEn": "The All-Forgiving"
+  },
+  {
+    "id": 16,
+    "nameAr": "القهار",
+    "transliteration": "Al-Qahhar",
+    "meaningAr": "القاهر فوق عباده",
+    "meaningEn": "The Subduer"
+  },
+  {
+    "id": 17,
+    "nameAr": "الوهاب",
+    "transliteration": "Al-Wahhab",
+    "meaningAr": "كثير العطاء",
+    "meaningEn": "The Bestower"
+  },
+  {
+    "id": 18,
+    "nameAr": "الرزاق",
+    "transliteration": "Ar-Razzaq",
+    "meaningAr": "رازق الخلائق",
+    "meaningEn": "The Provider"
+  },
+  {
+    "id": 19,
+    "nameAr": "الفتاح",
+    "transliteration": "Al-Fattah",
+    "meaningAr": "فاتح أبواب الخير",
+    "meaningEn": "The Opener"
+  },
+  {
+    "id": 20,
+    "nameAr": "العليم",
+    "transliteration": "Al-Alim",
+    "meaningAr": "المحيط بكل علم",
+    "meaningEn": "The All-Knowing"
+  },
+  {
+    "id": 21,
+    "nameAr": "القابض",
+    "transliteration": "Al-Qabid",
+    "meaningAr": "القابض على الرزق والحياة",
+    "meaningEn": "The Withholder"
+  },
+  {
+    "id": 22,
+    "nameAr": "الباسط",
+    "transliteration": "Al-Basit",
+    "meaningAr": "الموسع في الرزق",
+    "meaningEn": "The Expander"
+  },
+  {
+    "id": 23,
+    "nameAr": "الخافض",
+    "transliteration": "Al-Khafid",
+    "meaningAr": "الخافض لمن يشاء",
+    "meaningEn": "The Abaser"
+  },
+  {
+    "id": 24,
+    "nameAr": "الرافع",
+    "transliteration": "Ar-Rafi",
+    "meaningAr": "الرافع لمن يشاء",
+    "meaningEn": "The Exalter"
+  },
+  {
+    "id": 25,
+    "nameAr": "المعز",
+    "transliteration": "Al-Muizz",
+    "meaningAr": "معطي العزة",
+    "meaningEn": "The Honorer"
+  },
+  {
+    "id": 26,
+    "nameAr": "المذل",
+    "transliteration": "Al-Mudhill",
+    "meaningAr": "المذل لمن يشاء",
+    "meaningEn": "The Dishonorer"
+  },
+  {
+    "id": 27,
+    "nameAr": "السميع",
+    "transliteration": "As-Sami",
+    "meaningAr": "الذي يسمع كل شيء",
+    "meaningEn": "The All-Hearing"
+  },
+  {
+    "id": 28,
+    "nameAr": "البصير",
+    "transliteration": "Al-Basir",
+    "meaningAr": "الذي يرى كل شيء",
+    "meaningEn": "The All-Seeing"
+  },
+  {
+    "id": 29,
+    "nameAr": "الحكم",
+    "transliteration": "Al-Hakam",
+    "meaningAr": "الحاكم العدل",
+    "meaningEn": "The Judge"
+  },
+  {
+    "id": 30,
+    "nameAr": "العدل",
+    "transliteration": "Al-Adl",
+    "meaningAr": "المنزه عن الظلم",
+    "meaningEn": "The Just"
+  },
+  {
+    "id": 31,
+    "nameAr": "اللطيف",
+    "transliteration": "Al-Latif",
+    "meaningAr": "الرفيق بعباده",
+    "meaningEn": "The Subtle One"
+  },
+  {
+    "id": 32,
+    "nameAr": "الخبير",
+    "transliteration": "Al-Khabir",
+    "meaningAr": "العليم بخفايا الأمور",
+    "meaningEn": "The All-Aware"
+  },
+  {
+    "id": 33,
+    "nameAr": "الحليم",
+    "transliteration": "Al-Halim",
+    "meaningAr": "الذي لا يعجل بالعقوبة",
+    "meaningEn": "The Forbearing"
+  },
+  {
+    "id": 34,
+    "nameAr": "العظيم",
+    "transliteration": "Al-Azim",
+    "meaningAr": "العظيم في ذاته وصفاته",
+    "meaningEn": "The Magnificent"
+  },
+  {
+    "id": 35,
+    "nameAr": "الغفور",
+    "transliteration": "Al-Ghafur",
+    "meaningAr": "الغافر للذنوب",
+    "meaningEn": "The Most Forgiving"
+  },
+  {
+    "id": 36,
+    "nameAr": "الشكور",
+    "transliteration": "Ash-Shakur",
+    "meaningAr": "الذي يجزي على القليل بالكثير",
+    "meaningEn": "The Appreciative"
+  },
+  {
+    "id": 37,
+    "nameAr": "العلي",
+    "transliteration": "Al-Aliyy",
+    "meaningAr": "العالي فوق كل شيء",
+    "meaningEn": "The Most High"
+  },
+  {
+    "id": 38,
+    "nameAr": "الكبير",
+    "transliteration": "Al-Kabir",
+    "meaningAr": "الكبير في كل شيء",
+    "meaningEn": "The Greatest"
+  },
+  {
+    "id": 39,
+    "nameAr": "الحفيظ",
+    "transliteration": "Al-Hafiz",
+    "meaningAr": "الحافظ لكل شيء",
+    "meaningEn": "The Preserver"
+  },
+  {
+    "id": 40,
+    "nameAr": "المقيت",
+    "transliteration": "Al-Muqit",
+    "meaningAr": "المقتدر على الأقوات",
+    "meaningEn": "The Sustainer"
+  },
+  {
+    "id": 41,
+    "nameAr": "الحسيب",
+    "transliteration": "Al-Hasib",
+    "meaningAr": "الكافي المحاسب",
+    "meaningEn": "The Reckoner"
+  },
+  {
+    "id": 42,
+    "nameAr": "الجليل",
+    "transliteration": "Al-Jalil",
+    "meaningAr": "الموصوف بالجلال",
+    "meaningEn": "The Majestic"
+  },
+  {
+    "id": 43,
+    "nameAr": "الكريم",
+    "transliteration": "Al-Karim",
+    "meaningAr": "كثير الخير",
+    "meaningEn": "The Generous"
+  },
+  {
+    "id": 44,
+    "nameAr": "الرقيب",
+    "transliteration": "Ar-Raqib",
+    "meaningAr": "المراقب لكل شيء",
+    "meaningEn": "The Watchful"
+  },
+  {
+    "id": 45,
+    "nameAr": "المجيب",
+    "transliteration": "Al-Mujib",
+    "meaningAr": "مجيب الدعوات",
+    "meaningEn": "The Responsive"
+  },
+  {
+    "id": 46,
+    "nameAr": "الواسع",
+    "transliteration": "Al-Wasi",
+    "meaningAr": "واسع الفضل",
+    "meaningEn": "The All-Encompassing"
+  },
+  {
+    "id": 47,
+    "nameAr": "الحكيم",
+    "transliteration": "Al-Hakim",
+    "meaningAr": "الحكيم في قضائه",
+    "meaningEn": "The All-Wise"
+  },
+  {
+    "id": 48,
+    "nameAr": "الودود",
+    "transliteration": "Al-Wadud",
+    "meaningAr": "المحب لعباده",
+    "meaningEn": "The Most Loving"
+  },
+  {
+    "id": 49,
+    "nameAr": "المجيد",
+    "transliteration": "Al-Majid",
+    "meaningAr": "العظيم الشريف",
+    "meaningEn": "The Glorious"
+  },
+  {
+    "id": 50,
+    "nameAr": "الباعث",
+    "transliteration": "Al-Baith",
+    "meaningAr": "باعث الخلق بعد الموت",
+    "meaningEn": "The Resurrector"
+  },
+  {
+    "id": 51,
+    "nameAr": "الشهيد",
+    "transliteration": "Ash-Shahid",
+    "meaningAr": "الذي لا يغيب عنه شيء",
+    "meaningEn": "The Witness"
+  },
+  {
+    "id": 52,
+    "nameAr": "الحق",
+    "transliteration": "Al-Haqq",
+    "meaningAr": "الثابت الذي لا يتغير",
+    "meaningEn": "The Truth"
+  },
+  {
+    "id": 53,
+    "nameAr": "الوكيل",
+    "transliteration": "Al-Wakil",
+    "meaningAr": "الكفيل بأرزاق العباد",
+    "meaningEn": "The Trustee"
+  },
+  {
+    "id": 54,
+    "nameAr": "القوي",
+    "transliteration": "Al-Qawiyy",
+    "meaningAr": "شديد القوة",
+    "meaningEn": "The Strong"
+  },
+  {
+    "id": 55,
+    "nameAr": "المتين",
+    "transliteration": "Al-Matin",
+    "meaningAr": "شديد المتانة",
+    "meaningEn": "The Firm"
+  },
+  {
+    "id": 56,
+    "nameAr": "الولي",
+    "transliteration": "Al-Waliyy",
+    "meaningAr": "الناصر والمتولي",
+    "meaningEn": "The Protecting Friend"
+  },
+  {
+    "id": 57,
+    "nameAr": "الحميد",
+    "transliteration": "Al-Hamid",
+    "meaningAr": "المستحق للحمد",
+    "meaningEn": "The Praiseworthy"
+  },
+  {
+    "id": 58,
+    "nameAr": "المحصي",
+    "transliteration": "Al-Muhsi",
+    "meaningAr": "الذي أحصى كل شيء",
+    "meaningEn": "The Accounter"
+  },
+  {
+    "id": 59,
+    "nameAr": "المبدئ",
+    "transliteration": "Al-Mubdi",
+    "meaningAr": "مُبدئ الخلق",
+    "meaningEn": "The Originator"
+  },
+  {
+    "id": 60,
+    "nameAr": "المعيد",
+    "transliteration": "Al-Muid",
+    "meaningAr": "المعيد بعد الفناء",
+    "meaningEn": "The Restorer"
+  },
+  {
+    "id": 61,
+    "nameAr": "المحيي",
+    "transliteration": "Al-Muhyi",
+    "meaningAr": "واهب الحياة",
+    "meaningEn": "The Giver of Life"
+  },
+  {
+    "id": 62,
+    "nameAr": "المميت",
+    "transliteration": "Al-Mumit",
+    "meaningAr": "خالق الموت",
+    "meaningEn": "The Bringer of Death"
+  },
+  {
+    "id": 63,
+    "nameAr": "الحي",
+    "transliteration": "Al-Hayy",
+    "meaningAr": "الحي الذي لا يموت",
+    "meaningEn": "The Ever-Living"
+  },
+  {
+    "id": 64,
+    "nameAr": "القيوم",
+    "transliteration": "Al-Qayyum",
+    "meaningAr": "القائم بنفسه المقيم لغيره",
+    "meaningEn": "The Self-Subsisting"
+  },
+  {
+    "id": 65,
+    "nameAr": "الواجد",
+    "transliteration": "Al-Wajid",
+    "meaningAr": "الذي لا يعوزه شيء",
+    "meaningEn": "The Finder"
+  },
+  {
+    "id": 66,
+    "nameAr": "الماجد",
+    "transliteration": "Al-Majid",
+    "meaningAr": "الواسع الكرم",
+    "meaningEn": "The Noble"
+  },
+  {
+    "id": 67,
+    "nameAr": "الواحد",
+    "transliteration": "Al-Wahid",
+    "meaningAr": "المنفرد بالوحدانية",
+    "meaningEn": "The One"
+  },
+  {
+    "id": 68,
+    "nameAr": "الأحد",
+    "transliteration": "Al-Ahad",
+    "meaningAr": "الأحد الذي لا شريك له",
+    "meaningEn": "The Unique"
+  },
+  {
+    "id": 69,
+    "nameAr": "الصمد",
+    "transliteration": "As-Samad",
+    "meaningAr": "المقصود في الحوائج",
+    "meaningEn": "The Eternal Refuge"
+  },
+  {
+    "id": 70,
+    "nameAr": "القادر",
+    "transliteration": "Al-Qadir",
+    "meaningAr": "المقتدر على كل شيء",
+    "meaningEn": "The Capable"
+  },
+  {
+    "id": 71,
+    "nameAr": "المقتدر",
+    "transliteration": "Al-Muqtadir",
+    "meaningAr": "تام القدرة",
+    "meaningEn": "The Powerful"
+  },
+  {
+    "id": 72,
+    "nameAr": "المقدم",
+    "transliteration": "Al-Muqaddim",
+    "meaningAr": "المقدم لمن يشاء",
+    "meaningEn": "The Expediter"
+  },
+  {
+    "id": 73,
+    "nameAr": "المؤخر",
+    "transliteration": "Al-Muakhkhir",
+    "meaningAr": "المؤخر لمن يشاء",
+    "meaningEn": "The Delayer"
+  },
+  {
+    "id": 74,
+    "nameAr": "الأول",
+    "transliteration": "Al-Awwal",
+    "meaningAr": "الذي ليس قبله شيء",
+    "meaningEn": "The First"
+  },
+  {
+    "id": 75,
+    "nameAr": "الآخر",
+    "transliteration": "Al-Akhir",
+    "meaningAr": "الذي ليس بعده شيء",
+    "meaningEn": "The Last"
+  },
+  {
+    "id": 76,
+    "nameAr": "الظاهر",
+    "transliteration": "Az-Zahir",
+    "meaningAr": "العالي الظاهر",
+    "meaningEn": "The Manifest"
+  },
+  {
+    "id": 77,
+    "nameAr": "الباطن",
+    "transliteration": "Al-Batin",
+    "meaningAr": "القريب العالم بالخفايا",
+    "meaningEn": "The Hidden"
+  },
+  {
+    "id": 78,
+    "nameAr": "الوالي",
+    "transliteration": "Al-Wali",
+    "meaningAr": "المالك المدبر",
+    "meaningEn": "The Governor"
+  },
+  {
+    "id": 79,
+    "nameAr": "المتعالي",
+    "transliteration": "Al-Mutaali",
+    "meaningAr": "المتعالي عن صفات الخلق",
+    "meaningEn": "The Most Exalted"
+  },
+  {
+    "id": 80,
+    "nameAr": "البر",
+    "transliteration": "Al-Barr",
+    "meaningAr": "الكثير الإحسان",
+    "meaningEn": "The Source of Goodness"
+  },
+  {
+    "id": 81,
+    "nameAr": "التواب",
+    "transliteration": "At-Tawwab",
+    "meaningAr": "قابل التوبة",
+    "meaningEn": "The Acceptor of Repentance"
+  },
+  {
+    "id": 82,
+    "nameAr": "المنتقم",
+    "transliteration": "Al-Muntaqim",
+    "meaningAr": "شديد العقاب لمن يستحق",
+    "meaningEn": "The Avenger"
+  },
+  {
+    "id": 83,
+    "nameAr": "العفو",
+    "transliteration": "Al-Afuww",
+    "meaningAr": "الذي يمحو الذنوب",
+    "meaningEn": "The Pardoner"
+  },
+  {
+    "id": 84,
+    "nameAr": "الرؤوف",
+    "transliteration": "Ar-Ra'uf",
+    "meaningAr": "شديد الرحمة",
+    "meaningEn": "The Most Kind"
+  },
+  {
+    "id": 85,
+    "nameAr": "مالك الملك",
+    "transliteration": "Malik-ul-Mulk",
+    "meaningAr": "مالك كل الممالك",
+    "meaningEn": "Owner of Sovereignty"
+  },
+  {
+    "id": 86,
+    "nameAr": "ذو الجلال والإكرام",
+    "transliteration": "Dhul-Jalali wal-Ikram",
+    "meaningAr": "صاحب العظمة والكرم",
+    "meaningEn": "Lord of Majesty and Honor"
+  },
+  {
+    "id": 87,
+    "nameAr": "المقسط",
+    "transliteration": "Al-Muqsit",
+    "meaningAr": "العادل المنصف",
+    "meaningEn": "The Equitable"
+  },
+  {
+    "id": 88,
+    "nameAr": "الجامع",
+    "transliteration": "Al-Jami",
+    "meaningAr": "الجامع للخلق",
+    "meaningEn": "The Gatherer"
+  },
+  {
+    "id": 89,
+    "nameAr": "الغني",
+    "transliteration": "Al-Ghani",
+    "meaningAr": "الغني عن كل شيء",
+    "meaningEn": "The Self-Sufficient"
+  },
+  {
+    "id": 90,
+    "nameAr": "المغني",
+    "transliteration": "Al-Mughni",
+    "meaningAr": "المعطي الغنى",
+    "meaningEn": "The Enricher"
+  },
+  {
+    "id": 91,
+    "nameAr": "المانع",
+    "transliteration": "Al-Mani",
+    "meaningAr": "المانع بحكمته",
+    "meaningEn": "The Preventer"
+  },
+  {
+    "id": 92,
+    "nameAr": "الضار",
+    "transliteration": "Ad-Darr",
+    "meaningAr": "الضار لمن يشاء عدلًا",
+    "meaningEn": "The Creator of Harm"
+  },
+  {
+    "id": 93,
+    "nameAr": "النافع",
+    "transliteration": "An-Nafi",
+    "meaningAr": "النافع لمن يشاء فضلًا",
+    "meaningEn": "The Creator of Benefit"
+  },
+  {
+    "id": 94,
+    "nameAr": "النور",
+    "transliteration": "An-Nur",
+    "meaningAr": "منوّر السماوات والأرض",
+    "meaningEn": "The Light"
+  },
+  {
+    "id": 95,
+    "nameAr": "الهادي",
+    "transliteration": "Al-Hadi",
+    "meaningAr": "الهادي إلى الحق",
+    "meaningEn": "The Guide"
+  },
+  {
+    "id": 96,
+    "nameAr": "البديع",
+    "transliteration": "Al-Badi",
+    "meaningAr": "مبدع السماوات والأرض",
+    "meaningEn": "The Incomparable Originator"
+  },
+  {
+    "id": 97,
+    "nameAr": "الباقي",
+    "transliteration": "Al-Baqi",
+    "meaningAr": "الدائم الذي لا يفنى",
+    "meaningEn": "The Everlasting"
+  },
+  {
+    "id": 98,
+    "nameAr": "الوارث",
+    "transliteration": "Al-Warith",
+    "meaningAr": "الباقي بعد فناء الخلق",
+    "meaningEn": "The Inheritor"
+  },
+  {
+    "id": 99,
+    "nameAr": "الرشيد",
+    "transliteration": "Ar-Rashid",
+    "meaningAr": "المرشد إلى الصواب",
+    "meaningEn": "The Guide to the Right Path"
+  }
+]

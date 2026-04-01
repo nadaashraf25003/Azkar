@@ -1,0 +1,70 @@
+[
+  {
+    "id": "birth",
+    "yearLabelAr": "عام الفيل",
+    "yearLabelEn": "Year of the Elephant",
+    "titleAr": "الميلاد في مكة",
+    "titleEn": "Birth in Makkah",
+    "summaryAr": "وُلد النبي محمد صلى الله عليه وسلم في مكة، ونشأ على الصدق والأمانة حتى لُقّب بالأمين.",
+    "summaryEn": "Prophet Muhammad (peace be upon him) was born in Makkah and grew up known for truthfulness and trustworthiness.",
+    "lessonsAr": [
+      "العناية بالخلق الحسن منذ الصغر",
+      "الصدق طريق الثقة بين الناس"
+    ],
+    "lessonsEn": [
+      "Good character starts early",
+      "Truthfulness builds trust in society"
+    ]
+  },
+  {
+    "id": "revelation",
+    "yearLabelAr": "610م",
+    "yearLabelEn": "610 CE",
+    "titleAr": "بداية الوحي",
+    "titleEn": "Beginning of Revelation",
+    "summaryAr": "نزل الوحي على النبي صلى الله عليه وسلم في غار حراء، وكانت رسالة الإسلام رحمةً للعالمين.",
+    "summaryEn": "The first revelation came in Cave Hira, marking the start of Islam as a mercy to all worlds.",
+    "lessonsAr": [
+      "طلب العلم أساس الهداية",
+      "الثبات على الحق عند بداية الطريق"
+    ],
+    "lessonsEn": [
+      "Seeking knowledge is foundational",
+      "Stay steadfast when the journey begins"
+    ]
+  },
+  {
+    "id": "hijrah",
+    "yearLabelAr": "622م",
+    "yearLabelEn": "622 CE",
+    "titleAr": "الهجرة إلى المدينة",
+    "titleEn": "Hijrah to Madinah",
+    "summaryAr": "كانت الهجرة تحولًا كبيرًا في تاريخ الإسلام، وفيها تأسست الدولة على الأخوة والعدل.",
+    "summaryEn": "The Hijrah was a major turning point where a community based on brotherhood and justice was established.",
+    "lessonsAr": [
+      "التخطيط مع التوكل",
+      "بناء المجتمع بالتعاون والإخاء"
+    ],
+    "lessonsEn": [
+      "Plan carefully while relying on Allah",
+      "Build communities through cooperation and brotherhood"
+    ]
+  },
+  {
+    "id": "fath-makkah",
+    "yearLabelAr": "8هـ",
+    "yearLabelEn": "8 AH",
+    "titleAr": "فتح مكة",
+    "titleEn": "Conquest of Makkah",
+    "summaryAr": "دخل النبي صلى الله عليه وسلم مكة منتصرًا بالعفو والتسامح، فكان يومًا عظيمًا في الرحمة.",
+    "summaryEn": "The Prophet entered Makkah in victory with forgiveness and mercy, setting a timeless moral example.",
+    "lessonsAr": [
+      "العفو عند المقدرة من أعظم الأخلاق",
+      "النصر الحقيقي مرتبط بالرحمة"
+    ],
+    "lessonsEn": [
+      "Forgiveness at moments of power is noble",
+      "True victory is tied to mercy"
+    ]
+  }
+]

@@ -1,4 +1,5 @@
 import { useSettings } from '../context/SettingsContext'
+import { Link } from 'react-router-dom'
 
 export function Footer() {
   const { language } = useSettings()
@@ -59,12 +60,12 @@ export function Footer() {
             <ul className="space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.labelEn} className="group">
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-[var(--muted)] transition-all duration-300 hover:bg-[var(--brand-500)]/10 hover:text-[var(--brand-500)]"
                   >
                     <span>{language === 'ar' ? link.labelAr : link.labelEn}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -109,26 +110,26 @@ export function Footer() {
 
           {/* Footer Links */}
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <a
-              href="#"
+            <Link
+              to="/privacy"
               className="relative text-xs text-[var(--muted)] transition-all duration-300 hover:text-[var(--brand-500)] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[var(--brand-500)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {language === 'ar' ? 'سياسة الخصوصية' : 'Privacy'}
-            </a>
+            </Link>
             <span className="text-[var(--line)]">•</span>
-            <a
-              href="#"
+            <Link
+              to="/terms"
               className="relative text-xs text-[var(--muted)] transition-all duration-300 hover:text-[var(--brand-500)] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[var(--brand-500)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {language === 'ar' ? 'الشروط' : 'Terms'}
-            </a>
+            </Link>
             <span className="text-[var(--line)]">•</span>
-            <a
-              href="#"
+            <Link
+              to="/contact"
               className="relative text-xs text-[var(--muted)] transition-all duration-300 hover:text-[var(--brand-500)] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[var(--brand-500)] after:transition-all after:duration-300 hover:after:w-full"
             >
               {language === 'ar' ? 'التواصل' : 'Contact'}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,9 @@ import { AppLayout } from './components/AppLayout'
 import { useSettings } from './context/SettingsContext'
 import { useDailyReminders } from './hooks/useDailyReminders'
 import { AyatPage } from './pages/AyatPage'
+import { AsmaaAllahPage } from './pages/AsmaaAllahPage'
 import { CategoryCounterPage } from './pages/CategoryCounterPage'
+import { ContactPage } from './pages/ContactPage'
 import { CounterPage } from './pages/CounterPage'
 import { FavoritesPage } from './pages/FavoritesPage'
 import { HomePage } from './pages/HomePage'
@@ -11,11 +13,14 @@ import { KidsPage } from './pages/KidsPage'
 import { MessageTypePage } from './pages/MessageTypePage'
 import { MessagesPage } from './pages/MessagesPage'
 import { PrayerTimesPage } from './pages/PrayerTimesPage'
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage'
 import { QuranRecitationsPage } from './pages/QuranRecitationsPage'
 import { QuestionsPage } from './pages/QuestionsPage'
 import { ReligiousInfoPage } from './pages/ReligiousInfoPage'
+import { SeerahPage } from './pages/SeerahPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { TasbeehCounterPage } from './pages/TasbeehCounterPage'
+import { TermsPage } from './pages/TermsPage'
 
 function App() {
   const { remindersEnabled } = useSettings()
@@ -38,8 +43,13 @@ function App() {
         </Route>
         <Route path="/kids" element={<KidsPage />} />
         <Route path="/prayer-times" element={<PrayerTimesPage />} />
+        <Route path="/asmaa-allah" element={<AsmaaAllahPage />} />
         <Route path="/questions" element={<QuestionsPage />} />
         <Route path="/religious-info" element={<ReligiousInfoPage />} />
+        <Route path="/seerah" element={<SeerahPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

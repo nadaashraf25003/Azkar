@@ -3,7 +3,7 @@ import { type AccentColor, useSettings } from '../context/SettingsContext'
 
 const links = [
   { to: '/', labelAr: 'اليوم', labelEn: 'Today' },
-  { to: '/ayat', labelAr: 'الآيات', labelEn: 'Ayat' },
+  { to: '/ayat', labelAr: 'السور', labelEn: 'Surahs' },
   { to: '/religious-info', labelAr: 'معلومات دينية', labelEn: 'Religious Info' },
   { to: '/seerah', labelAr: 'السيرة النبوية', labelEn: 'Seerah' },
   { to: '/recitations', labelAr: 'تلاوات', labelEn: 'Recitations' },
@@ -28,12 +28,12 @@ export function TopNav() {
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[var(--line)] bg-[var(--bg)]/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-(--line) bg-(--bg)/85 backdrop-blur-xl">
       <div className="mx-auto max-w-6xl px-3 py-3 md:px-6">
         <div className="mb-3 flex items-center justify-between gap-3">
           <div className="min-w-0">
-            <p className="font-title text-base text-[var(--brand-600)] sm:text-lg">Azkar</p>
-            <p className="truncate text-xs text-[var(--muted)]">
+            <p className="font-title text-base text-(--brand-600) sm:text-lg">Azkar</p>
+            <p className="truncate text-xs text-(--muted)">
               {language === 'ar' ? 'ذكر يومي بنية صادقة' : 'Daily remembrance with intention'}
             </p>
           </div>
@@ -44,7 +44,7 @@ export function TopNav() {
               onClick={cycleAccentColor}
               title={language === 'ar' ? 'تغيير لون التطبيق' : 'Change app color'}
               aria-label={language === 'ar' ? 'تغيير لون التطبيق' : 'Change app color'}
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-[var(--line)] bg-[var(--panel)] text-[var(--text)] transition hover:border-[var(--brand-500)]"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-(--line) bg-(--panel) text-(--text) transition hover:border-(--brand-500)"
             >
               <svg
                 aria-hidden
@@ -64,7 +64,7 @@ export function TopNav() {
             <button
               type="button"
               onClick={toggleTheme}
-              className="shrink-0 rounded-xl border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-xs font-semibold text-[var(--text)] transition hover:border-[var(--brand-500)] md:text-sm"
+              className="shrink-0 rounded-xl border border-(--line) bg-(--panel) px-3 py-2 text-xs font-semibold text-(--text) transition hover:border-(--brand-500) md:text-sm"
             >
               {theme === 'light'
                 ? language === 'ar'
@@ -77,7 +77,7 @@ export function TopNav() {
           </div>
         </div>
 
-        <nav className="flex w-full items-center gap-1 overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <nav className="flex w-full items-center gap-1 overflow-x-auto rounded-2xl border border-(--line) bg-(--panel) p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -86,8 +86,8 @@ export function TopNav() {
                 [
                   'shrink-0 whitespace-nowrap rounded-xl px-2.5 py-2 text-xs font-medium transition md:px-3 md:text-sm',
                   isActive
-                    ? 'bg-[var(--brand-500)] text-white'
-                    : 'text-[var(--text)] hover:bg-[var(--brand-100)]',
+                    ? 'bg-(--brand-500) text-white'
+                    : 'text-(--text) hover:bg-(--brand-100)',
                 ].join(' ')
               }
             >

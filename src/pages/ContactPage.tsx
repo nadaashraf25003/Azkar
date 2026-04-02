@@ -24,7 +24,7 @@ export function ContactPage() {
           {language === 'ar' ? 'راسلنا عبر البريد الإلكتروني:' : 'Reach us by email:'}
         </p>
         <a
-          href="nadanadaashraf25@gmail.com"
+          href="mailto:nadanadaashraf25@gmail.com"
           className="mt-2 inline-block rounded-xl bg-[var(--brand-500)] px-4 py-2 text-sm font-semibold text-white"
         >
           support@azkar.app

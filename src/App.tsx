@@ -21,6 +21,7 @@ import { SeerahPage } from './pages/SeerahPage'
 import { SettingsPage } from './pages/SettingsPage'
 import { TasbeehCounterPage } from './pages/TasbeehCounterPage'
 import { TermsPage } from './pages/TermsPage'
+import { SurahPage } from './pages/SurahPage'
 
 function App() {
   const { remindersEnabled } = useSettings()
@@ -32,6 +33,7 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/ayat" element={<AyatPage />} />
+        <Route path="/ayat/:chapterNumber" element={<SurahPage />} />
         <Route path="/recitations" element={<QuranRecitationsPage />} />
         <Route path="/messages" element={<MessagesPage />} />
         <Route path="/messages/type/:type" element={<MessageTypePage />} />

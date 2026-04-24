@@ -9,6 +9,7 @@ interface ZikrCardProps {
   onIncrement: (id: string) => void
   onDecrement: (id: string) => void
   onReset: (id: string) => void
+  showTypeTitle?: boolean
 }
 
 export function ZikrCard({
@@ -18,6 +19,7 @@ export function ZikrCard({
   onIncrement,
   onDecrement,
   onReset,
+  showTypeTitle = false,
 }: ZikrCardProps) {
   const { isFavorite, toggleFavorite } = useFavorites()
   const isDone = currentCount >= zikr.count
@@ -55,6 +57,14 @@ export function ZikrCard({
           : 'border-[var(--line)] bg-[var(--panel)]',
       ].join(' ')}
     >
+      {showTypeTitle && zikr.title ? (
+        <div className="mb-3 flex items-center justify-start">
+          <span className="rounded-full border border-[var(--line)] bg-[var(--brand-100)] px-3 py-1 text-xs font-semibold text-[var(--brand-700)]" dir="rtl">
+            {zikr.title}
+          </span>
+        </div>
+      ) : null}
+
       <div className="mb-4 flex items-start justify-between gap-3">
         <p className="font-title text-lg leading-relaxed text-[var(--text-strong)] md:text-xl" dir="rtl">
           {language === 'ar' ? zikr.text : zikr.textEn}

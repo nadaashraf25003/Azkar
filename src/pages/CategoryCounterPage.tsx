@@ -11,7 +11,7 @@ export function CategoryCounterPage() {
     getAutoDailyCategory(),
   )
   const { language } = useSettings()
-  const { data } = useAzkarData()
+  const { data } = useAzkarData('/data/azkar-category-counter.json')
   const { counters, setCounter, decrement, resetCounter } = useTasbeehCounters()
 
   const items = useMemo(
@@ -52,7 +52,7 @@ export function CategoryCounterPage() {
                   : 'border-[var(--line)] bg-[var(--panel)]',
               ].join(' ')}
             >
-              <p className="line-clamp-2 min-h-12 text-sm font-semibold text-[var(--text-strong)]" dir="rtl">
+              <p className="text-sm font-semibold leading-7 text-[var(--text-strong)]" dir="rtl">
                 {language === 'ar' ? item.text : item.textEn}
               </p>
               <p className="mt-2 text-xs text-[var(--muted)]">

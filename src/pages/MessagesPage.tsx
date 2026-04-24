@@ -12,6 +12,10 @@ const TYPE_LABELS: Record<string, { ar: string; en: string }> = {
   hadith: { ar: 'حديث', en: 'Hadith' },
   dua: { ar: 'دعاء', en: 'Dua' },
   motivation: { ar: 'تحفيز', en: 'Motivation' },
+    gratitude: { ar: 'شكر', en: 'Gratitude' },
+  wisdom: { ar: 'حكمة', en: 'Wisdom' },
+  community: { ar: 'مجتمع', en: 'Community' },
+  action: { ar: 'عمل', en: 'Action' },
 }
 
 interface MessageItem {

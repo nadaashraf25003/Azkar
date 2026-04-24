@@ -144,6 +144,7 @@ export function HomePage() {
               onIncrement={increment}
               onDecrement={decrement}
               onReset={resetCounter}
+              showTypeTitle
             />
           ))}
         </div>

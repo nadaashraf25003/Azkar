@@ -8,7 +8,9 @@
     "textEn": "Take one step toward Allah, and mercy will meet you with many more.",
     "authorAr": "تذكير يومي",
     "authorEn": "Daily Reminder",
-    "createdAt": "2026-03-22T08:00:00.000Z"
+    "createdAt": "2026-03-22T08:00:00.000Z",
+    "typeAr": "دينية",
+    "typeEn": "Religious"
   },
   {
     "id": "msg-2",
@@ -19,7 +21,9 @@
     "textEn": "Keep your tongue busy with remembrance; hearts are revived by Allah's dhikr.",
     "authorAr": "نصيحة",
     "authorEn": "Advice",
-    "createdAt": "2026-03-23T08:00:00.000Z"
+    "createdAt": "2026-03-23T08:00:00.000Z",
+    "typeAr": "دينية",
+    "typeEn": "Religious"
   },
   {
     "id": "msg-3",
@@ -30,7 +34,9 @@
     "textEn": "Every new day is a chance to renew intention and begin better.",
     "authorAr": "خواطر",
     "authorEn": "Reflections",
-    "createdAt": "2026-03-24T08:00:00.000Z"
+    "createdAt": "2026-03-24T08:00:00.000Z",
+    "typeAr": "خواطر",
+    "typeEn": "Reflections"
   },
   {
     "id": "msg-4",
@@ -41,7 +47,9 @@
     "textEn": "Do not carry tomorrow's worry too heavily; the Lord of tomorrow is the Lord of today.",
     "authorAr": "خواطر",
     "authorEn": "Reflections",
-    "createdAt": "2026-03-25T08:00:00.000Z"
+    "createdAt": "2026-03-25T08:00:00.000Z",
+    "typeAr": "خواطر",
+    "typeEn": "Reflections"
   },
   {
     "id": "msg-5",
@@ -52,7 +60,9 @@
     "textEn": "Always pray: O Turner of hearts, keep my heart firm upon Your religion.",
     "authorAr": "دعاء",
     "authorEn": "Dua",
-    "createdAt": "2026-03-26T08:00:00.000Z"
+    "createdAt": "2026-03-26T08:00:00.000Z",
+    "typeAr": "دينية",
+    "typeEn": "Religious"
   },
   {
     "id": "msg-6",
@@ -63,7 +73,9 @@
     "textEn": "A kind word can transform an entire day, so do not withhold your gentleness.",
     "authorAr": "خواطر",
     "authorEn": "Reflections",
-    "createdAt": "2026-03-27T08:00:00.000Z"
+    "createdAt": "2026-03-27T08:00:00.000Z",
+    "typeAr": "خواطر",
+    "typeEn": "Reflections"
   },
   {
     "id": "msg-7",
@@ -74,7 +86,9 @@
     "textEn": "The Quran is life for the soul; keep a daily portion, even if small.",
     "authorAr": "تدبر",
     "authorEn": "Contemplation",
-    "createdAt": "2026-03-28T08:00:00.000Z"
+    "createdAt": "2026-03-28T08:00:00.000Z",
+    "typeAr": "آيات",
+    "typeEn": "Quran"
   },
   {
     "id": "msg-8",
@@ -85,7 +99,9 @@
     "textEn": "The most beloved deeds to Allah are those done consistently, even if small.",
     "authorAr": "السنة",
     "authorEn": "Sunnah",
-    "createdAt": "2026-03-29T08:00:00.000Z"
+    "createdAt": "2026-03-29T08:00:00.000Z",
+    "typeAr": "حديث",
+    "typeEn": "Hadith"
   },
   {
     "id": "msg-9",
@@ -96,7 +112,9 @@
     "textEn": "O Allah, help me remember You, thank You, and worship You in the best way.",
     "authorAr": "أدعية",
     "authorEn": "Duas",
-    "createdAt": "2026-03-30T08:00:00.000Z"
+    "createdAt": "2026-03-30T08:00:00.000Z",
+    "typeAr": "دعاء",
+    "typeEn": "Dua"
   },
   {
     "id": "msg-10",
@@ -107,6 +125,203 @@
     "textEn": "Every small progress today builds a stronger future, by Allah's permission.",
     "authorAr": "إلهام",
     "authorEn": "Inspiration",
-    "createdAt": "2026-03-31T08:00:00.000Z"
+    "createdAt": "2026-03-31T08:00:00.000Z",
+    "typeAr": "تحفيز",
+    "typeEn": "Motivation"
+  },
+  {
+    "id": "msg-11",
+    "type": "religious",
+    "titleAr": "فضل الاستغفار",
+    "titleEn": "Virtue of Seeking Forgiveness",
+    "textAr": "الاستغفار يفتح أبواب الرزق والفرج، فأكثر منه في كل وقت.",
+    "textEn": "Seeking forgiveness opens the doors of provision and relief — do it often.",
+    "authorAr": "تذكير",
+    "authorEn": "Reminder",
+    "createdAt": "2026-04-01T08:00:00.000Z",
+    "typeAr": "دينية",
+    "typeEn": "Religious"
+  },
+  {
+    "id": "msg-12",
+    "type": "reflection",
+    "titleAr": "قيمة الوقت",
+    "titleEn": "Value of Time",
+    "textAr": "الوقت أثمن ما تملك، فاستثمره فيما يرضي الله.",
+    "textEn": "Time is the most precious thing you own — invest it in what pleases Allah.",
+    "authorAr": "خواطر",
+    "authorEn": "Reflections",
+    "createdAt": "2026-04-02T08:00:00.000Z",
+    "typeAr": "خواطر",
+    "typeEn": "Reflections"
+  },
+  {
+    "id": "msg-13",
+    "type": "hadith",
+    "titleAr": "البشرى للصابرين",
+    "titleEn": "Glad Tidings for the Patient",
+    "textAr": "ما أصاب المسلم من هم ولا حزن إلا كفّر الله به من خطاياه.",
+    "textEn": "No worry or sorrow befalls a Muslim except that Allah expiates some of his sins through it.",
+    "authorAr": "البخاري",
+    "authorEn": "Bukhari",
+    "createdAt": "2026-04-03T08:00:00.000Z",
+    "typeAr": "حديث",
+    "typeEn": "Hadith"
+  },
+  {
+    "id": "msg-14",
+    "type": "dua",
+    "titleAr": "دعاء الكرب",
+    "titleEn": "Dua in Hardship",
+    "textAr": "لا إله إلا الله العظيم الحليم، لا إله إلا الله رب العرش العظيم.",
+    "textEn": "There is no deity but Allah, the Magnificent, the Forbearing. There is no deity but Allah, the Lord of the Mighty Throne.",
+    "authorAr": "البخاري",
+    "authorEn": "Bukhari",
+    "createdAt": "2026-04-04T08:00:00.000Z",
+    "typeAr": "دعاء",
+    "typeEn": "Dua"
+  },
+  {
+    "id": "msg-15",
+    "type": "motivation",
+    "titleAr": "لا تيأس",
+    "titleEn": "Never Despair",
+    "textAr": "مهما كانت الذنوب فرحمة الله أوسع، فتب إليه ولا تقنط.",
+    "textEn": "No matter how great the sins, Allah's mercy is greater — repent and never despair.",
+    "authorAr": "إلهام",
+    "authorEn": "Inspiration",
+    "createdAt": "2026-04-05T08:00:00.000Z",
+    "typeAr": "تحفيز",
+    "typeEn": "Motivation"
+  },
+  {
+    "id": "msg-16",
+    "type": "gratitude",
+    "titleAr": "كنز القناعة",
+    "titleEn": "The Treasure of Contentment",
+    "textAr": "الحمد لله على نعمٍ اعتدنا وجودها فنسينا شكرها.",
+    "textEn": "Praise be to Allah for blessings we have grown so used to that we forgot to give thanks for them.",
+    "authorAr": "شكر",
+    "authorEn": "Gratitude",
+    "createdAt": "2026-04-06T08:00:00.000Z",
+    "typeAr": "امتنان",
+    "typeEn": "Gratitude"
+  },
+  {
+    "id": "msg-17",
+    "type": "wisdom",
+    "titleAr": "جبر الخواطر",
+    "titleEn": "Mending Hearts",
+    "textAr": "من سار بين الناس جابرًا للخواطر، أدركه الله في جوف المخاطر.",
+    "textEn": "Whoever spends their life mending the hearts of others, Allah will protect them in times of danger.",
+    "authorAr": "حكمة",
+    "authorEn": "Wisdom",
+    "createdAt": "2026-04-07T08:00:00.000Z",
+    "typeAr": "حكمة",
+    "typeEn": "Wisdom"
+  },
+  {
+    "id": "msg-18",
+    "type": "community",
+    "titleAr": "بر الوالدين",
+    "titleEn": "Honoring Parents",
+    "textAr": "رضا الله في رضا الوالدين، فاجعل لهما من وقتك ودعائك نصيبًا.",
+    "textEn": "The pleasure of Allah is found in the pleasure of parents; give them a share of your time and prayers.",
+    "authorAr": "نصيحة",
+    "authorEn": "Advice",
+    "createdAt": "2026-04-08T08:00:00.000Z",
+    "typeAr": "مجتمعية",
+    "typeEn": "Community"
+  },
+  {
+    "id": "msg-19",
+    "type": "action",
+    "titleAr": "خبيئة العمل",
+    "titleEn": "Hidden Good Deeds",
+    "textAr": "اجعل بينك وبين الله خبيئة من عمل صالح لا يعلمها أحد.",
+    "textEn": "Keep a secret good deed between you and Allah that no one else knows about.",
+    "authorAr": "تربية",
+    "authorEn": "Character",
+    "createdAt": "2026-04-09T08:00:00.000Z",
+    "typeAr": "عملية",
+    "typeEn": "Action"
+  },
+  {
+    "id": "msg-20",
+    "type": "religious",
+    "titleAr": "الصلاة على النبي",
+    "titleEn": "Blessings upon the Prophet",
+    "textAr": "أكثروا من الصلاة على النبي، بها تُكفى الهموم وتُغفر الذنوب.",
+    "textEn": "Increase your prayers upon the Prophet; through them, worries are sufficed and sins are forgiven.",
+    "authorAr": "السنة",
+    "authorEn": "Sunnah",
+    "createdAt": "2026-04-10T08:00:00.000Z",
+    "typeAr": "دينية",
+    "typeEn": "Religious"
+  },
+  {
+    "id": "msg-21",
+    "type": "reflection",
+    "titleAr": "حسن الظن",
+    "titleEn": "Good Expectations",
+    "textAr": "أنا عند ظن عبدي بي، فظن بالله خيرًا تجد الخير أمامك.",
+    "textEn": "‘I am as My servant expects Me to be,’ so expect the best from Allah and you will find it.",
+    "authorAr": "حديث قدسي",
+    "authorEn": "Hadith Qudsi",
+    "createdAt": "2026-04-11T08:00:00.000Z",
+    "typeAr": "خواطر",
+    "typeEn": "Reflections"
+  },
+  {
+    "id": "msg-22",
+    "type": "wisdom",
+    "titleAr": "سلامة الصدر",
+    "titleEn": "Purity of Heart",
+    "textAr": "أفضل الناس من ينام وليس في قلبه غلّ ولا حقد على أحد.",
+    "textEn": "The best of people is the one who sleeps without any malice or hatred in their heart toward anyone.",
+    "authorAr": "حكمة",
+    "authorEn": "Wisdom",
+    "createdAt": "2026-04-12T08:00:00.000Z",
+    "typeAr": "حكمة",
+    "typeEn": "Wisdom"
+  },
+  {
+    "id": "msg-23",
+    "type": "gratitude",
+    "titleAr": "نعمة العافية",
+    "titleEn": "Blessing of Well-being",
+    "textAr": "العافية إذا دامت جُهلت، وإذا فُقدت عُرفت، فاشكر الله عليها دائمًا.",
+    "textEn": "Health is taken for granted when it lasts and recognized when it is lost; thank Allah for it always.",
+    "authorAr": "تذكير",
+    "authorEn": "Reminder",
+    "createdAt": "2026-04-13T08:00:00.000Z",
+    "typeAr": "امتنان",
+    "typeEn": "Gratitude"
+  },
+  {
+    "id": "msg-24",
+    "type": "dua",
+    "titleAr": "طلب الهداية",
+    "titleEn": "Seeking Guidance",
+    "textAr": "اللهم اهدنا الصراط المستقيم وثبتنا عليه حتى نلقاك.",
+    "textEn": "O Allah, guide us to the straight path and keep us firm upon it until we meet You.",
+    "authorAr": "دعاء",
+    "authorEn": "Dua",
+    "createdAt": "2026-04-14T08:00:00.000Z",
+    "typeAr": "دعاء",
+    "typeEn": "Dua"
+  },
+  {
+    "id": "msg-25",
+    "type": "motivation",
+    "titleAr": "التوكل على الله",
+    "titleEn": "Trust in Allah",
+    "textAr": "من فوّض أمره لله، رتب الله له من الأسباب ما لا يخطر على باله.",
+    "textEn": "Whoever entrusts their affairs to Allah, He arranges for them means they could never imagine.",
+    "authorAr": "إلهام",
+    "authorEn": "Inspiration",
+    "createdAt": "2026-04-15T08:00:00.000Z",
+    "typeAr": "تحفيز",
+    "typeEn": "Motivation"
   }
 ]

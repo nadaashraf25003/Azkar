@@ -1,70 +1,154 @@
 [
   {
     "id": "birth",
-    "yearLabelAr": "عام الفيل",
-    "yearLabelEn": "Year of the Elephant",
-    "titleAr": "الميلاد في مكة",
+    "yearLabelAr": "عام الفيل — ٥٧٠م",
+    "yearLabelEn": "Year of the Elephant — 570 CE",
+    "titleAr": "الميلاد في مكة المكرمة",
     "titleEn": "Birth in Makkah",
-    "summaryAr": "وُلد النبي محمد صلى الله عليه وسلم في مكة، ونشأ على الصدق والأمانة حتى لُقّب بالأمين.",
-    "summaryEn": "Prophet Muhammad (peace be upon him) was born in Makkah and grew up known for truthfulness and trustworthiness.",
+    "summaryAr": "وُلد النبي محمد صلى الله عليه وسلم في مكة في عام الفيل، ونشأ يتيمًا في كنف جده عبد المطلب ثم عمه أبي طالب، وعُرف منذ صغره بالصدق والأمانة حتى لُقِّب بالأمين.",
+    "summaryEn": "Prophet Muhammad (peace be upon him) was born in Makkah in the Year of the Elephant. He grew up as an orphan under his grandfather Abd al-Muttalib and then his uncle Abu Talib, known from an early age for truthfulness and trustworthiness.",
     "lessonsAr": [
       "العناية بالخلق الحسن منذ الصغر",
-      "الصدق طريق الثقة بين الناس"
+      "الصدق طريق الثقة بين الناس",
+      "الصبر على اليتم والشدائد يبني شخصية عظيمة"
     ],
     "lessonsEn": [
-      "Good character starts early",
-      "Truthfulness builds trust in society"
+      "Good character starts from an early age",
+      "Truthfulness builds trust among people",
+      "Patience through hardship and orphanhood builds great character"
     ]
   },
   {
     "id": "revelation",
-    "yearLabelAr": "610م",
+    "yearLabelAr": "٦١٠م",
     "yearLabelEn": "610 CE",
-    "titleAr": "بداية الوحي",
-    "titleEn": "Beginning of Revelation",
-    "summaryAr": "نزل الوحي على النبي صلى الله عليه وسلم في غار حراء، وكانت رسالة الإسلام رحمةً للعالمين.",
-    "summaryEn": "The first revelation came in Cave Hira, marking the start of Islam as a mercy to all worlds.",
+    "titleAr": "بداية الوحي في غار حراء",
+    "titleEn": "Beginning of Revelation in Cave Hira",
+    "summaryAr": "نزل الوحي على النبي صلى الله عليه وسلم في غار حراء في رمضان، فجاءه جبريل بأول آيات سورة العلق: اقرأ باسم ربك الذي خلق. فعاد النبي ترتجف فرائصه، فثبّتته خديجة رضي الله عنها.",
+    "summaryEn": "Revelation came to the Prophet in Cave Hira during Ramadan. Jibril brought the first verses of Surah Al-Alaq: Read in the name of your Lord who created. The Prophet returned trembling, and Khadijah comforted and steadied him.",
     "lessonsAr": [
       "طلب العلم أساس الهداية",
-      "الثبات على الحق عند بداية الطريق"
+      "الثبات على الحق عند بداية الطريق",
+      "دور الزوج والأسرة في دعم أصحاب الرسالات"
     ],
     "lessonsEn": [
-      "Seeking knowledge is foundational",
-      "Stay steadfast when the journey begins"
+      "Seeking knowledge is the foundation of guidance",
+      "Remaining steadfast at the beginning of the journey",
+      "The role of family in supporting those with a mission"
+    ]
+  },
+  {
+    "id": "dawah-makkah",
+    "yearLabelAr": "٦١٠ — ٦٢٢م",
+    "yearLabelEn": "610 — 622 CE",
+    "titleAr": "مرحلة الدعوة في مكة",
+    "titleEn": "The Makkah Dawah Period",
+    "summaryAr": "بدأ النبي الدعوة سرًا ثم جهرًا، فآمن به الأقربون والضعفاء والأحرار. وتحمّل هو وصحابته أشد أنواع الأذى والتعذيب من أجل الثبات على التوحيد.",
+    "summaryEn": "The Prophet began preaching privately then publicly. The early believers included close family, the vulnerable, and free individuals. He and his companions endured severe persecution in steadfastly upholding monotheism.",
+    "lessonsAr": [
+      "الدعوة تبدأ بالأقربين",
+      "الثبات على المبدأ أمام الأذى والاضطهاد",
+      "الضعفاء والمستضعفون غالبًا أول من يقبل الحق"
+    ],
+    "lessonsEn": [
+      "Dawah begins with those closest to you",
+      "Standing firm on principle in the face of persecution",
+      "The vulnerable are often the first to embrace truth"
+    ]
+  },
+  {
+    "id": "isra-miraj",
+    "yearLabelAr": "٦٢١م",
+    "yearLabelEn": "621 CE",
+    "titleAr": "الإسراء والمعراج",
+    "titleEn": "The Night Journey and Ascension",
+    "summaryAr": "أُسري بالنبي ﷺ من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلى. وفُرضت في تلك الليلة الصلوات الخمس هدية للمؤمنين.",
+    "summaryEn": "The Prophet was taken from the Grand Mosque to Al-Aqsa Mosque, then ascended through the heavens. On that night the five daily prayers were prescribed as a gift for the believers.",
+    "lessonsAr": [
+      "الصلاة هدية ربانية تربط العبد بخالقه",
+      "المعجزات تثبيت للقلوب المؤمنة",
+      "القدس في قلب الإسلام"
+    ],
+    "lessonsEn": [
+      "Prayer is a divine gift connecting the servant to the Creator",
+      "Miracles are a strengthening for believing hearts",
+      "Jerusalem holds a central place in Islam"
     ]
   },
   {
     "id": "hijrah",
-    "yearLabelAr": "622م",
+    "yearLabelAr": "٦٢٢م",
     "yearLabelEn": "622 CE",
-    "titleAr": "الهجرة إلى المدينة",
-    "titleEn": "Hijrah to Madinah",
-    "summaryAr": "كانت الهجرة تحولًا كبيرًا في تاريخ الإسلام، وفيها تأسست الدولة على الأخوة والعدل.",
-    "summaryEn": "The Hijrah was a major turning point where a community based on brotherhood and justice was established.",
+    "titleAr": "الهجرة المباركة إلى المدينة",
+    "titleEn": "The Blessed Migration to Madinah",
+    "summaryAr": "كانت الهجرة تحولًا كبيرًا في تاريخ الإسلام، خرج النبي ﷺ وصاحبه أبو بكر متوكلين على الله. وفي المدينة أسّس النبي المسجد وعقد المؤاخاة بين المهاجرين والأنصار.",
+    "summaryEn": "The Hijrah was a major turning point. The Prophet and Abu Bakr departed relying on Allah. In Madinah, the Prophet established the mosque and created brotherhood between the migrants and the helpers.",
     "lessonsAr": [
-      "التخطيط مع التوكل",
-      "بناء المجتمع بالتعاون والإخاء"
+      "التخطيط مع التوكل على الله",
+      "بناء المجتمع بالتعاون والإخاء",
+      "المسجد نواة المجتمع المسلم"
     ],
     "lessonsEn": [
-      "Plan carefully while relying on Allah",
-      "Build communities through cooperation and brotherhood"
+      "Plan carefully while fully trusting in Allah",
+      "Build communities through cooperation and brotherhood",
+      "The mosque is the nucleus of the Muslim community"
+    ]
+  },
+  {
+    "id": "badr",
+    "yearLabelAr": "٢ هجري — ٦٢٤م",
+    "yearLabelEn": "2 AH — 624 CE",
+    "titleAr": "غزوة بدر الكبرى",
+    "titleEn": "The Great Battle of Badr",
+    "summaryAr": "التقى ٣١٣ مسلمًا بألف مقاتل من قريش. نصر الله المسلمين وأيّدهم بالملائكة. كان يوم بدر فاصلًا سمّاه الله يوم الفرقان.",
+    "summaryEn": "313 Muslims faced 1,000 Qurayshi fighters. Allah gave the Muslims victory and supported them with angels. Allah called Badr the Day of Distinction.",
+    "lessonsAr": [
+      "النصر مع الصبر والتوكل لا مع الكثرة",
+      "الإعداد والتخطيط واجب قبل المواجهة",
+      "اليقين بنصر الله في أحلك الظروف"
+    ],
+    "lessonsEn": [
+      "Victory comes with patience and reliance on Allah, not numbers",
+      "Preparation and planning are required before any confrontation",
+      "Certainty in Allah's victory even in the darkest circumstances"
     ]
   },
   {
     "id": "fath-makkah",
-    "yearLabelAr": "8هـ",
-    "yearLabelEn": "8 AH",
-    "titleAr": "فتح مكة",
-    "titleEn": "Conquest of Makkah",
-    "summaryAr": "دخل النبي صلى الله عليه وسلم مكة منتصرًا بالعفو والتسامح، فكان يومًا عظيمًا في الرحمة.",
-    "summaryEn": "The Prophet entered Makkah in victory with forgiveness and mercy, setting a timeless moral example.",
+    "yearLabelAr": "٨ هجري — ٦٣٠م",
+    "yearLabelEn": "8 AH — 630 CE",
+    "titleAr": "فتح مكة المكرمة",
+    "titleEn": "The Conquest of Makkah",
+    "summaryAr": "دخل النبي ﷺ مكة منتصرًا بعشرة آلاف مسلم. وقف أمام أهل مكة الذين آذوه وقال: اذهبوا فأنتم الطلقاء. كان يومًا عظيمًا في الرحمة والعفو.",
+    "summaryEn": "The Prophet entered Makkah victorious with ten thousand Muslims. Standing before those who had harmed him, he said: Go, you are free. It was a monumental day of mercy and forgiveness.",
     "lessonsAr": [
       "العفو عند المقدرة من أعظم الأخلاق",
-      "النصر الحقيقي مرتبط بالرحمة"
+      "النصر الحقيقي مرتبط بالرحمة لا بالانتقام",
+      "الصبر الطويل يُعقبه الفرج القريب"
     ],
     "lessonsEn": [
-      "Forgiveness at moments of power is noble",
-      "True victory is tied to mercy"
+      "Forgiveness at the moment of power is one of the noblest virtues",
+      "True victory is tied to mercy, not revenge",
+      "Long patience is always followed by relief"
+    ]
+  },
+  {
+    "id": "farewell-hajj",
+    "yearLabelAr": "١٠ هجري — ٦٣٢م",
+    "yearLabelEn": "10 AH — 632 CE",
+    "titleAr": "حجة الوداع",
+    "titleEn": "The Farewell Pilgrimage",
+    "summaryAr": "أدّى النبي ﷺ حجة الوداع مع أكثر من مئة ألف صحابي. وألقى خطبة الوداع الشهيرة التي جمعت أعظم مبادئ الإسلام في حقوق الإنسان والعدل والمساواة.",
+    "summaryEn": "The Prophet performed the Farewell Hajj with over one hundred thousand companions and delivered the famous Farewell Sermon, which gathered the greatest Islamic principles of human rights, justice, and equality.",
+    "lessonsAr": [
+      "إكمال الدين نعمة ربانية",
+      "مبادئ الإسلام في حقوق الإنسان سبقت كل القوانين",
+      "العالِم يُوصي قبل رحيله"
+    ],
+    "lessonsEn": [
+      "The completion of the religion is a divine blessing",
+      "Islam's principles of human rights preceded all modern laws",
+      "A scholar leaves a legacy before departing"
     ]
   }
 ]

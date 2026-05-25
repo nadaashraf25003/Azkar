@@ -4,6 +4,7 @@ import { useSettings } from '../context/SettingsContext'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { useMessagesData } from '../hooks/useMessagesData'
 import type { MessageItem } from '../types/message'
+import { useFavorites } from '../context/FavoritesContext'
 
 type SortMode = 'newest' | 'shortest' | 'mostSaved'
 
@@ -28,6 +29,7 @@ export function MessageTypePage() {
   const [busyId, setBusyId] = useState<string | null>(null)
 
   const { data, isLoading, isError } = useMessagesData()
+  const { toggleFavorite, isFavorite } = useFavorites()
 
   const filtered = useMemo(() => {
     if (!data) {
@@ -91,61 +93,225 @@ export function MessageTypePage() {
     return lines
   }
 
-  const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null> => {
-    const width = 1080
-    const height = 1080
-    const canvas = document.createElement('canvas')
-    canvas.width = width
-    canvas.height = height
-    const ctx = canvas.getContext('2d')
+// Assuming types and helpers exist globally or in your context:
+// interface MessageItem { type: string; titleAr: string; titleEn: string; textAr: string; textEn: string; authorAr: string; authorEn: string; }
+// declare const language: 'ar' | 'en';
+// declare function getTypeLabel(type: string, lang: string): string;
+// declare function wrapText(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[];
 
-    if (!ctx) {
-      return null
-    }
+const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null> => {
+  const width = 1080
+  const height = 1080
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext('2d')
 
-    const gradient = ctx.createLinearGradient(0, 0, width, height)
-    gradient.addColorStop(0, '#1d4ed8')
-    gradient.addColorStop(1, '#0f172a')
-    ctx.fillStyle = gradient
-    ctx.fillRect(0, 0, width, height)
+  if (!ctx) return null
 
-    ctx.fillStyle = 'rgba(255,255,255,0.12)'
+  // Fixed rounded card background path helper
+  const drawRoundedRect = (x: number, y: number, w: number, h: number, r: number) => {
     ctx.beginPath()
-    ctx.arc(width - 140, 140, 120, 0, Math.PI * 2)
+    ctx.moveTo(x + r, y)
+    ctx.lineTo(x + w - r, y)
+    ctx.arcTo(x + w, y, x + w, y + h, r)
+    ctx.arcTo(x + w, y + h, x, y + h, r)
+    ctx.arcTo(x, y + h, x, y, r)
+    ctx.arcTo(x, y, x + w, y, r)
+    ctx.closePath()
+  }
+
+  // Type-based aesthetic gradients
+  const TYPE_COLORS: Record<string, [string, string]> = {
+    religious: ['#0f172a', '#1d4ed8'],
+    reflection: ['#0b1220', '#06b6d4'],
+    quran: ['#0b1220', '#7c3aed'],
+    hadith: ['#071233', '#ef4444'],
+    dua: ['#082032', '#f59e0b'],
+    motivation: ['#04111f', '#06b6d4'],
+  }
+
+  const colors = TYPE_COLORS[item.type] ?? ['#0b1220', '#0f172a']
+  const bgGrad = ctx.createLinearGradient(0, 0, width, height)
+  bgGrad.addColorStop(0, colors[0])
+  bgGrad.addColorStop(1, colors[1])
+
+  // Draw master rounded background
+  drawRoundedRect(0, 0, width, height, 44)
+  ctx.fillStyle = bgGrad
+  ctx.fill()
+
+  // Clean vignette highlight circle
+  ctx.save()
+  ctx.globalAlpha = 0.12
+  ctx.fillStyle = '#ffffff'
+  ctx.beginPath()
+  ctx.arc(width - 140, 140, 160, 0, Math.PI * 2)
+  ctx.fill()
+  ctx.restore()
+
+  // Soft modern diagonal linear shine
+  ctx.save()
+  const shine = ctx.createLinearGradient(0, height * 0.2, width, height)
+  shine.addColorStop(0, 'rgba(255,255,255,0.05)')
+  shine.addColorStop(0.5, 'rgba(255,255,255,0.0)')
+  ctx.fillStyle = shine
+  ctx.fillRect(0, 0, width, height)
+  ctx.restore()
+
+  // Dynamic Type Badge
+  const badgeText = getTypeLabel(item.type, language)
+  ctx.save()
+  ctx.font = '600 28px Cairo, sans-serif'
+  ctx.textBaseline = 'middle'
+  const isArabic = language === 'ar'
+  
+  const badgePadding = 20
+  const measured = ctx.measureText(badgeText).width
+  const badgeW = Math.min(480, measured + badgePadding * 2)
+  const badgeH = 54
+  
+  // Placement changes depending on language orientation
+  const badgeX = isArabic ? width - 56 - badgeW : 56
+  const badgeY = 56
+
+  ctx.fillStyle = 'rgba(255,255,255,0.09)'
+  drawRoundedRect(badgeX, badgeY, badgeW, badgeH, 22)
+  ctx.fill()
+  
+  ctx.fillStyle = '#ffffff'
+  ctx.textAlign = isArabic ? 'right' : 'left'
+  ctx.direction = isArabic ? 'rtl' : 'ltr'
+  const textStartX = isArabic ? badgeX + badgeW - badgePadding : badgeX + badgePadding
+  ctx.fillText(badgeText, textStartX, badgeY + badgeH / 2)
+  ctx.restore()
+
+  // Content Selection
+  const title = isArabic ? item.titleAr : item.titleEn
+  const body = isArabic ? item.textAr : item.textEn
+  const author = isArabic ? item.authorAr : item.authorEn
+
+  if (isArabic) {
+    // --- ARABIC DESIGN (RTL Right-Aligned Context) ---
+    ctx.save()
+    ctx.direction = 'rtl'
+    ctx.textAlign = 'right'
+
+    const padX = 84
+    const panelX = padX
+    const panelY = 140
+    const panelW = width - padX * 2
+    const panelH = height - 320
+
+    // Inner frosted panel
+    ctx.fillStyle = 'rgba(255,255,255,0.035)'
+    drawRoundedRect(panelX, panelY, panelW, panelH, 30)
     ctx.fill()
 
-    const title = language === 'ar' ? item.titleAr : item.titleEn
-    const body = language === 'ar' ? item.textAr : item.textEn
-    const author = language === 'ar' ? item.authorAr : item.authorEn
-
+    // Title Watermark Background Layer
+    ctx.save()
+    ctx.globalAlpha = 0.04
     ctx.fillStyle = '#ffffff'
-    ctx.font = '700 52px Cairo, sans-serif'
-    ctx.textAlign = language === 'ar' ? 'right' : 'left'
-    const textX = language === 'ar' ? width - 80 : 80
+    ctx.font = '800 110px Cairo, sans-serif'
+    const watermarkLines = wrapText(ctx, title, panelW - 120).slice(0, 1)
+    if (watermarkLines.length > 0) {
+      ctx.fillText(watermarkLines[0], panelX + panelW - 40, panelY + 120)
+    }
+    ctx.restore()
 
-    const titleLines = wrapText(ctx, title, width - 160).slice(0, 2)
-    let y = 180
+    // Foreground Title
+    ctx.font = '800 46px Cairo, sans-serif'
+    let y = panelY + 70
+    const titleLines = wrapText(ctx, title, panelW - 100).slice(0, 2)
+    
     titleLines.forEach((line) => {
+      // Subtle dropping crisp shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.3)'
+      ctx.fillText(line, panelX + panelW - 50, y + 3)
+      ctx.fillStyle = '#ffffff'
+      ctx.fillText(line, panelX + panelW - 50, y)
+      y += 62
+    })
+
+    // Content Body Layout
+    ctx.font = '400 32px Cairo, sans-serif'
+    ctx.fillStyle = 'rgba(255,255,255,0.92)'
+    y += 20 // separation gap
+    const bodyLines = wrapText(ctx, body, panelW - 100).slice(0, 8)
+    for (const line of bodyLines) {
+      ctx.fillText(line, panelX + panelW - 50, y)
+      y += 50
+    }
+
+    // Author positioning signature
+    ctx.font = '600 26px Cairo, sans-serif'
+    ctx.fillStyle = 'rgba(255,255,255,0.75)'
+    ctx.fillText(`بقلم: ${author}`, panelX + panelW - 50, panelY + panelH - 50)
+    ctx.restore()
+
+  } else {
+    // --- LTR DESIGN (Centered Minimal Context) ---
+    ctx.save()
+    ctx.textAlign = 'center'
+    ctx.direction = 'ltr'
+
+    const panelPadding = 120
+    const panelX = panelPadding / 2
+    const panelY = 160
+    const panelW = width - panelPadding
+    const panelH = height - 340
+    
+    ctx.fillStyle = 'rgba(255,255,255,0.03)'
+    drawRoundedRect(panelX, panelY, panelW, panelH, 28)
+    ctx.fill()
+
+    const textX = width / 2
+    let y = panelY + 85
+
+    // Multi-pass structural title with dynamic drop shadows
+    ctx.font = '800 52px Cairo, sans-serif'
+    const titleLines = wrapText(ctx, title, panelW - 120).slice(0, 3)
+    
+    titleLines.forEach((line) => {
+      ctx.save()
+      ctx.shadowColor = 'rgba(0,0,0,0.4)'
+      ctx.shadowBlur = 12
+      ctx.shadowOffsetY = 4
+      ctx.fillStyle = '#ffffff'
       ctx.fillText(line, textX, y)
+      ctx.restore()
       y += 70
     })
 
-    ctx.font = '400 38px Cairo, sans-serif'
-    const bodyLines = wrapText(ctx, body, width - 160).slice(0, 10)
-    y += 20
-    bodyLines.forEach((line) => {
-      ctx.fillText(line, textX, y)
-      y += 56
-    })
+    y += 15 // text spacing separation gap
 
-    ctx.font = '600 30px Cairo, sans-serif'
+    // Content Body Layout
+    ctx.font = '400 34px Cairo, sans-serif'
     ctx.fillStyle = 'rgba(255,255,255,0.9)'
-    ctx.fillText(`${language === 'ar' ? 'بقلم' : 'By'}: ${author}`, textX, height - 90)
+    const bodyLines = wrapText(ctx, body, panelW - 120).slice(0, 7)
+    for (const line of bodyLines) {
+      ctx.fillText(line, textX, y)
+      y += 54
+    }
 
-    return await new Promise((resolve) => {
-      canvas.toBlob((blob) => resolve(blob), 'image/png')
-    })
+    // Centered aesthetic separator rules
+    ctx.globalAlpha = 0.15
+    ctx.fillStyle = '#ffffff'
+    ctx.fillRect(width * 0.25, panelY + panelH - 110, width * 0.5, 2)
+    ctx.globalAlpha = 1
+
+    // Centered Author Text
+    ctx.font = '600 26px Cairo, sans-serif'
+    ctx.fillStyle = 'rgba(255,255,255,0.8)'
+    ctx.fillText(`By: ${author}`, textX, panelY + panelH - 60)
+    ctx.restore()
   }
+
+  // High quality compression conversion output
+  return await new Promise((resolve) => {
+    canvas.toBlob((blob) => resolve(blob), 'image/png', 1.0)
+  })
+}
 
   const saveMessageAsImage = async (item: MessageItem) => {
     setBusyId(item.id)
@@ -317,6 +483,26 @@ export function MessageTypePage() {
               </div>
 
               <div className="mt-3 flex flex-wrap gap-2">
+
+                <button
+                  type="button"
+                  onClick={() => toggleFavorite(item.id)}
+                  className={[
+                    'rounded-lg px-3 py-2 text-xs font-semibold transition',
+                    isFavorite(item.id)
+                      ? 'border border-[var(--brand-500)] bg-[var(--brand-500)] text-white'
+                      : 'border border-[var(--line)] hover:border-[var(--brand-500)]',
+                  ].join(' ')}
+                >
+                  {isFavorite(item.id)
+                    ? language === 'ar'
+                      ? 'إزالة من المفضلة'
+                      : 'Remove Favorite'
+                    : language === 'ar'
+                      ? 'أضف إلى المفضلة'
+                      : 'Add to Favorites'}
+                </button>
+
                 <button
                   type="button"
                   onClick={() => saveMessageAsImage(item)}

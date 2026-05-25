@@ -12,7 +12,7 @@ const TYPE_LABELS: Record<string, { ar: string; en: string }> = {
   hadith: { ar: 'حديث', en: 'Hadith' },
   dua: { ar: 'دعاء', en: 'Dua' },
   motivation: { ar: 'تحفيز', en: 'Motivation' },
-    gratitude: { ar: 'شكر', en: 'Gratitude' },
+  gratitude: { ar: 'شكر', en: 'Gratitude' },
   wisdom: { ar: 'حكمة', en: 'Wisdom' },
   community: { ar: 'مجتمع', en: 'Community' },
   action: { ar: 'عمل', en: 'Action' },
@@ -53,25 +53,49 @@ const TYPE_CARD_META: TypeCardMeta[] = [
     type: 'quran',
     titleAr: 'آيات قرآنية',
     titleEn: 'Quran Verses',
-    imageUrl: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://alfasih.net/wp-content/uploads/2024/03/%D8%AE%D9%84%D9%81%D9%8A%D8%A7%D8%AA-%D8%A7%D9%8A%D8%A7%D8%AA-%D9%82%D8%B1%D8%A7%D9%86%D9%8A%D8%A92.webp',
   },
   {
     type: 'dua',
     titleAr: 'أدعية وأذكار',
     titleEn: 'Dua and Azkar',
-    imageUrl: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://tse2.mm.bing.net/th/id/OIP.yMxGAR_o8LNLb-F8aD5wxAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3',
   },
   {
     type: 'hadith',
     titleAr: 'حديث نبوي',
     titleEn: 'Prophetic Hadith',
-    imageUrl: 'https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://i.pinimg.com/736x/ec/3a/aa/ec3aaaded18b8f9fae3c4317a93ffc3f.jpg',
   },
   {
     type: 'reflection',
     titleAr: 'عبارات وخواطر',
     titleEn: 'Words and Reflections',
-    imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80',
+    imageUrl: 'https://i.pinimg.com/originals/f1/02/0f/f1020fde3bb12e110ef922a74d762522.jpg',
+  },
+  {
+    type: 'gratitude',
+    titleAr: 'شكر وامتنان',
+    titleEn: 'Gratitude and Thanks',
+    imageUrl: 'https://tse3.mm.bing.net/th/id/OIP.xY8fYexxlbKPcBv1pjyJSQHaFl?w=620&h=468&rs=1&pid=ImgDetMain&o=7&rm=3',
+  },
+  {
+    type: 'wisdom',
+    titleAr: 'حكمة',
+    titleEn: 'Wisdom',
+    imageUrl: 'https://www.i7lm.com/wp-content/uploads/2018/11/unnamed.jpg',
+  },
+  {
+    type: 'community',
+    titleAr: 'مجتمع وحياة',
+    titleEn: ' Community and Life',
+    imageUrl: 'https://www.mosoah.com/wp-content/uploads/2020/02/%D8%B9%D9%87.jpg',
+  },
+  {
+    type: 'action',
+    titleAr: 'عمل وخطوات',
+    titleEn: 'Work and Steps',
+    imageUrl: 'https://tse4.mm.bing.net/th/id/OIP.fdVQRRFPyFdLfhaoXcC2OwHaDt?rs=1&pid=ImgDetMain&o=7&rm=3',
   },
 ]
 
@@ -191,7 +215,7 @@ export function MessagesPage() {
                     {language === 'ar' ? 'اضغط للعرض' : 'Tap to open'}
                   </span>
                   <span className="rounded-full bg-[var(--brand-500)] px-2.5 py-1 text-[11px] font-semibold text-white">
-                    +{card.trend}
+                    +{card.count}
                   </span>
                 </div>
               </div>

@@ -109,7 +109,7 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
 
   if (!ctx) return null
 
-  // Fixed rounded card background path helper
+  // Rounded rectangle path helper
   const drawRoundedRect = (x: number, y: number, w: number, h: number, r: number) => {
     ctx.beginPath()
     ctx.moveTo(x + r, y)
@@ -136,7 +136,7 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
   bgGrad.addColorStop(0, colors[0])
   bgGrad.addColorStop(1, colors[1])
 
-  // Draw master rounded background
+  // Draw master background
   drawRoundedRect(0, 0, width, height, 44)
   ctx.fillStyle = bgGrad
   ctx.fill()
@@ -159,155 +159,128 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
   ctx.fillRect(0, 0, width, height)
   ctx.restore()
 
-  // Dynamic Type Badge
+  const isArabic = language === 'ar'
+  const centerX = width / 2
+  const centerY = height / 2
+
+  // --- CENTERED TYPE BADGE ---
   const badgeText = getTypeLabel(item.type, language)
   ctx.save()
   ctx.font = '600 28px Cairo, sans-serif'
   ctx.textBaseline = 'middle'
-  const isArabic = language === 'ar'
+  ctx.textAlign = 'center'
+  ctx.direction = isArabic ? 'rtl' : 'ltr'
   
-  const badgePadding = 20
+  const badgePadding = 24
   const measured = ctx.measureText(badgeText).width
   const badgeW = Math.min(480, measured + badgePadding * 2)
   const badgeH = 54
-  
-  // Placement changes depending on language orientation
-  const badgeX = isArabic ? width - 56 - badgeW : 56
-  const badgeY = 56
+  const badgeX = centerX - badgeW / 2
+  const badgeY = 64
 
   ctx.fillStyle = 'rgba(255,255,255,0.09)'
   drawRoundedRect(badgeX, badgeY, badgeW, badgeH, 22)
   ctx.fill()
   
   ctx.fillStyle = '#ffffff'
-  ctx.textAlign = isArabic ? 'right' : 'left'
-  ctx.direction = isArabic ? 'rtl' : 'ltr'
-  const textStartX = isArabic ? badgeX + badgeW - badgePadding : badgeX + badgePadding
-  ctx.fillText(badgeText, textStartX, badgeY + badgeH / 2)
+  ctx.fillText(badgeText, centerX, badgeY + badgeH / 2)
   ctx.restore()
 
-  // Content Selection
+  // --- CONTENT CONFIGURATION ---
   const title = isArabic ? item.titleAr : item.titleEn
   const body = isArabic ? item.textAr : item.textEn
   const author = isArabic ? item.authorAr : item.authorEn
 
-  if (isArabic) {
-    // --- ARABIC DESIGN (RTL Right-Aligned Context) ---
+  const maxTextWidth = 840 // Constraints text wrapping bounds
+
+  // Set line-height configurations based on typography size
+  const titleLineHeight = isArabic ? 64 : 70
+  const bodyLineHeight = isArabic ? 52 : 54
+  const spaceGap = 30 // Distance between components
+
+  // Measure content line counts dynamically to find true structural height
+  ctx.save()
+  ctx.font = isArabic ? '800 46px Cairo, sans-serif' : '800 52px Cairo, sans-serif'
+  const titleLines = wrapText(ctx, title, maxTextWidth).slice(0, 3)
+
+  ctx.font = isArabic ? '400 32px Cairo, sans-serif' : '400 34px Cairo, sans-serif'
+  const bodyLines = wrapText(ctx, body, maxTextWidth).slice(0, 8)
+  ctx.restore()
+
+  // Mathematical total height calculation
+  const totalTitleHeight = titleLines.length * titleLineHeight
+  const totalBodyHeight = bodyLines.length * bodyLineHeight
+  const authorHeight = 40
+  
+  const totalContentHeight = totalTitleHeight + spaceGap + totalBodyHeight + spaceGap + authorHeight
+
+  // Dynamic True Center Beginning Coordinates
+  let currentY = centerY - (totalContentHeight / 2) + (titleLineHeight / 2)
+
+  // --- DRAW FROSTED PANEL ENVELOPING CENTER CONTENT ---
+  const panelPaddingY = 60
+  const panelPaddingX = 60
+  const panelW = maxTextWidth + (panelPaddingX * 2)
+  const panelH = totalContentHeight + (panelPaddingY * 2)
+  const panelX = centerX - (panelW / 2)
+  const panelY = centerY - (panelH / 2)
+
+  ctx.save()
+  ctx.fillStyle = 'rgba(255,255,255,0.03)'
+  drawRoundedRect(panelX, panelY, panelW, panelH, 32)
+  ctx.fill()
+  ctx.restore()
+
+  // --- DRAW TEXT (PERFECTLY CENTERED ON BOTH AXES) ---
+  ctx.save()
+  ctx.textAlign = 'center'
+  ctx.textBaseline = 'middle'
+  ctx.direction = isArabic ? 'rtl' : 'ltr'
+
+  // 1. Render Title Lines
+  ctx.font = isArabic ? '800 46px Cairo, sans-serif' : '800 52px Cairo, sans-serif'
+  titleLines.forEach((line) => {
     ctx.save()
-    ctx.direction = 'rtl'
-    ctx.textAlign = 'right'
-
-    const padX = 84
-    const panelX = padX
-    const panelY = 140
-    const panelW = width - padX * 2
-    const panelH = height - 320
-
-    // Inner frosted panel
-    ctx.fillStyle = 'rgba(255,255,255,0.035)'
-    drawRoundedRect(panelX, panelY, panelW, panelH, 30)
-    ctx.fill()
-
-    // Title Watermark Background Layer
-    ctx.save()
-    ctx.globalAlpha = 0.04
+    ctx.shadowColor = 'rgba(0,0,0,0.35)'
+    ctx.shadowBlur = 12
+    ctx.shadowOffsetY = 4
     ctx.fillStyle = '#ffffff'
-    ctx.font = '800 110px Cairo, sans-serif'
-    const watermarkLines = wrapText(ctx, title, panelW - 120).slice(0, 1)
-    if (watermarkLines.length > 0) {
-      ctx.fillText(watermarkLines[0], panelX + panelW - 40, panelY + 120)
-    }
+    ctx.fillText(line, centerX, currentY)
     ctx.restore()
+    currentY += titleLineHeight
+  })
 
-    // Foreground Title
-    ctx.font = '800 46px Cairo, sans-serif'
-    let y = panelY + 70
-    const titleLines = wrapText(ctx, title, panelW - 100).slice(0, 2)
-    
-    titleLines.forEach((line) => {
-      // Subtle dropping crisp shadow
-      ctx.fillStyle = 'rgba(0,0,0,0.3)'
-      ctx.fillText(line, panelX + panelW - 50, y + 3)
-      ctx.fillStyle = '#ffffff'
-      ctx.fillText(line, panelX + panelW - 50, y)
-      y += 62
-    })
+  // Adjust gap tracking pointer
+  currentY += spaceGap - (titleLineHeight / 2) + (bodyLineHeight / 2)
 
-    // Content Body Layout
-    ctx.font = '400 32px Cairo, sans-serif'
-    ctx.fillStyle = 'rgba(255,255,255,0.92)'
-    y += 20 // separation gap
-    const bodyLines = wrapText(ctx, body, panelW - 100).slice(0, 8)
-    for (const line of bodyLines) {
-      ctx.fillText(line, panelX + panelW - 50, y)
-      y += 50
-    }
+  // 2. Render Body Lines
+  ctx.font = isArabic ? '400 32px Cairo, sans-serif' : '400 34px Cairo, sans-serif'
+  ctx.fillStyle = 'rgba(255,255,255,0.9)'
+  bodyLines.forEach((line) => {
+    ctx.fillText(line, centerX, currentY)
+    currentY += bodyLineHeight
+  })
 
-    // Author positioning signature
-    ctx.font = '600 26px Cairo, sans-serif'
-    ctx.fillStyle = 'rgba(255,255,255,0.75)'
-    ctx.fillText(`بقلم: ${author}`, panelX + panelW - 50, panelY + panelH - 50)
-    ctx.restore()
+  // Adjust gap tracking pointer to separator rules line
+  currentY += spaceGap - (bodyLineHeight / 2)
 
-  } else {
-    // --- LTR DESIGN (Centered Minimal Context) ---
-    ctx.save()
-    ctx.textAlign = 'center'
-    ctx.direction = 'ltr'
+  // 3. Render Subtle Separator Line
+  ctx.globalAlpha = 0.15
+  ctx.fillStyle = '#ffffff'
+  ctx.fillRect(centerX - 150, currentY, 300, 2)
+  ctx.globalAlpha = 1
 
-    const panelPadding = 120
-    const panelX = panelPadding / 2
-    const panelY = 160
-    const panelW = width - panelPadding
-    const panelH = height - 340
-    
-    ctx.fillStyle = 'rgba(255,255,255,0.03)'
-    drawRoundedRect(panelX, panelY, panelW, panelH, 28)
-    ctx.fill()
+  currentY += 40 // Push below separator line bounds
 
-    const textX = width / 2
-    let y = panelY + 85
+  // 4. Render Author Text
+  ctx.font = '600 26px Cairo, sans-serif'
+  ctx.fillStyle = isArabic ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.8)'
+  const authorPrefix = isArabic ? 'بقلم: ' : 'By: '
+  ctx.fillText(`${authorPrefix}${author}`, centerX, currentY)
 
-    // Multi-pass structural title with dynamic drop shadows
-    ctx.font = '800 52px Cairo, sans-serif'
-    const titleLines = wrapText(ctx, title, panelW - 120).slice(0, 3)
-    
-    titleLines.forEach((line) => {
-      ctx.save()
-      ctx.shadowColor = 'rgba(0,0,0,0.4)'
-      ctx.shadowBlur = 12
-      ctx.shadowOffsetY = 4
-      ctx.fillStyle = '#ffffff'
-      ctx.fillText(line, textX, y)
-      ctx.restore()
-      y += 70
-    })
+  ctx.restore()
 
-    y += 15 // text spacing separation gap
-
-    // Content Body Layout
-    ctx.font = '400 34px Cairo, sans-serif'
-    ctx.fillStyle = 'rgba(255,255,255,0.9)'
-    const bodyLines = wrapText(ctx, body, panelW - 120).slice(0, 7)
-    for (const line of bodyLines) {
-      ctx.fillText(line, textX, y)
-      y += 54
-    }
-
-    // Centered aesthetic separator rules
-    ctx.globalAlpha = 0.15
-    ctx.fillStyle = '#ffffff'
-    ctx.fillRect(width * 0.25, panelY + panelH - 110, width * 0.5, 2)
-    ctx.globalAlpha = 1
-
-    // Centered Author Text
-    ctx.font = '600 26px Cairo, sans-serif'
-    ctx.fillStyle = 'rgba(255,255,255,0.8)'
-    ctx.fillText(`By: ${author}`, textX, panelY + panelH - 60)
-    ctx.restore()
-  }
-
-  // High quality compression conversion output
+  // High quality PNG output execution
   return await new Promise((resolve) => {
     canvas.toBlob((blob) => resolve(blob), 'image/png', 1.0)
   })

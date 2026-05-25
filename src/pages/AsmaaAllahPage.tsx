@@ -10,7 +10,7 @@ interface AsmaaItem {
   meaningEn: string
 }
 
-const ALL_ASMAA_AUDIO_URL = 'https://server8.mp3quran.net/afs/099.mp3'
+const ALL_ASMAA_AUDIO_URL = '/04.%20Asmaa%20Allah%20Al-Hosna.mp3'
 
 async function fetchAsmaaAllah(): Promise<AsmaaItem[]> {
   const response = await fetch('/data/asmaa-allah.json')

@@ -18,21 +18,21 @@ public static class TasbeehEndpoints
         .WithName("GetTasbeehPresets")
         .WithSummary("Get Tasbeeh presets");
 
-        group.MapPost("/session", async ([FromBody] RecordSessionCommand command, ISender sender, CancellationToken ct) =>
+        group.MapPost("/presets", async ([FromBody] CreateTasbeehPresetCommand command, ISender sender, CancellationToken ct) =>
         {
             var result = await sender.Send(command, ct);
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
         })
-        .WithName("RecordTasbeehSession")
-        .WithSummary("Record a completed Tasbeeh counter session");
+        .WithName("CreateTasbeehPreset")
+        .WithSummary("Create Tasbeeh preset");
 
-        group.MapGet("/stats", async ([FromQuery] string deviceId, ISender sender, CancellationToken ct) =>
+        group.MapDelete("/presets/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
         {
-            var result = await sender.Send(new GetStatsQuery(deviceId), ct);
+            var result = await sender.Send(new DeleteTasbeehPresetCommand(id), ct);
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
         })
-        .WithName("GetTasbeehStats")
-        .WithSummary("Get user Tasbeeh counter statistics");
+        .WithName("DeleteTasbeehPreset")
+        .WithSummary("Delete Tasbeeh preset");
 
         return app;
     }

@@ -1,9 +1,10 @@
-import { useMemo } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSettings } from '../context/SettingsContext'
-
-type MessageType = string
+import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useMessagesData } from '../hooks/useMessagesData'
+import { BackendErrorState } from '../components/BackendErrorState'
+import { AddMessageModal } from '../components/AddMessageModal'
 
 const TYPE_LABELS: Record<string, { ar: string; en: string }> = {
   religious: { ar: 'دينية', en: 'Religious' },
@@ -16,17 +17,6 @@ const TYPE_LABELS: Record<string, { ar: string; en: string }> = {
   wisdom: { ar: 'حكمة', en: 'Wisdom' },
   community: { ar: 'مجتمع', en: 'Community' },
   action: { ar: 'عمل', en: 'Action' },
-}
-
-interface MessageItem {
-  id: string
-  type: MessageType
-  titleAr: string
-  titleEn: string
-  textAr: string
-  textEn: string
-  authorAr: string
-  authorEn: string
 }
 
 interface TypeCardMeta {
@@ -99,24 +89,23 @@ const TYPE_CARD_META: TypeCardMeta[] = [
   },
 ]
 
-async function fetchMessages(): Promise<MessageItem[]> {
-  const response = await fetch('/data/messages.json')
-
-  if (!response.ok) {
-    throw new Error('Failed to load messages')
-  }
-
-  return (await response.json()) as MessageItem[]
-}
-
 export function MessagesPage() {
   const { language } = useSettings()
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['messages-data'],
-    queryFn: fetchMessages,
-    staleTime: Infinity,
-  })
+  // Admin authentication state
+  const [isAdminAuthenticated] = useLocalStorage<boolean>('azkar-qa-admin-auth', false)
+  const [viewerRole] = useLocalStorage<string>('azkar-qa-viewer-role', 'user')
+  const isAdmin = isAdminAuthenticated || viewerRole === 'admin'
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+
+  const { data, isLoading, isError, refetch } = useMessagesData()
+
+  const showToast = (msg: string) => {
+    setToastMessage(msg)
+    setTimeout(() => setToastMessage(null), 4000)
+  }
 
   const typeCards = useMemo(() => {
     if (!data) {
@@ -152,39 +141,121 @@ export function MessagesPage() {
   }, [data])
 
   if (isLoading) {
-    return <p className="text-sm text-[var(--muted)]">{language === 'ar' ? 'جارٍ تحميل الرسائل...' : 'Loading messages...'}</p>
+    return (
+      <div className="py-12 text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <p className="mt-3 text-sm text-[var(--muted)]">{language === 'ar' ? 'جارٍ تحميل الرسائل من الخادم...' : 'Loading messages from backend...'}</p>
+      </div>
+    )
   }
 
   if (isError || !data) {
-    return <p className="text-sm text-[var(--warn)]">{language === 'ar' ? 'تعذر تحميل الرسائل.' : 'Failed to load messages.'}</p>
+    return <BackendErrorState onRetry={() => refetch()} />
   }
 
   return (
-    <section className="space-y-4 md:space-y-6">
+    <section className="space-y-4 md:space-y-6" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Toast Notification */}
+      {toastMessage ? (
+        <div className="fixed bottom-6 end-6 z-50 flex items-center gap-3 rounded-2xl border border-emerald-500/30 bg-[var(--panel)] px-4 py-3 text-emerald-600 shadow-2xl transition-all animate-bounce dark:text-emerald-400">
+          <span className="text-lg">✅</span>
+          <span className="text-xs font-bold sm:text-sm">{toastMessage}</span>
+        </div>
+      ) : null}
+
+      {/* Admin Status Banner */}
+      {isAdmin ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-3.5 sm:px-5">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-500/20 text-xs">
+              ⚡
+            </span>
+            <div>
+              <p className="text-xs font-bold text-indigo-700 dark:text-indigo-400">
+                {language === 'ar'
+                  ? 'وضع تحكم المشرف نشط (الرسائل اليومية)'
+                  : 'Admin Control Active (Daily Messages)'}
+              </p>
+              <p className="text-[10px] text-[var(--muted)]">
+                {language === 'ar'
+                  ? 'يمكنك إضافة رسائل جديدة وتعديلها وإدارتها من لوحة التحكم'
+                  : 'You can add and manage messages directly on the backend'}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link
+              to="/admin/messages"
+              className="inline-flex items-center gap-1 rounded-xl border border-indigo-500/40 bg-[var(--bg)] px-3 py-1.5 text-xs font-bold text-indigo-700 transition hover:bg-indigo-500/10 dark:text-indigo-400"
+            >
+              <span>{language === 'ar' ? 'لوحة تحكم المشرف' : 'Admin Portal'}</span>
+              <span>←</span>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setIsAddModalOpen(true)}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+            >
+              <span>+</span>
+              <span>{language === 'ar' ? 'إضافة رسالة جديدة' : 'Add New Message'}</span>
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Header */}
       <div className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 md:p-7">
-        <div className="pointer-events-none absolute -left-20 -top-20 h-44 w-44 rounded-full bg-[var(--brand-500)]/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -right-10 h-56 w-56 rounded-full bg-[var(--brand-600)]/20 blur-3xl" />
+        <div className="pointer-events-none absolute -left-20 -top-20 h-44 w-44 rounded-full bg-indigo-500/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -right-10 h-56 w-56 rounded-full bg-indigo-600/20 blur-3xl" />
 
-        <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--brand-600)]">
-            {language === 'ar' ? 'رسائل يومية' : 'Daily Messages'}
-          </p>
-          <h1 className="mt-2 font-title text-3xl leading-tight text-[var(--text-strong)] sm:text-4xl md:text-5xl">
-            {language === 'ar' ? 'اختر نوع الرسائل' : 'Choose Message Type'}
-          </h1>
-          <p className="mt-3 max-w-3xl text-sm text-[var(--muted)] md:text-base">
-            {language === 'ar'
-              ? 'واجهة أجمل لاكتشاف الرسائل حسب النوع. اضغط أي بطاقة للانتقال مباشرة إلى صفحة هذا النوع.'
-              : 'A polished way to explore messages by category. Tap any card to open that type page directly.'}
-          </p>
+        <div className="relative flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-600 dark:text-indigo-400">
+              {language === 'ar' ? 'رسائل ملهمة يومية' : 'Daily Inspirational Messages'}
+            </p>
+            <h1 className="mt-2 font-title text-3xl leading-tight text-[var(--text-strong)] sm:text-4xl">
+              {language === 'ar' ? 'اختر نوع الرسائل' : 'Choose Message Type'}
+            </h1>
+            <p className="mt-2 max-w-3xl text-sm text-[var(--muted)]">
+              {language === 'ar'
+                ? 'واجهة تفاعلية لاكتشاف الرسائل والأدعية والخواطر حسب التصنيف. اضغط أي بطاقة للانتقال مباشرة.'
+                : 'Explore messages by category. Tap any card to open that type page directly.'}
+            </p>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded-full border border-[var(--line)] bg-[var(--bg)] px-3 py-1 text-xs font-semibold text-[var(--text)]">
-              {language === 'ar' ? `إجمالي الرسائل: ${data.length}` : `Total messages: ${data.length}`}
-            </span>
-            <span className="rounded-full bg-[var(--brand-500)] px-3 py-1 text-xs font-semibold text-white">
-              {language === 'ar' ? `عدد الأنواع: ${typeCards.length}` : `Types: ${typeCards.length}`}
-            </span>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="rounded-full border border-[var(--line)] bg-[var(--bg)] px-3 py-1 text-xs font-semibold text-[var(--text)]">
+                {language === 'ar' ? `إجمالي الرسائل: ${data.length}` : `Total messages: ${data.length}`}
+              </span>
+              <span className="rounded-full bg-indigo-600 px-3 py-1 text-xs font-semibold text-white">
+                {language === 'ar' ? `عدد الأنواع: ${typeCards.length}` : `Types: ${typeCards.length}`}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => void refetch()}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--bg)] px-3.5 py-2 text-xs font-bold text-[var(--text)] transition hover:border-indigo-500"
+            >
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+              </svg>
+              <span>{language === 'ar' ? 'تحديث' : 'Refresh'}</span>
+            </button>
+
+            {isAdmin ? (
+              <button
+                type="button"
+                onClick={() => setIsAddModalOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+              >
+                <span>+</span>
+                <span>{language === 'ar' ? 'إضافة رسالة' : 'Add Message'}</span>
+              </button>
+            ) : null}
           </div>
         </div>
       </div>
@@ -238,6 +309,19 @@ export function MessagesPage() {
           ))}
         </div>
       )}
+
+      {/* ADD MESSAGE MODAL */}
+      <AddMessageModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onSuccess={() => {
+          showToast(
+            language === 'ar'
+              ? 'تمت إضافة الرسالة بنجاح إلى الخادم.'
+              : 'New message added successfully to the backend server.'
+          )
+        }}
+      />
     </section>
   )
 }

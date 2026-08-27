@@ -1,10 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\Administration.Domain\Administration.Domain.csproj" />
     <ProjectReference Include="..\..\..\BuildingBlocks\BuildingBlocks.Application\BuildingBlocks.Application.csproj" />
     <ProjectReference Include="..\..\Adhkar\Adhkar.Domain\Adhkar.Domain.csproj" />
-    <ProjectReference Include="..\..\Quran\Quran.Domain\Quran.Domain.csproj" />
     <ProjectReference Include="..\..\Recitations\Recitations.Domain\Recitations.Domain.csproj" />
     <ProjectReference Include="..\..\Questions\Questions.Domain\Questions.Domain.csproj" />
   </ItemGroup>

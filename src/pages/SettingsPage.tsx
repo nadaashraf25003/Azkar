@@ -186,6 +186,37 @@ export function SettingsPage() {
 
           {qiblaError ? <p className="mt-3 text-sm text-[var(--warn)]">{qiblaError}</p> : null}
         </article>
+
+        <article className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-5 md:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/20 text-amber-600">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </span>
+                <h2 className="text-lg font-semibold text-[var(--text-strong)]">
+                  {language === 'ar' ? 'لوحة تحكم المشرف (Admin)' : 'Admin Control Panel'}
+                </h2>
+              </div>
+              <p className="mt-1 text-xs text-[var(--muted)]">
+                {language === 'ar'
+                  ? 'تسجيل الدخول كمشرف للوصول إلى لوحة اعتماد الأسئلة والتلاوات المستقلة.'
+                  : 'Log in as admin to access dedicated questions and recitations moderation layout.'}
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <a
+                href="/admin/login"
+                className="rounded-xl bg-amber-600 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-amber-700 active:scale-95"
+              >
+                {language === 'ar' ? 'دخول لوحة الإشراف ←' : 'Enter Admin Panel →'}
+              </a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   )

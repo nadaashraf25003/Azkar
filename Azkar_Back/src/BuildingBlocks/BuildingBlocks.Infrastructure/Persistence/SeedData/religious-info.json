@@ -1,0 +1,122 @@
+[
+  {
+    "id": "belief-1",
+    "category": "aqeedah",
+    "titleAr": "أركان الإيمان الستة",
+    "titleEn": "The Six Pillars of Faith",
+    "contentAr": "الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره. هذه الأركان الستة هي أساس العقيدة الإسلامية.",
+    "contentEn": "Faith in Allah, His angels, His books, His messengers, the Last Day, and divine decree — good and bad. These six pillars form the foundation of Islamic belief.",
+    "sourceAr": "حديث جبريل — متفق عليه",
+    "sourceEn": "Hadith of Jibril — Agreed upon"
+  },
+  {
+    "id": "worship-1",
+    "category": "fiqh",
+    "titleAr": "أركان الإسلام الخمسة",
+    "titleEn": "The Five Pillars of Islam",
+    "contentAr": "الشهادتان، إقامة الصلاة، إيتاء الزكاة، صوم رمضان، حج البيت لمن استطاع إليه سبيلا. هذه الأركان تمثل العبادات العملية في الإسلام.",
+    "contentEn": "The testimony of faith, prayer, zakat, fasting in Ramadan, and Hajj for those able. These pillars represent the practical acts of worship in Islam.",
+    "sourceAr": "صحيح البخاري",
+    "sourceEn": "Sahih al-Bukhari"
+  },
+  {
+    "id": "quran-1",
+    "category": "quran",
+    "titleAr": "فضل تلاوة القرآن",
+    "titleEn": "Virtue of Quran Recitation",
+    "contentAr": "قراءة القرآن سبب للسكينة ورفعة الدرجات عند الله. قال النبي ﷺ: من قرأ حرفًا من كتاب الله فله به حسنة والحسنة بعشر أمثالها.",
+    "contentEn": "Reciting the Quran brings tranquility and raises one's rank with Allah. The Prophet said: Whoever recites a letter from Allah's Book will have a reward, and that reward will be multiplied tenfold.",
+    "sourceAr": "سنن الترمذي",
+    "sourceEn": "Jami at-Tirmidhi"
+  },
+  {
+    "id": "seerah-1",
+    "category": "seerah",
+    "titleAr": "الهجرة النبوية",
+    "titleEn": "The Prophetic Migration",
+    "contentAr": "كانت الهجرة من مكة إلى المدينة عام ٦٢٢م بداية مرحلة بناء المجتمع المسلم والدولة الإسلامية. أسس النبي ﷺ في المدينة مسجدًا وعقد أخوة بين المهاجرين والأنصار.",
+    "contentEn": "The migration from Makkah to Madinah in 622 CE marked the beginning of building the Muslim community and state. The Prophet established a mosque and created brotherhood between the migrants and the helpers.",
+    "sourceAr": "السيرة النبوية",
+    "sourceEn": "Prophetic Biography"
+  },
+  {
+    "id": "manners-1",
+    "category": "akhlaq",
+    "titleAr": "حسن الخلق",
+    "titleEn": "Good Character",
+    "contentAr": "من أفضل الأعمال التحلي بالأخلاق الحسنة في القول والفعل والمعاملة. قال النبي ﷺ: أكمل المؤمنين إيمانًا أحسنهم خلقًا.",
+    "contentEn": "Among the best deeds is excellent character in speech, action, and dealings. The Prophet said: The most complete of believers in faith are those with the best character.",
+    "sourceAr": "سنن أبي داود",
+    "sourceEn": "Sunan Abi Dawud"
+  },
+  {
+    "id": "dua-1",
+    "category": "dua",
+    "titleAr": "آداب الدعاء",
+    "titleEn": "Etiquette of Supplication",
+    "contentAr": "من آداب الدعاء: الإخلاص وحضور القلب، والثناء على الله، والصلاة على النبي قبل الدعاء، والجزم بالإجابة، واليقين بأن الله يسمع.",
+    "contentEn": "Among the etiquettes of supplication: sincerity and presence of heart, praising Allah, sending blessings on the Prophet beforehand, being certain of a response, and trusting that Allah hears.",
+    "sourceAr": "كتب الأدعية",
+    "sourceEn": "Books of Supplication"
+  },
+  {
+    "id": "aqeedah-2",
+    "category": "aqeedah",
+    "titleAr": "التوحيد وأقسامه",
+    "titleEn": "Tawheed and Its Categories",
+    "contentAr": "التوحيد ثلاثة أقسام: توحيد الربوبية وهو الإيمان بأن الله هو الخالق الرازق المدبر، وتوحيد الألوهية وهو إفراد الله بالعبادة، وتوحيد الأسماء والصفات.",
+    "contentEn": "Tawheed has three categories: Rububiyyah — believing Allah alone is Creator and Sustainer; Uluhiyyah — singling out Allah alone for worship; Asma wa Sifat — affirming Allah's names and attributes.",
+    "sourceAr": "كتب العقيدة",
+    "sourceEn": "Books of Creed"
+  },
+  {
+    "id": "fiqh-2",
+    "category": "fiqh",
+    "titleAr": "شروط الصلاة",
+    "titleEn": "Conditions of Prayer",
+    "contentAr": "شروط الصلاة: الإسلام، والعقل، والبلوغ، والطهارة من الحدث والنجس، وستر العورة، واستقبال القبلة، ودخول الوقت، والنية.",
+    "contentEn": "The conditions of prayer are: Islam, sanity, puberty, ritual purity, covering the awrah, facing the Qibla, the time having entered, and intention.",
+    "sourceAr": "الفقه الإسلامي",
+    "sourceEn": "Islamic Jurisprudence"
+  },
+  {
+    "id": "akhlaq-2",
+    "category": "akhlaq",
+    "titleAr": "الصدق وفضله",
+    "titleEn": "Truthfulness and Its Virtue",
+    "contentAr": "الصدق من أعظم الأخلاق في الإسلام. قال النبي ﷺ: عليكم بالصدق فإن الصدق يهدي إلى البر وإن البر يهدي إلى الجنة.",
+    "contentEn": "Truthfulness is one of the greatest virtues in Islam. The Prophet said: You must be truthful, for truthfulness leads to righteousness, and righteousness leads to Paradise.",
+    "sourceAr": "صحيح البخاري",
+    "sourceEn": "Sahih al-Bukhari"
+  },
+  {
+    "id": "dua-2",
+    "category": "dua",
+    "titleAr": "أوقات إجابة الدعاء",
+    "titleEn": "Times When Dua is Answered",
+    "contentAr": "من أفضل أوقات الدعاء: الثلث الأخير من الليل، وبين الأذان والإقامة، وعند السجود، ويوم الجمعة في الساعة الأخيرة، وعند الإفطار للصائم.",
+    "contentEn": "Among the best times for dua: the last third of the night, between the adhan and iqamah, during prostration, the last hour of Friday, and at iftar for the fasting person.",
+    "sourceAr": "كتب السنة",
+    "sourceEn": "Books of the Sunnah"
+  },
+  {
+    "id": "quran-2",
+    "category": "quran",
+    "titleAr": "فضل سورة الكهف",
+    "titleEn": "Virtue of Surah Al-Kahf",
+    "contentAr": "من قرأ سورة الكهف يوم الجمعة أضاء له من النور ما بين الجمعتين، وتحصينه من فتنة الدجال.",
+    "contentEn": "Whoever reads Surah Al-Kahf on Friday will be illuminated with light between the two Fridays, and it protects from the trial of the Dajjal.",
+    "sourceAr": "البيهقي والحاكم",
+    "sourceEn": "Al-Bayhaqi and Al-Hakim"
+  },
+  {
+    "id": "seerah-2",
+    "category": "seerah",
+    "titleAr": "غزوة بدر الكبرى",
+    "titleEn": "The Battle of Badr",
+    "contentAr": "كانت غزوة بدر عام ٢ هجري، والمسلمون ٣١٣ رجلًا في مواجهة ألف مقاتل من قريش، ونصر الله المسلمين نصرًا مؤزرًا، وسمى الله يومها يوم الفرقان.",
+    "contentEn": "The Battle of Badr took place in 2 AH. The 313 Muslims faced 1000 Qurayshi fighters, yet Allah granted the Muslims a decisive victory, and named that day the Day of Distinction.",
+    "sourceAr": "السيرة النبوية",
+    "sourceEn": "Prophetic Biography"
+  }
+]

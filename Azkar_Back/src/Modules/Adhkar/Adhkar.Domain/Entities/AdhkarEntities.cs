@@ -70,32 +70,3 @@ public class Zikr : AuditableEntity
     }
 }
 
-public class DailyProgress : AuditableEntity
-{
-    public string DeviceIdentifier { get; private set; } = string.Empty;
-    public DateTime Date { get; private set; }
-    public Guid ZikrId { get; private set; }
-    public int CompletedCount { get; private set; }
-    public bool IsCompleted { get; private set; }
-
-    private DailyProgress() { }
-
-    public static DailyProgress Create(string deviceIdentifier, Guid zikrId, int completedCount, bool isCompleted)
-    {
-        return new DailyProgress
-        {
-            DeviceIdentifier = deviceIdentifier,
-            Date = DateTime.UtcNow.Date,
-            ZikrId = zikrId,
-            CompletedCount = completedCount,
-            IsCompleted = isCompleted
-        };
-    }
-
-    public void UpdateProgress(int count, bool isCompleted)
-    {
-        CompletedCount = count;
-        IsCompleted = isCompleted;
-        UpdatedAtUtc = DateTime.UtcNow;
-    }
-}

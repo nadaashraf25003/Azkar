@@ -29,25 +29,4 @@ public class TasbeehPreset : Entity
     }
 }
 
-public class TasbeehSession : Entity
-{
-    public string DeviceIdentifier { get; private set; } = string.Empty;
-    public Guid? PresetId { get; private set; }
-    public string ZikrName { get; private set; } = string.Empty;
-    public int TotalCount { get; private set; }
-    public DateTime CreatedAtUtc { get; private set; } = DateTime.UtcNow;
 
-    private TasbeehSession() { }
-
-    public static TasbeehSession Create(string deviceIdentifier, Guid? presetId, string zikrName, int totalCount)
-    {
-        return new TasbeehSession
-        {
-            DeviceIdentifier = deviceIdentifier,
-            PresetId = presetId,
-            ZikrName = zikrName,
-            TotalCount = totalCount,
-            CreatedAtUtc = DateTime.UtcNow
-        };
-    }
-}

@@ -35,6 +35,39 @@ public class GetCategoriesQueryHandler : IQueryHandler<GetCategoriesQuery, IRead
     }
 }
 
+public class GetAllAdhkarQueryHandler : IQueryHandler<GetAllAdhkarQuery, IReadOnlyList<ZikrDto>>
+{
+    private readonly IAdhkarDbContext _context;
+
+    public GetAllAdhkarQueryHandler(IAdhkarDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<IReadOnlyList<ZikrDto>>> Handle(GetAllAdhkarQuery request, CancellationToken cancellationToken)
+    {
+        var adhkar = await _context.Adhkar
+            .AsNoTracking()
+            .Where(z => !z.IsDeleted)
+            .OrderBy(z => z.Order)
+            .Select(z => new ZikrDto(
+                z.Id,
+                z.CategoryId,
+                z.ArabicText,
+                z.Translation,
+                z.Transliteration,
+                z.RepeatCount,
+                z.Fadl,
+                z.Source,
+                z.AudioUrl,
+                z.Order
+            ))
+            .ToListAsync(cancellationToken);
+
+        return Result.Success<IReadOnlyList<ZikrDto>>(adhkar);
+    }
+}
+
 public class GetAdhkarByCategoryQueryHandler : IQueryHandler<GetAdhkarByCategoryQuery, IReadOnlyList<ZikrDto>>
 {
     private readonly IAdhkarDbContext _context;
@@ -104,56 +137,81 @@ public class GetZikrByIdQueryHandler : IQueryHandler<GetZikrByIdQuery, ZikrDto>
     }
 }
 
-public class GetTodayProgressQueryHandler : IQueryHandler<GetTodayProgressQuery, IReadOnlyList<DailyProgressDto>>
+public class CreateZikrCommandHandler : ICommandHandler<CreateZikrCommand, ZikrDto>
 {
     private readonly IAdhkarDbContext _context;
 
-    public GetTodayProgressQueryHandler(IAdhkarDbContext context)
+    public CreateZikrCommandHandler(IAdhkarDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Result<IReadOnlyList<DailyProgressDto>>> Handle(GetTodayProgressQuery request, CancellationToken cancellationToken)
+    public async Task<Result<ZikrDto>> Handle(CreateZikrCommand request, CancellationToken cancellationToken)
     {
-        var today = DateTime.UtcNow.Date;
-        var progressList = await _context.DailyProgresses
-            .AsNoTracking()
-            .Where(p => p.DeviceIdentifier == request.DeviceIdentifier && p.Date == today)
-            .Select(p => new DailyProgressDto(p.ZikrId, p.DeviceIdentifier, p.CompletedCount, p.IsCompleted, p.Date))
-            .ToListAsync(cancellationToken);
+        var category = await _context.ZikrCategories
+            .FirstOrDefaultAsync(c => c.Id == request.CategoryId, cancellationToken);
 
-        return Result.Success<IReadOnlyList<DailyProgressDto>>(progressList);
-    }
-}
-
-public class UpdateDailyProgressCommandHandler : ICommandHandler<UpdateDailyProgressCommand, DailyProgressDto>
-{
-    private readonly IAdhkarDbContext _context;
-
-    public UpdateDailyProgressCommandHandler(IAdhkarDbContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<Result<DailyProgressDto>> Handle(UpdateDailyProgressCommand request, CancellationToken cancellationToken)
-    {
-        var today = DateTime.UtcNow.Date;
-        var progress = await _context.DailyProgresses
-            .FirstOrDefaultAsync(p => p.DeviceIdentifier == request.DeviceIdentifier && p.Date == today && p.ZikrId == request.ZikrId, cancellationToken);
-
-        if (progress == null)
+        if (category == null)
         {
-            progress = DailyProgress.Create(request.DeviceIdentifier, request.ZikrId, request.CompletedCount, request.IsCompleted);
-            await _context.DailyProgresses.AddAsync(progress, cancellationToken);
-        }
-        else
-        {
-            progress.UpdateProgress(request.CompletedCount, request.IsCompleted);
+            return Result.Failure<ZikrDto>(Error.NotFound("Category", request.CategoryId));
         }
 
+        var zikr = Zikr.Create(
+            request.CategoryId,
+            request.ArabicText,
+            request.Translation,
+            request.Transliteration,
+            request.RepeatCount,
+            request.Fadl,
+            request.Source,
+            request.AudioUrl,
+            request.Order
+        );
+
+        await _context.Adhkar.AddAsync(zikr, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
-        var dto = new DailyProgressDto(progress.ZikrId, progress.DeviceIdentifier, progress.CompletedCount, progress.IsCompleted, progress.Date);
+        var dto = new ZikrDto(
+            zikr.Id,
+            zikr.CategoryId,
+            zikr.ArabicText,
+            zikr.Translation,
+            zikr.Transliteration,
+            zikr.RepeatCount,
+            zikr.Fadl,
+            zikr.Source,
+            zikr.AudioUrl,
+            zikr.Order
+        );
+
         return Result.Success(dto);
     }
 }
+
+public class DeleteZikrCommandHandler : ICommandHandler<DeleteZikrCommand, bool>
+{
+    private readonly IAdhkarDbContext _context;
+
+    public DeleteZikrCommandHandler(IAdhkarDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteZikrCommand request, CancellationToken cancellationToken)
+    {
+        var zikr = await _context.Adhkar
+            .FirstOrDefaultAsync(z => z.Id == request.Id, cancellationToken);
+
+        if (zikr == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Zikr", request.Id));
+        }
+
+        _context.Adhkar.Remove(zikr);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+

@@ -22,45 +22,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Adhkar.Domain.Entities.DailyProgress", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("CompletedCount")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeviceIdentifier")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("UpdatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ZikrId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceIdentifier", "Date", "ZikrId")
-                        .IsUnique();
-
-                    b.ToTable("DailyProgress", "adhkar");
-                });
-
             modelBuilder.Entity("Adhkar.Domain.Entities.Zikr", b =>
                 {
                     b.Property<Guid>("Id")
@@ -354,53 +315,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.ToTable("SeerahEvents", "content");
                 });
 
-            modelBuilder.Entity("Favorites.Domain.Entities.Favorite", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeviceIdentifier")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ExtraDataJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("ItemId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ItemType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Subtitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceIdentifier", "ItemType", "ItemId")
-                        .IsUnique();
-
-                    b.ToTable("Favorites", "favorites");
-                });
-
             modelBuilder.Entity("Kids.Domain.Entities.KidsChallenge", b =>
                 {
                     b.Property<Guid>("Id")
@@ -430,39 +344,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Challenges", "kids");
-                });
-
-            modelBuilder.Entity("Kids.Domain.Entities.KidsProgress", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("CompletedChallengesCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CompletedStoriesCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("DeviceIdentifier")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("LastActivityAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("QuizzesTakenCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalPoints")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceIdentifier")
-                        .IsUnique();
-
-                    b.ToTable("KidsProgress", "kids");
                 });
 
             modelBuilder.Entity("Kids.Domain.Entities.KidsQuizQuestion", b =>
@@ -594,49 +475,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.ToTable("PushSubscriptions", "notifications");
                 });
 
-            modelBuilder.Entity("Prayer.Domain.Entities.PrayerTimeSetting", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CalculationMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CountryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DeviceIdentifier")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("JuristicMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<int>("TimezoneOffsetMinutes")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeviceIdentifier")
-                        .IsUnique();
-
-                    b.ToTable("PrayerSettings", "prayer");
-                });
-
             modelBuilder.Entity("Questions.Domain.Entities.Answer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -710,6 +548,9 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.Property<bool>("IsAnswered")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -760,155 +601,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.ToTable("VoteRecords", "questions");
                 });
 
-            modelBuilder.Entity("Quran.Domain.Entities.Ayah", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ArabicText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AudioUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Juz")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberInQuran")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberInSurah")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Page")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("SurahId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SurahNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Translation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Transliteration")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurahId");
-
-                    b.HasIndex("SurahNumber", "NumberInSurah")
-                        .IsUnique();
-
-                    b.ToTable("Ayat", "quran");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Reciter", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameArabic")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("NameEnglish")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("ServerUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Style")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Reciters", "quran");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Surah", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("NameArabic")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("NameEnglish")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("NameTranslation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Number")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RevelationType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VersesCount")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Number")
-                        .IsUnique();
-
-                    b.ToTable("Surahs", "quran");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Tafsir", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("AyahId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TafsirName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AyahId");
-
-                    b.ToTable("Tafsir", "quran");
-                });
-
             modelBuilder.Entity("Recitations.Domain.Entities.Recitation", b =>
                 {
                     b.Property<Guid>("Id")
@@ -917,8 +609,7 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("AudioUrl")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("AverageRating")
                         .HasColumnType("float");
@@ -1063,35 +754,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                     b.ToTable("TasbeehPresets", "tasbeeh");
                 });
 
-            modelBuilder.Entity("Tasbeeh.Domain.Entities.TasbeehSession", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAtUtc")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeviceIdentifier")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<Guid?>("PresetId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("TotalCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ZikrName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TasbeehSessions", "tasbeeh");
-                });
-
             modelBuilder.Entity("Adhkar.Domain.Entities.Zikr", b =>
                 {
                     b.HasOne("Adhkar.Domain.Entities.ZikrCategory", "Category")
@@ -1112,28 +774,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("Question");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Ayah", b =>
-                {
-                    b.HasOne("Quran.Domain.Entities.Surah", "Surah")
-                        .WithMany("Ayat")
-                        .HasForeignKey("SurahId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Surah");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Tafsir", b =>
-                {
-                    b.HasOne("Quran.Domain.Entities.Ayah", "Ayah")
-                        .WithMany()
-                        .HasForeignKey("AyahId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Ayah");
                 });
 
             modelBuilder.Entity("Recitations.Domain.Entities.RecitationComment", b =>
@@ -1164,11 +804,6 @@ namespace BuildingBlocks.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Questions.Domain.Entities.Question", b =>
                 {
                     b.Navigation("Answers");
-                });
-
-            modelBuilder.Entity("Quran.Domain.Entities.Surah", b =>
-                {
-                    b.Navigation("Ayat");
                 });
 
             modelBuilder.Entity("Recitations.Domain.Entities.Recitation", b =>

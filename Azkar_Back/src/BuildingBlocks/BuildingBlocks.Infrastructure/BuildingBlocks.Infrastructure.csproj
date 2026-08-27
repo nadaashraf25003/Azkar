@@ -1,12 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
     <ProjectReference Include="..\BuildingBlocks.Application\BuildingBlocks.Application.csproj" />
     <ProjectReference Include="..\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Adhkar\Adhkar.Domain\Adhkar.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Adhkar\Adhkar.Application\Adhkar.Application.csproj" />
-    <ProjectReference Include="..\..\Modules\Quran\Quran.Domain\Quran.Domain.csproj" />
-    <ProjectReference Include="..\..\Modules\Quran\Quran.Application\Quran.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Recitations\Recitations.Domain\Recitations.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Recitations\Recitations.Application\Recitations.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Tasbeeh\Tasbeeh.Domain\Tasbeeh.Domain.csproj" />
@@ -17,10 +15,6 @@
     <ProjectReference Include="..\..\Modules\Content\Content.Application\Content.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Kids\Kids.Domain\Kids.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Kids\Kids.Application\Kids.Application.csproj" />
-    <ProjectReference Include="..\..\Modules\Prayer\Prayer.Domain\Prayer.Domain.csproj" />
-    <ProjectReference Include="..\..\Modules\Prayer\Prayer.Application\Prayer.Application.csproj" />
-    <ProjectReference Include="..\..\Modules\Favorites\Favorites.Domain\Favorites.Domain.csproj" />
-    <ProjectReference Include="..\..\Modules\Favorites\Favorites.Application\Favorites.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Notifications\Notifications.Domain\Notifications.Domain.csproj" />
     <ProjectReference Include="..\..\Modules\Notifications\Notifications.Application\Notifications.Application.csproj" />
     <ProjectReference Include="..\..\Modules\Administration\Administration.Domain\Administration.Domain.csproj" />
@@ -33,6 +27,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.11" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.11" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\SeedData\*.json" />
   </ItemGroup>
 
   <PropertyGroup>

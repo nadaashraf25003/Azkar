@@ -34,21 +34,56 @@ public static class KidsEndpoints
         .WithName("GetKidsQuizzes")
         .WithSummary("Get kids quiz questions");
 
-        group.MapGet("/progress", async ([FromQuery] string deviceId, ISender sender, CancellationToken ct) =>
-        {
-            var result = await sender.Send(new GetKidsProgressQuery(deviceId), ct);
-            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
-        })
-        .WithName("GetKidsProgress")
-        .WithSummary("Get kids points and progress");
-
-        group.MapPost("/points", async ([FromBody] AddKidsPointsCommand command, ISender sender, CancellationToken ct) =>
+        // Stories POST & DELETE
+        group.MapPost("/stories", async ([FromBody] CreateKidsStoryCommand command, ISender sender, CancellationToken ct) =>
         {
             var result = await sender.Send(command, ct);
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
         })
-        .WithName("AddKidsPoints")
-        .WithSummary("Add points for completed kids activity");
+        .WithName("CreateKidsStory")
+        .WithSummary("Add new story for kids");
+
+        group.MapDelete("/stories/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new DeleteKidsStoryCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("DeleteKidsStory")
+        .WithSummary("Delete kids story by ID");
+
+        // Challenges POST & DELETE
+        group.MapPost("/challenges", async ([FromBody] CreateKidsChallengeCommand command, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(command, ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("CreateKidsChallenge")
+        .WithSummary("Add new challenge for kids");
+
+        group.MapDelete("/challenges/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new DeleteKidsChallengeCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("DeleteKidsChallenge")
+        .WithSummary("Delete kids challenge by ID");
+
+        // Quizzes POST & DELETE
+        group.MapPost("/quizzes", async ([FromBody] CreateKidsQuizQuestionCommand command, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(command, ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("CreateKidsQuizQuestion")
+        .WithSummary("Add new quiz question for kids");
+
+        group.MapDelete("/quizzes/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new DeleteKidsQuizQuestionCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("DeleteKidsQuizQuestion")
+        .WithSummary("Delete kids quiz question by ID");
 
         return app;
     }

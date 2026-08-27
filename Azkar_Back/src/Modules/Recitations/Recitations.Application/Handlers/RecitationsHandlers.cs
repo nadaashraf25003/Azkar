@@ -19,7 +19,12 @@ public class GetApprovedRecitationsQueryHandler : IQueryHandler<GetApprovedRecit
     {
         var query = _context.Recitations
             .AsNoTracking()
-            .Where(r => r.Status == ModerationStatus.Approved && !r.IsDeleted);
+            .Where(r => !r.IsDeleted);
+
+        if (!request.IncludePending)
+        {
+            query = query.Where(r => r.Status == ModerationStatus.Approved);
+        }
 
         if (request.SurahNumber.HasValue)
         {
@@ -40,7 +45,18 @@ public class GetApprovedRecitationsQueryHandler : IQueryHandler<GetApprovedRecit
                 r.Status,
                 r.AverageRating,
                 r.RatingsCount,
-                r.CreatedAtUtc
+                r.CreatedAtUtc,
+                r.Comments
+                    .Where(c => !c.IsDeleted)
+                    .OrderByDescending(c => c.CreatedAtUtc)
+                    .Select(c => new RecitationCommentDto(
+                        c.Id,
+                        c.RecitationId,
+                        c.AuthorName,
+                        c.Content,
+                        c.CreatedAtUtc
+                    ))
+                    .ToList()
             ))
             .ToListAsync(cancellationToken);
 
@@ -83,9 +99,150 @@ public class SubmitRecitationCommandHandler : ICommandHandler<SubmitRecitationCo
             recitation.Status,
             recitation.AverageRating,
             recitation.RatingsCount,
-            recitation.CreatedAtUtc);
+            recitation.CreatedAtUtc,
+            Array.Empty<RecitationCommentDto>());
 
         return Result.Success(dto);
+    }
+}
+
+public class ApproveRecitationCommandHandler : ICommandHandler<ApproveRecitationCommand, bool>
+{
+    private readonly IRecitationsDbContext _context;
+
+    public ApproveRecitationCommandHandler(IRecitationsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(ApproveRecitationCommand request, CancellationToken cancellationToken)
+    {
+        var recitation = await _context.Recitations.FirstOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
+        if (recitation == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Recitation", request.Id));
+        }
+
+        recitation.Approve();
+        await _context.SaveChangesAsync(cancellationToken);
+        return Result.Success(true);
+    }
+}
+
+public class RejectRecitationCommandHandler : ICommandHandler<RejectRecitationCommand, bool>
+{
+    private readonly IRecitationsDbContext _context;
+
+    public RejectRecitationCommandHandler(IRecitationsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(RejectRecitationCommand request, CancellationToken cancellationToken)
+    {
+        var recitation = await _context.Recitations.FirstOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
+        if (recitation == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Recitation", request.Id));
+        }
+
+        recitation.Reject();
+        await _context.SaveChangesAsync(cancellationToken);
+        return Result.Success(true);
+    }
+}
+
+public class DeleteRecitationCommandHandler : ICommandHandler<DeleteRecitationCommand, bool>
+{
+    private readonly IRecitationsDbContext _context;
+
+    public DeleteRecitationCommandHandler(IRecitationsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteRecitationCommand request, CancellationToken cancellationToken)
+    {
+        var recitation = await _context.Recitations
+            .Include(r => r.Comments)
+            .Include(r => r.Ratings)
+            .FirstOrDefaultAsync(r => r.Id == request.Id, cancellationToken);
+
+        if (recitation == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Recitation", request.Id));
+        }
+
+        if (recitation.Comments.Any())
+        {
+            _context.RecitationComments.RemoveRange(recitation.Comments);
+        }
+
+        if (recitation.Ratings.Any())
+        {
+            _context.RecitationRatings.RemoveRange(recitation.Ratings);
+        }
+
+        _context.Recitations.Remove(recitation);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+public class AddRecitationCommentCommandHandler : ICommandHandler<AddRecitationCommentCommand, RecitationCommentDto>
+{
+    private readonly IRecitationsDbContext _context;
+
+    public AddRecitationCommentCommandHandler(IRecitationsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<RecitationCommentDto>> Handle(AddRecitationCommentCommand request, CancellationToken cancellationToken)
+    {
+        var recitation = await _context.Recitations.FirstOrDefaultAsync(r => r.Id == request.RecitationId, cancellationToken);
+        if (recitation == null)
+        {
+            return Result.Failure<RecitationCommentDto>(Error.NotFound("Recitation", request.RecitationId));
+        }
+
+        var comment = RecitationComment.Create(request.RecitationId, request.AuthorName, request.Content);
+        await _context.RecitationComments.AddAsync(comment, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        var dto = new RecitationCommentDto(
+            comment.Id,
+            comment.RecitationId,
+            comment.AuthorName,
+            comment.Content,
+            comment.CreatedAtUtc);
+
+        return Result.Success(dto);
+    }
+}
+
+public class DeleteRecitationCommentCommandHandler : ICommandHandler<DeleteRecitationCommentCommand, bool>
+{
+    private readonly IRecitationsDbContext _context;
+
+    public DeleteRecitationCommentCommandHandler(IRecitationsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteRecitationCommentCommand request, CancellationToken cancellationToken)
+    {
+        var comment = await _context.RecitationComments.FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+        if (comment == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("RecitationComment", request.Id));
+        }
+
+        _context.RecitationComments.Remove(comment);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
     }
 }
 
@@ -111,12 +268,24 @@ public class RateRecitationCommandHandler : ICommandHandler<RateRecitationComman
 
         if (existingRating != null)
         {
-            return Result.Failure<RecitationRatingDto>(Error.Validation("Rating.AlreadySubmitted", "You have already rated this recitation."));
+            existingRating.UpdateScore(request.Score);
+        }
+        else
+        {
+            var rating = RecitationRating.Create(request.RecitationId, request.DeviceIdentifier, request.Score);
+            await _context.RecitationRatings.AddAsync(rating, cancellationToken);
         }
 
-        var rating = RecitationRating.Create(request.RecitationId, request.DeviceIdentifier, request.Score);
-        await _context.RecitationRatings.AddAsync(rating, cancellationToken);
-        recitation.AddRating(request.Score);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        // Recalculate average rating & count
+        var ratings = await _context.RecitationRatings
+            .Where(r => r.RecitationId == request.RecitationId)
+            .ToListAsync(cancellationToken);
+
+        var count = ratings.Count;
+        var avg = count > 0 ? Math.Round(ratings.Average(r => r.Score), 2) : 0;
+        recitation.SetRating(avg, count);
 
         await _context.SaveChangesAsync(cancellationToken);
 

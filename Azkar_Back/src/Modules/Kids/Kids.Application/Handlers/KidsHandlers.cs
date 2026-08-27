@@ -78,57 +78,198 @@ public class GetKidsQuizQuestionsQueryHandler : IQueryHandler<GetKidsQuizQuestio
     }
 }
 
-public class GetKidsProgressQueryHandler : IQueryHandler<GetKidsProgressQuery, KidsProgressDto>
+// Stories Handlers
+public class CreateKidsStoryCommandHandler : ICommandHandler<CreateKidsStoryCommand, KidsStoryDto>
 {
     private readonly IKidsDbContext _context;
 
-    public GetKidsProgressQueryHandler(IKidsDbContext context)
+    public CreateKidsStoryCommandHandler(IKidsDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Result<KidsProgressDto>> Handle(GetKidsProgressQuery request, CancellationToken cancellationToken)
+    public async Task<Result<KidsStoryDto>> Handle(CreateKidsStoryCommand request, CancellationToken cancellationToken)
     {
-        var progress = await _context.KidsProgresses
-            .AsNoTracking()
-            .FirstOrDefaultAsync(p => p.DeviceIdentifier == request.DeviceIdentifier, cancellationToken);
+        var story = KidsStory.Create(
+            request.Title,
+            request.AgeGroup,
+            request.Content,
+            request.MoralLesson,
+            request.CoverImageUrl,
+            request.AudioUrl
+        );
 
-        if (progress == null)
-        {
-            return Result.Success(new KidsProgressDto(request.DeviceIdentifier, 0, 0, 0, 0));
-        }
-
-        return Result.Success(new KidsProgressDto(progress.DeviceIdentifier, progress.TotalPoints, progress.CompletedStoriesCount, progress.CompletedChallengesCount, progress.QuizzesTakenCount));
-    }
-}
-
-public class AddKidsPointsCommandHandler : ICommandHandler<AddKidsPointsCommand, KidsProgressDto>
-{
-    private readonly IKidsDbContext _context;
-
-    public AddKidsPointsCommandHandler(IKidsDbContext context)
-    {
-        _context = context;
-    }
-
-    public async Task<Result<KidsProgressDto>> Handle(AddKidsPointsCommand request, CancellationToken cancellationToken)
-    {
-        var progress = await _context.KidsProgresses
-            .FirstOrDefaultAsync(p => p.DeviceIdentifier == request.DeviceIdentifier, cancellationToken);
-
-        if (progress == null)
-        {
-            progress = KidsProgress.Create(request.DeviceIdentifier);
-            await _context.KidsProgresses.AddAsync(progress, cancellationToken);
-        }
-
-        progress.AddPoints(request.Points);
-
-        if (request.ActivityType == "Story") progress.IncrementStories();
-        else if (request.ActivityType == "Challenge") progress.IncrementChallenges();
-
+        await _context.KidsStories.AddAsync(story, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(new KidsProgressDto(progress.DeviceIdentifier, progress.TotalPoints, progress.CompletedStoriesCount, progress.CompletedChallengesCount, progress.QuizzesTakenCount));
+        var dto = new KidsStoryDto(
+            story.Id,
+            story.Title,
+            story.AgeGroup,
+            story.Content,
+            story.MoralLesson,
+            story.CoverImageUrl,
+            story.AudioUrl
+        );
+
+        return Result.Success(dto);
     }
 }
+
+public class DeleteKidsStoryCommandHandler : ICommandHandler<DeleteKidsStoryCommand, bool>
+{
+    private readonly IKidsDbContext _context;
+
+    public DeleteKidsStoryCommandHandler(IKidsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteKidsStoryCommand request, CancellationToken cancellationToken)
+    {
+        var item = await _context.KidsStories
+            .FirstOrDefaultAsync(s => s.Id == request.Id, cancellationToken);
+
+        if (item == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("KidsStory", request.Id));
+        }
+
+        _context.KidsStories.Remove(item);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+// Challenges Handlers
+public class CreateKidsChallengeCommandHandler : ICommandHandler<CreateKidsChallengeCommand, KidsChallengeDto>
+{
+    private readonly IKidsDbContext _context;
+
+    public CreateKidsChallengeCommandHandler(IKidsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<KidsChallengeDto>> Handle(CreateKidsChallengeCommand request, CancellationToken cancellationToken)
+    {
+        var challenge = KidsChallenge.Create(
+            request.Title,
+            request.Description,
+            request.Points,
+            request.Category,
+            request.BadgeIcon
+        );
+
+        await _context.KidsChallenges.AddAsync(challenge, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        var dto = new KidsChallengeDto(
+            challenge.Id,
+            challenge.Title,
+            challenge.Description,
+            challenge.Points,
+            challenge.Category,
+            challenge.BadgeIcon
+        );
+
+        return Result.Success(dto);
+    }
+}
+
+public class DeleteKidsChallengeCommandHandler : ICommandHandler<DeleteKidsChallengeCommand, bool>
+{
+    private readonly IKidsDbContext _context;
+
+    public DeleteKidsChallengeCommandHandler(IKidsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteKidsChallengeCommand request, CancellationToken cancellationToken)
+    {
+        var item = await _context.KidsChallenges
+            .FirstOrDefaultAsync(c => c.Id == request.Id, cancellationToken);
+
+        if (item == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("KidsChallenge", request.Id));
+        }
+
+        _context.KidsChallenges.Remove(item);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+// Quizzes Handlers
+public class CreateKidsQuizQuestionCommandHandler : ICommandHandler<CreateKidsQuizQuestionCommand, KidsQuizQuestionDto>
+{
+    private readonly IKidsDbContext _context;
+
+    public CreateKidsQuizQuestionCommandHandler(IKidsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<KidsQuizQuestionDto>> Handle(CreateKidsQuizQuestionCommand request, CancellationToken cancellationToken)
+    {
+        var quiz = KidsQuizQuestion.Create(
+            request.QuestionText,
+            request.OptionA,
+            request.OptionB,
+            request.OptionC,
+            request.OptionD,
+            request.CorrectOptionIndex,
+            request.Explanation,
+            request.Category
+        );
+
+        await _context.KidsQuizQuestions.AddAsync(quiz, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        var dto = new KidsQuizQuestionDto(
+            quiz.Id,
+            quiz.QuestionText,
+            quiz.OptionA,
+            quiz.OptionB,
+            quiz.OptionC,
+            quiz.OptionD,
+            quiz.CorrectOptionIndex,
+            quiz.Explanation,
+            quiz.Category
+        );
+
+        return Result.Success(dto);
+    }
+}
+
+public class DeleteKidsQuizQuestionCommandHandler : ICommandHandler<DeleteKidsQuizQuestionCommand, bool>
+{
+    private readonly IKidsDbContext _context;
+
+    public DeleteKidsQuizQuestionCommandHandler(IKidsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteKidsQuizQuestionCommand request, CancellationToken cancellationToken)
+    {
+        var item = await _context.KidsQuizQuestions
+            .FirstOrDefaultAsync(q => q.Id == request.Id, cancellationToken);
+
+        if (item == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("KidsQuizQuestion", request.Id));
+        }
+
+        _context.KidsQuizQuestions.Remove(item);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+

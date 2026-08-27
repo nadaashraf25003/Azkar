@@ -1,26 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import { useSettings } from '../context/SettingsContext'
-
-interface AsmaaItem {
-  id: number
-  nameAr: string
-  transliteration: string
-  meaningAr: string
-  meaningEn: string
-}
-
-const ALL_ASMAA_AUDIO_URL = '/04.%20Asmaa%20Allah%20Al-Hosna.mp3'
-
-async function fetchAsmaaAllah(): Promise<AsmaaItem[]> {
-  const response = await fetch('/data/asmaa-allah.json')
-
-  if (!response.ok) {
-    throw new Error('Failed to load Asmaa Allah data')
-  }
-
-  return (await response.json()) as AsmaaItem[]
-}
+import { BackendErrorState } from '../components/BackendErrorState'
+import { ALL_ASMAA_AUDIO_URL, useAsmaaAllah } from '../hooks/useAsmaaAllah'
 
 export function AsmaaAllahPage() {
   const { language } = useSettings()
@@ -28,12 +9,7 @@ export function AsmaaAllahPage() {
   const [isPlayingAll, setIsPlayingAll] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['asmaa-allah'],
-    queryFn: fetchAsmaaAllah,
-    staleTime: Infinity,
-    gcTime: Infinity,
-  })
+  const { data, isLoading, isError } = useAsmaaAllah()
 
   const filtered = useMemo(() => {
     if (!data) {
@@ -97,7 +73,7 @@ export function AsmaaAllahPage() {
   }
 
   if (isError || !data) {
-    return <p className="text-sm text-[var(--warn)]">{language === 'ar' ? 'تعذر تحميل أسماء الله الحسنى.' : 'Failed to load Asmaa Allah.'}</p>
+    return <BackendErrorState />
   }
 
   return (

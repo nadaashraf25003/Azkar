@@ -1,8 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Adhkar.Domain.Entities;
 using Adhkar.Application.Common;
-using Quran.Domain.Entities;
-using Quran.Application.Common;
 using Recitations.Domain.Entities;
 using Recitations.Application.Common;
 using Tasbeeh.Domain.Entities;
@@ -13,10 +11,6 @@ using Content.Domain.Entities;
 using Content.Application.Common;
 using Kids.Domain.Entities;
 using Kids.Application.Common;
-using Prayer.Domain.Entities;
-using Prayer.Application.Common;
-using Favorites.Domain.Entities;
-using Favorites.Application.Common;
 using Notifications.Domain.Entities;
 using Notifications.Application.Common;
 using Administration.Domain.Entities;
@@ -26,14 +20,11 @@ namespace BuildingBlocks.Infrastructure.Persistence;
 
 public class AzkarDbContext : DbContext,
     IAdhkarDbContext,
-    IQuranDbContext,
     IRecitationsDbContext,
     ITasbeehDbContext,
     IQuestionsDbContext,
     IContentDbContext,
     IKidsDbContext,
-    IPrayerDbContext,
-    IFavoritesDbContext,
     INotificationsDbContext,
     IAdministrationDbContext
 {
@@ -44,13 +35,6 @@ public class AzkarDbContext : DbContext,
     // Adhkar
     public DbSet<ZikrCategory> ZikrCategories => Set<ZikrCategory>();
     public DbSet<Zikr> Adhkar => Set<Zikr>();
-    public DbSet<DailyProgress> DailyProgresses => Set<DailyProgress>();
-
-    // Quran
-    public DbSet<Surah> Surahs => Set<Surah>();
-    public DbSet<Ayah> Ayat => Set<Ayah>();
-    public DbSet<Tafsir> Tafsirs => Set<Tafsir>();
-    public DbSet<Reciter> Reciters => Set<Reciter>();
 
     // Recitations
     public DbSet<Recitation> Recitations => Set<Recitation>();
@@ -59,7 +43,6 @@ public class AzkarDbContext : DbContext,
 
     // Tasbeeh
     public DbSet<TasbeehPreset> TasbeehPresets => Set<TasbeehPreset>();
-    public DbSet<TasbeehSession> TasbeehSessions => Set<TasbeehSession>();
 
     // Questions
     public DbSet<Question> Questions => Set<Question>();
@@ -76,13 +59,6 @@ public class AzkarDbContext : DbContext,
     public DbSet<KidsStory> KidsStories => Set<KidsStory>();
     public DbSet<KidsChallenge> KidsChallenges => Set<KidsChallenge>();
     public DbSet<KidsQuizQuestion> KidsQuizQuestions => Set<KidsQuizQuestion>();
-    public DbSet<KidsProgress> KidsProgresses => Set<KidsProgress>();
-
-    // Prayer
-    public DbSet<PrayerTimeSetting> PrayerSettings => Set<PrayerTimeSetting>();
-
-    // Favorites
-    public DbSet<Favorite> Favorites => Set<Favorite>();
 
     // Notifications
     public DbSet<PushSubscription> PushSubscriptions => Set<PushSubscription>();
@@ -112,47 +88,6 @@ public class AzkarDbContext : DbContext,
             b.Property(x => x.ArabicText).IsRequired();
         });
 
-        modelBuilder.Entity<DailyProgress>(b =>
-        {
-            b.ToTable("DailyProgress", "adhkar");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => new { x.DeviceIdentifier, x.Date, x.ZikrId }).IsUnique();
-        });
-
-        // Quran Schema
-        modelBuilder.Entity<Surah>(b =>
-        {
-            b.ToTable("Surahs", "quran");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => x.Number).IsUnique();
-            b.Property(x => x.NameArabic).HasMaxLength(100).IsRequired();
-            b.Property(x => x.NameEnglish).HasMaxLength(100).IsRequired();
-            b.HasMany(x => x.Ayat).WithOne(x => x.Surah).HasForeignKey(x => x.SurahId).OnDelete(DeleteBehavior.Cascade);
-        });
-
-        modelBuilder.Entity<Ayah>(b =>
-        {
-            b.ToTable("Ayat", "quran");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => new { x.SurahNumber, x.NumberInSurah }).IsUnique();
-            b.Property(x => x.ArabicText).IsRequired();
-        });
-
-        modelBuilder.Entity<Tafsir>(b =>
-        {
-            b.ToTable("Tafsir", "quran");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.Text).IsRequired();
-        });
-
-        modelBuilder.Entity<Reciter>(b =>
-        {
-            b.ToTable("Reciters", "quran");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.NameArabic).HasMaxLength(150).IsRequired();
-            b.Property(x => x.NameEnglish).HasMaxLength(150).IsRequired();
-        });
-
         // Recitations Schema
         modelBuilder.Entity<Recitation>(b =>
         {
@@ -160,7 +95,7 @@ public class AzkarDbContext : DbContext,
             b.HasKey(x => x.Id);
             b.Property(x => x.Title).HasMaxLength(200).IsRequired();
             b.Property(x => x.ReciterName).HasMaxLength(150).IsRequired();
-            b.Property(x => x.AudioUrl).HasMaxLength(1000).IsRequired();
+            b.Property(x => x.AudioUrl).IsRequired();
             b.HasMany(x => x.Comments).WithOne(x => x.Recitation).HasForeignKey(x => x.RecitationId).OnDelete(DeleteBehavior.Cascade);
             b.HasMany(x => x.Ratings).WithOne().HasForeignKey(x => x.RecitationId).OnDelete(DeleteBehavior.Cascade);
         });
@@ -188,12 +123,7 @@ public class AzkarDbContext : DbContext,
             b.Property(x => x.ArabicText).IsRequired();
         });
 
-        modelBuilder.Entity<TasbeehSession>(b =>
-        {
-            b.ToTable("TasbeehSessions", "tasbeeh");
-            b.HasKey(x => x.Id);
-            b.Property(x => x.DeviceIdentifier).HasMaxLength(100).IsRequired();
-        });
+
 
         // Questions Schema
         modelBuilder.Entity<Question>(b =>
@@ -271,28 +201,7 @@ public class AzkarDbContext : DbContext,
             b.Property(x => x.QuestionText).IsRequired();
         });
 
-        modelBuilder.Entity<KidsProgress>(b =>
-        {
-            b.ToTable("KidsProgress", "kids");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => x.DeviceIdentifier).IsUnique();
-        });
 
-        // Prayer Schema
-        modelBuilder.Entity<PrayerTimeSetting>(b =>
-        {
-            b.ToTable("PrayerSettings", "prayer");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => x.DeviceIdentifier).IsUnique();
-        });
-
-        // Favorites Schema
-        modelBuilder.Entity<Favorite>(b =>
-        {
-            b.ToTable("Favorites", "favorites");
-            b.HasKey(x => x.Id);
-            b.HasIndex(x => new { x.DeviceIdentifier, x.ItemType, x.ItemId }).IsUnique();
-        });
 
         // Notifications Schema
         modelBuilder.Entity<PushSubscription>(b =>

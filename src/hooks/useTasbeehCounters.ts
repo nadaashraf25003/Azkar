@@ -1,52 +1,50 @@
-import { useCallback, useEffect } from 'react'
-import { useLocalStorage } from './useLocalStorage'
-
-export type CounterMap = Record<string, number>
-
-const COUNTERS_STORAGE_KEY = 'azkar-counters'
+import { useState } from 'react'
 
 export function useTasbeehCounters() {
-  const [counters, setCounters] = useLocalStorage<CounterMap>(COUNTERS_STORAGE_KEY, {})
+  const [counters, setCounters] = useState<Record<string, number>>({})
 
-  useEffect(() => {
-    const resetOnRefresh = () => {
-      localStorage.removeItem(COUNTERS_STORAGE_KEY)
-    }
+  const setCounter = (id: string, value: number) => {
+    setCounters((prev) => ({
+      ...prev,
+      [id]: Math.max(0, value),
+    }))
+  }
 
-    window.addEventListener('beforeunload', resetOnRefresh)
+  const increment = (id: string) => {
+    setCounters((prev) => ({
+      ...prev,
+      [id]: (prev[id] ?? 0) + 1,
+    }))
+  }
 
-    return () => {
-      window.removeEventListener('beforeunload', resetOnRefresh)
-    }
-  }, [])
+  const decrement = (id: string) => {
+    setCounters((prev) => {
+      const current = prev[id] ?? 0
+      if (current <= 0) return prev
+      return {
+        ...prev,
+        [id]: current - 1,
+      }
+    })
+  }
 
-  const setCounter = useCallback(
-    (id: string, nextValue: number) => {
-      setCounters((prev) => ({ ...prev, [id]: Math.max(0, nextValue) }))
-    },
-    [setCounters],
-  )
+  const resetCounter = (id: string) => {
+    setCounters((prev) => ({
+      ...prev,
+      [id]: 0,
+    }))
+  }
 
-  const increment = useCallback(
-    (id: string) => {
-      setCounters((prev) => ({ ...prev, [id]: (prev[id] ?? 0) + 1 }))
-    },
-    [setCounters],
-  )
+  const resetAll = () => {
+    setCounters({})
+  }
 
-  const decrement = useCallback(
-    (id: string) => {
-      setCounters((prev) => ({ ...prev, [id]: Math.max(0, (prev[id] ?? 0) - 1) }))
-    },
-    [setCounters],
-  )
-
-  const resetCounter = useCallback(
-    (id: string) => {
-      setCounters((prev) => ({ ...prev, [id]: 0 }))
-    },
-    [setCounters],
-  )
-
-  return { counters, setCounter, increment, decrement, resetCounter }
+  return {
+    counters,
+    setCounter,
+    increment,
+    decrement,
+    resetCounter,
+    resetAll,
+  }
 }

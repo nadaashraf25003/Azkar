@@ -36,46 +36,69 @@ public class GetPresetsQueryHandler : IQueryHandler<GetPresetsQuery, IReadOnlyLi
     }
 }
 
-public class RecordSessionCommandHandler : ICommandHandler<RecordSessionCommand, TasbeehSessionDto>
+public class CreateTasbeehPresetCommandHandler : ICommandHandler<CreateTasbeehPresetCommand, TasbeehPresetDto>
 {
     private readonly ITasbeehDbContext _context;
 
-    public RecordSessionCommandHandler(ITasbeehDbContext context)
+    public CreateTasbeehPresetCommandHandler(ITasbeehDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Result<TasbeehSessionDto>> Handle(RecordSessionCommand request, CancellationToken cancellationToken)
+    public async Task<Result<TasbeehPresetDto>> Handle(CreateTasbeehPresetCommand request, CancellationToken cancellationToken)
     {
-        var session = TasbeehSession.Create(request.DeviceIdentifier, request.PresetId, request.ZikrName, request.TotalCount);
-        await _context.TasbeehSessions.AddAsync(session, cancellationToken);
+        var preset = TasbeehPreset.Create(
+            request.Name,
+            request.ArabicText,
+            request.Transliteration,
+            request.Benefit,
+            request.TargetCount,
+            request.IsCustom,
+            request.DeviceIdentifier
+        );
+
+        await _context.TasbeehPresets.AddAsync(preset, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
-        return Result.Success(new TasbeehSessionDto(session.Id, session.DeviceIdentifier, session.PresetId, session.ZikrName, session.TotalCount, session.CreatedAtUtc));
+        var dto = new TasbeehPresetDto(
+            preset.Id,
+            preset.Name,
+            preset.ArabicText,
+            preset.Transliteration,
+            preset.Benefit,
+            preset.TargetCount,
+            preset.IsCustom
+        );
+
+        return Result.Success(dto);
     }
 }
 
-public class GetTasbeehStatsQueryHandler : IQueryHandler<GetStatsQuery, TasbeehStatsDto>
+public class DeleteTasbeehPresetCommandHandler : ICommandHandler<DeleteTasbeehPresetCommand, bool>
 {
     private readonly ITasbeehDbContext _context;
 
-    public GetTasbeehStatsQueryHandler(ITasbeehDbContext context)
+    public DeleteTasbeehPresetCommandHandler(ITasbeehDbContext context)
     {
         _context = context;
     }
 
-    public async Task<Result<TasbeehStatsDto>> Handle(GetStatsQuery request, CancellationToken cancellationToken)
+    public async Task<Result<bool>> Handle(DeleteTasbeehPresetCommand request, CancellationToken cancellationToken)
     {
-        var today = DateTime.UtcNow.Date;
-        var sessions = await _context.TasbeehSessions
-            .AsNoTracking()
-            .Where(s => s.DeviceIdentifier == request.DeviceIdentifier)
-            .ToListAsync(cancellationToken);
+        var preset = await _context.TasbeehPresets
+            .FirstOrDefaultAsync(p => p.Id == request.Id, cancellationToken);
 
-        var todayCount = sessions.Where(s => s.CreatedAtUtc.Date == today).Sum(s => s.TotalCount);
-        var totalCount = sessions.Sum(s => s.TotalCount);
-        var sessionsCount = sessions.Count;
+        if (preset == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("TasbeehPreset", request.Id));
+        }
 
-        return Result.Success(new TasbeehStatsDto(todayCount, totalCount, sessionsCount));
+        _context.TasbeehPresets.Remove(preset);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
     }
 }
+
+
+

@@ -1,9 +1,13 @@
 import { useMemo, useState } from 'react'
 import { CategoryTabs } from '../components/CategoryTabs'
 import { useSettings } from '../context/SettingsContext'
-import { useAzkarData } from '../hooks/useAzkarData'
+import {
+  useAdhkarCategories,
+  useAdhkarByCategory,
+} from '../hooks/useAdhkar'
 import { useTasbeehCounters } from '../hooks/useTasbeehCounters'
-import type { AzkarCategory } from '../types/azkar'
+import { BackendErrorState } from '../components/BackendErrorState'
+import type { AzkarCategory, ZikrItem } from '../types/azkar'
 import { getAutoDailyCategory } from '../utils/time'
 
 export function CategoryCounterPage() {
@@ -11,13 +15,55 @@ export function CategoryCounterPage() {
     getAutoDailyCategory(),
   )
   const { language } = useSettings()
-  const { data } = useAzkarData('/data/azkar-category-counter.json')
   const { counters, setCounter, decrement, resetCounter } = useTasbeehCounters()
 
-  const items = useMemo(
-    () => (data ?? []).filter((item) => item.category === activeCategory),
-    [activeCategory, data],
-  )
+  const { data: backendCategories, isLoading: isCategoriesLoading, isError: isCategoriesError } = useAdhkarCategories()
+
+  const categoriesList = useMemo(() => {
+    if (!backendCategories) return []
+    return Array.isArray(backendCategories)
+      ? backendCategories
+      : (backendCategories as any)?.value || []
+  }, [backendCategories])
+
+  const matchedCategory = useMemo(() => {
+    return categoriesList.find(
+      (c: any) => c.name.toLowerCase() === activeCategory.toLowerCase(),
+    )
+  }, [categoriesList, activeCategory])
+
+  const { data: backendZikrs, isLoading: isZikrsLoading, isError: isZikrsError } = useAdhkarByCategory(matchedCategory?.id)
+
+  const items = useMemo<ZikrItem[]>(() => {
+    const list = Array.isArray(backendZikrs)
+      ? backendZikrs
+      : (backendZikrs as any)?.value
+
+    if (Array.isArray(list)) {
+      return list.map((item: any) => ({
+        id: item.id,
+        category: activeCategory,
+        title: item.transliteration || '',
+        text: item.arabicText,
+        textEn: item.translation,
+        count: item.repeatCount,
+        reference: item.source,
+        benefit: item.fadl,
+      }))
+    }
+    return []
+  }, [backendZikrs, activeCategory])
+
+  const isLoading = isCategoriesLoading || isZikrsLoading
+  const isError = isCategoriesError || isZikrsError || (!isLoading && items.length === 0)
+
+  if (isLoading) {
+    return <p className="text-sm text-[var(--muted)]">Loading counter data...</p>
+  }
+
+  if (isError) {
+    return <BackendErrorState />
+  }
 
   return (
     <section className="space-y-4 md:space-y-5">

@@ -19,6 +19,11 @@ public class GetQuestionsQueryHandler : IQueryHandler<GetQuestionsQuery, IReadOn
     {
         var query = _context.Questions.AsNoTracking().Where(q => !q.IsDeleted);
 
+        if (!request.IncludePending)
+        {
+            query = query.Where(q => q.IsApproved);
+        }
+
         if (!string.IsNullOrWhiteSpace(request.Category))
         {
             query = query.Where(q => q.Category == request.Category);
@@ -40,8 +45,25 @@ public class GetQuestionsQueryHandler : IQueryHandler<GetQuestionsQuery, IReadOn
                 q.Upvotes,
                 q.Downvotes,
                 q.IsAnswered,
+                q.IsApproved,
                 q.Answers.Count,
-                q.CreatedAtUtc
+                q.CreatedAtUtc,
+                q.Answers
+                    .Where(a => !a.IsDeleted)
+                    .OrderByDescending(a => a.IsVerifiedScholar)
+                    .ThenByDescending(a => a.Upvotes)
+                    .Select(a => new AnswerDto(
+                        a.Id,
+                        a.QuestionId,
+                        a.AuthorName,
+                        a.Content,
+                        a.ReferenceSource,
+                        a.IsVerifiedScholar,
+                        a.Upvotes,
+                        a.Downvotes,
+                        a.CreatedAtUtc
+                    ))
+                    .ToList()
             ))
             .ToListAsync(cancellationToken);
 
@@ -96,6 +118,7 @@ public class GetQuestionDetailsQueryHandler : IQueryHandler<GetQuestionDetailsQu
             q.Upvotes,
             q.Downvotes,
             q.IsAnswered,
+            q.IsApproved,
             q.CreatedAtUtc,
             answers
         );
@@ -115,7 +138,7 @@ public class AskQuestionCommandHandler : ICommandHandler<AskQuestionCommand, Que
 
     public async Task<Result<QuestionDto>> Handle(AskQuestionCommand request, CancellationToken cancellationToken)
     {
-        var question = Question.Create(request.Title, request.Content, request.Category, request.AskerName);
+        var question = Question.Create(request.Title, request.Content, request.Category, request.AskerName, isApproved: false);
         await _context.Questions.AddAsync(question, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
 
@@ -128,11 +151,59 @@ public class AskQuestionCommandHandler : ICommandHandler<AskQuestionCommand, Que
             question.Upvotes,
             question.Downvotes,
             question.IsAnswered,
+            question.IsApproved,
             0,
-            question.CreatedAtUtc
+            question.CreatedAtUtc,
+            Array.Empty<AnswerDto>()
         );
 
         return Result.Success(dto);
+    }
+}
+
+public class ApproveQuestionCommandHandler : ICommandHandler<ApproveQuestionCommand, bool>
+{
+    private readonly IQuestionsDbContext _context;
+
+    public ApproveQuestionCommandHandler(IQuestionsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(ApproveQuestionCommand request, CancellationToken cancellationToken)
+    {
+        var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == request.Id, cancellationToken);
+        if (question == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Question", request.Id));
+        }
+
+        question.Approve();
+        await _context.SaveChangesAsync(cancellationToken);
+        return Result.Success(true);
+    }
+}
+
+public class RejectQuestionCommandHandler : ICommandHandler<RejectQuestionCommand, bool>
+{
+    private readonly IQuestionsDbContext _context;
+
+    public RejectQuestionCommandHandler(IQuestionsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(RejectQuestionCommand request, CancellationToken cancellationToken)
+    {
+        var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == request.Id, cancellationToken);
+        if (question == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Question", request.Id));
+        }
+
+        question.Reject();
+        await _context.SaveChangesAsync(cancellationToken);
+        return Result.Success(true);
     }
 }
 
@@ -171,5 +242,71 @@ public class AddAnswerCommandHandler : ICommandHandler<AddAnswerCommand, AnswerD
         );
 
         return Result.Success(dto);
+    }
+}
+
+public class DeleteQuestionCommandHandler : ICommandHandler<DeleteQuestionCommand, bool>
+{
+    private readonly IQuestionsDbContext _context;
+
+    public DeleteQuestionCommandHandler(IQuestionsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteQuestionCommand request, CancellationToken cancellationToken)
+    {
+        var question = await _context.Questions
+            .Include(q => q.Answers)
+            .FirstOrDefaultAsync(q => q.Id == request.Id, cancellationToken);
+
+        if (question == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Question", request.Id));
+        }
+
+        if (question.Answers.Any())
+        {
+            _context.Answers.RemoveRange(question.Answers);
+        }
+
+        _context.Questions.Remove(question);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return Result.Success(true);
+    }
+}
+
+public class DeleteAnswerCommandHandler : ICommandHandler<DeleteAnswerCommand, bool>
+{
+    private readonly IQuestionsDbContext _context;
+
+    public DeleteAnswerCommandHandler(IQuestionsDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Result<bool>> Handle(DeleteAnswerCommand request, CancellationToken cancellationToken)
+    {
+        var answer = await _context.Answers.FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken);
+        if (answer == null)
+        {
+            return Result.Failure<bool>(Error.NotFound("Answer", request.Id));
+        }
+
+        var questionId = answer.QuestionId;
+        _context.Answers.Remove(answer);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        // Update IsAnswered flag if no answers left
+        var question = await _context.Questions.FirstOrDefaultAsync(q => q.Id == questionId, cancellationToken);
+        if (question != null)
+        {
+            var remainingAnswers = await _context.Answers.AnyAsync(a => a.QuestionId == questionId, cancellationToken);
+            question.UpdateIsAnswered(remainingAnswers);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        return Result.Success(true);
     }
 }

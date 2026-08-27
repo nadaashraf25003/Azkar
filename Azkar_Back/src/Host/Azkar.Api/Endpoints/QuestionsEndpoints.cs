@@ -10,9 +10,9 @@ public static class QuestionsEndpoints
     {
         var group = app.MapGroup("/questions").WithTags("Questions");
 
-        group.MapGet("/", async ([FromQuery] string? category, [FromQuery] string? search, ISender sender, CancellationToken ct) =>
+        group.MapGet("/", async ([FromQuery] string? category, [FromQuery] string? search, [FromQuery] bool includePending, ISender sender, CancellationToken ct) =>
         {
-            var result = await sender.Send(new GetQuestionsQuery(category, search), ct);
+            var result = await sender.Send(new GetQuestionsQuery(category, search, includePending), ct);
             return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
         })
         .WithName("GetQuestions")
@@ -34,6 +34,22 @@ public static class QuestionsEndpoints
         .WithName("AskQuestion")
         .WithSummary("Submit a new question");
 
+        group.MapPut("/{id:guid}/approve", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new ApproveQuestionCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("ApproveQuestion")
+        .WithSummary("Approve a pending question");
+
+        group.MapPut("/{id:guid}/reject", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new RejectQuestionCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+        })
+        .WithName("RejectQuestion")
+        .WithSummary("Reject a question");
+
         group.MapPost("/answers", async ([FromBody] AddAnswerCommand command, ISender sender, CancellationToken ct) =>
         {
             var result = await sender.Send(command, ct);
@@ -41,6 +57,22 @@ public static class QuestionsEndpoints
         })
         .WithName("AddAnswer")
         .WithSummary("Add an answer to a question");
+
+        group.MapDelete("/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new DeleteQuestionCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(new { success = true, id }) : Results.BadRequest(result.Error);
+        })
+        .WithName("DeleteQuestion")
+        .WithSummary("Delete a question and its answers from database (Admin)");
+
+        group.MapDelete("/answers/{id:guid}", async (Guid id, ISender sender, CancellationToken ct) =>
+        {
+            var result = await sender.Send(new DeleteAnswerCommand(id), ct);
+            return result.IsSuccess ? Results.Ok(new { success = true, id }) : Results.BadRequest(result.Error);
+        })
+        .WithName("DeleteAnswer")
+        .WithSummary("Delete an answer from database (Admin)");
 
         return app;
     }

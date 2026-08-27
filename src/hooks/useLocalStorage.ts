@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export function useLocalStorage<T>(key: string, initialValue: T) {
+export function useLocalStorage<T>(key: string, initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = useState<T>(() => {
     try {
-      const raw = localStorage.getItem(key)
-      return raw ? (JSON.parse(raw) as T) : initialValue
+      const stored = localStorage.getItem(key)
+      return stored ? (JSON.parse(stored) as T) : initialValue
     } catch {
       return initialValue
     }
@@ -13,10 +13,10 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(value))
-    } catch {
-      // Ignore write failures for private mode or blocked storage.
+    } catch (error) {
+      console.warn(`Error writing to localStorage for key: ${key}`, error)
     }
   }, [key, value])
 
-  return [value, setValue] as const
+  return [value, setValue]
 }

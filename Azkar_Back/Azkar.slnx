@@ -24,11 +24,7 @@
     <Project Path="src/Modules/Content/Content.Domain/Content.Domain.csproj" />
     <Project Path="src/Modules/Content/Content.Infrastructure/Content.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/src/Modules/Favorites/">
-    <Project Path="src/Modules/Favorites/Favorites.Application/Favorites.Application.csproj" />
-    <Project Path="src/Modules/Favorites/Favorites.Domain/Favorites.Domain.csproj" />
-    <Project Path="src/Modules/Favorites/Favorites.Infrastructure/Favorites.Infrastructure.csproj" />
-  </Folder>
+
   <Folder Name="/src/Modules/Kids/">
     <Project Path="src/Modules/Kids/Kids.Application/Kids.Application.csproj" />
     <Project Path="src/Modules/Kids/Kids.Domain/Kids.Domain.csproj" />
@@ -39,21 +35,12 @@
     <Project Path="src/Modules/Notifications/Notifications.Domain/Notifications.Domain.csproj" />
     <Project Path="src/Modules/Notifications/Notifications.Infrastructure/Notifications.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/src/Modules/Prayer/">
-    <Project Path="src/Modules/Prayer/Prayer.Application/Prayer.Application.csproj" />
-    <Project Path="src/Modules/Prayer/Prayer.Domain/Prayer.Domain.csproj" />
-    <Project Path="src/Modules/Prayer/Prayer.Infrastructure/Prayer.Infrastructure.csproj" />
-  </Folder>
   <Folder Name="/src/Modules/Questions/">
     <Project Path="src/Modules/Questions/Questions.Application/Questions.Application.csproj" />
     <Project Path="src/Modules/Questions/Questions.Domain/Questions.Domain.csproj" />
     <Project Path="src/Modules/Questions/Questions.Infrastructure/Questions.Infrastructure.csproj" />
   </Folder>
-  <Folder Name="/src/Modules/Quran/">
-    <Project Path="src/Modules/Quran/Quran.Application/Quran.Application.csproj" />
-    <Project Path="src/Modules/Quran/Quran.Domain/Quran.Domain.csproj" />
-    <Project Path="src/Modules/Quran/Quran.Infrastructure/Quran.Infrastructure.csproj" />
-  </Folder>
+
   <Folder Name="/src/Modules/Recitations/">
     <Project Path="src/Modules/Recitations/Recitations.Application/Recitations.Application.csproj" />
     <Project Path="src/Modules/Recitations/Recitations.Domain/Recitations.Domain.csproj" />

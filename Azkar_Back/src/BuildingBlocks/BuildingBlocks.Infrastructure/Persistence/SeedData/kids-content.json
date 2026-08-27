@@ -1,0 +1,200 @@
+{
+  "stories": [
+    {
+      "id": "s1",
+      "titleAr": "قصة أمانة النبي محمد ﷺ",
+      "titleEn": "The Trustworthiness of Prophet Muhammad",
+      "summaryAr": "كان النبي ﷺ معروفًا بالصادق الأمين حتى قبل البعثة، وكان الناس يودعون عنده أماناتهم ثقةً به.",
+      "summaryEn": "Before prophethood, people called Muhammad (peace be upon him) the truthful and trustworthy and kept their belongings with him.",
+      "moralAr": "الدرس: كن أمينًا في كلامك وأفعالك، فالأمانة من صفات المؤمن الحق.",
+      "moralEn": "Moral: Be trustworthy in words and actions. Trustworthiness is a key quality of a true believer."
+    },
+    {
+      "id": "s2",
+      "titleAr": "قصة لطف النبي ﷺ مع الأطفال",
+      "titleEn": "The Prophet's Kindness with Children",
+      "summaryAr": "كان النبي ﷺ يلاطف الأطفال، يسلم عليهم، ويبتسم لهم، ويعلمهم برفق وحنان.",
+      "summaryEn": "The Prophet (peace be upon him) was gentle with children, greeted them, smiled at them, and taught them with kindness.",
+      "moralAr": "الدرس: اللطف والرحمة يجعلانا محبوبين عند الله والناس.",
+      "moralEn": "Moral: Kindness and mercy make us beloved to Allah and to people."
+    },
+    {
+      "id": "s3",
+      "titleAr": "قصة بلال بن رباح وثباته",
+      "titleEn": "Bilal ibn Rabah and Steadfast Faith",
+      "summaryAr": "ثبت بلال رضي الله عنه على التوحيد رغم الشدة والتعذيب، وكان يردد: أحدٌ أحد.",
+      "summaryEn": "Bilal remained firm in faith despite hardship and torture, and kept saying: One, One.",
+      "moralAr": "الدرس: الثبات على الحق يحتاج صبرًا وشجاعة وتوكلًا على الله.",
+      "moralEn": "Moral: Staying on truth requires patience, courage, and reliance on Allah."
+    },
+    {
+      "id": "s4",
+      "titleAr": "قصة أبي بكر الصديق وصداقته للنبي",
+      "titleEn": "Abu Bakr's Loyalty to the Prophet",
+      "summaryAr": "لم يتردد أبو بكر رضي الله عنه لحظة عند سماع خبر الإسراء والمعراج، بل صدّق فورًا ولُقِّب بالصديق.",
+      "summaryEn": "Abu Bakr did not hesitate for a moment when he heard about the Isra and Miraj, immediately believing, earning the title As-Siddiq.",
+      "moralAr": "الدرس: الإيمان الحق يجعلك تصدق بلا تردد، والصداقة الحقيقية تقوم على الولاء.",
+      "moralEn": "Moral: True faith brings immediate conviction, and true friendship is built on loyalty."
+    },
+    {
+      "id": "s5",
+      "titleAr": "قصة عمر بن الخطاب وعدله",
+      "titleEn": "Umar ibn al-Khattab and His Justice",
+      "summaryAr": "كان عمر رضي الله عنه يتفقد رعيته ليلًا، ومرة حمل طعامًا على ظهره لامرأة وأطفالها المحتاجين.",
+      "summaryEn": "Umar would check on his people at night, and once carried food on his own back to a needy woman and her children.",
+      "moralAr": "الدرس: القائد الحق يخدم رعيته ولا يتكبر عليهم.",
+      "moralEn": "Moral: A true leader serves his people and does not look down on them."
+    },
+    {
+      "id": "s6",
+      "titleAr": "قصة خديجة رضي الله عنها",
+      "titleEn": "Khadijah — A Pillar of Support",
+      "summaryAr": "كانت خديجة رضي الله عنها أول من آمن بالنبي ﷺ، وواسته عند نزول الوحي بقولها: كلا والله لا يخزيك الله أبدًا.",
+      "summaryEn": "Khadijah was the first to believe in the Prophet and comforted him at the first revelation, saying Allah would never disgrace him.",
+      "moralAr": "الدرس: الزوج الصالح سند ودعم في الشدائد.",
+      "moralEn": "Moral: A righteous spouse is a pillar of strength in difficult times."
+    }
+  ],
+  "weeklyChallenges": [
+    {
+      "id": "c1",
+      "titleAr": "تحدي الصلاة في وقتها",
+      "titleEn": "Pray on Time Challenge",
+      "descriptionAr": "حاول أداء الصلوات الخمس في وقتها لمدة 3 أيام هذا الأسبوع.",
+      "descriptionEn": "Try to perform the five daily prayers on time for 3 days this week."
+    },
+    {
+      "id": "c2",
+      "titleAr": "تحدي الأذكار اليومية",
+      "titleEn": "Daily Adhkar Challenge",
+      "descriptionAr": "اقرأ أذكار الصباح والمساء يوميًا لمدة أسبوع كامل.",
+      "descriptionEn": "Read morning and evening adhkar every day for one full week."
+    },
+    {
+      "id": "c3",
+      "titleAr": "تحدي الابتسامة واللطف",
+      "titleEn": "Smile and Kindness Challenge",
+      "descriptionAr": "قم بثلاثة أعمال لطف مع العائلة أو الأصدقاء هذا الأسبوع.",
+      "descriptionEn": "Do three acts of kindness for family or friends this week."
+    },
+    {
+      "id": "c4",
+      "titleAr": "تحدي قراءة القرآن",
+      "titleEn": "Quran Reading Challenge",
+      "descriptionAr": "اقرأ صفحتين من القرآن يوميًا هذا الأسبوع.",
+      "descriptionEn": "Read two pages of the Quran every day this week."
+    },
+    {
+      "id": "c5",
+      "titleAr": "تحدي الاستغفار",
+      "titleEn": "Istighfar Challenge",
+      "descriptionAr": "قل أستغفر الله مئة مرة يوميًا لمدة أسبوع.",
+      "descriptionEn": "Say Astaghfirullah one hundred times every day for a week."
+    },
+    {
+      "id": "c6",
+      "titleAr": "تحدي صيام الاثنين",
+      "titleEn": "Monday Fast Challenge",
+      "descriptionAr": "صم يوم الاثنين هذا الأسبوع اقتداءً بالنبي ﷺ.",
+      "descriptionEn": "Fast on Monday this week following the Sunnah of the Prophet."
+    }
+  ],
+  "quiz": [
+    {
+      "id": "quiz-1",
+      "questionAr": "كم عدد الصلوات المفروضة في اليوم؟",
+      "questionEn": "How many obligatory prayers are there each day?",
+      "optionsAr": ["3", "4", "5", "6"],
+      "optionsEn": ["3", "4", "5", "6"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-2",
+      "questionAr": "ما اسم كتاب المسلمين المقدس؟",
+      "questionEn": "What is the holy book of Muslims?",
+      "optionsAr": ["القرآن", "الإنجيل", "التوراة", "الزبور"],
+      "optionsEn": ["Quran", "Injeel", "Torah", "Psalms"],
+      "correctIndex": 0
+    },
+    {
+      "id": "quiz-3",
+      "questionAr": "من هو خاتم الأنبياء والمرسلين؟",
+      "questionEn": "Who is the final Prophet and Messenger?",
+      "optionsAr": ["موسى عليه السلام", "عيسى عليه السلام", "محمد ﷺ", "إبراهيم عليه السلام"],
+      "optionsEn": ["Musa (AS)", "Isa (AS)", "Muhammad (PBUH)", "Ibrahim (AS)"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-4",
+      "questionAr": "كم عدد أركان الإسلام؟",
+      "questionEn": "How many pillars does Islam have?",
+      "optionsAr": ["3", "4", "5", "6"],
+      "optionsEn": ["3", "4", "5", "6"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-5",
+      "questionAr": "ما اسم أول سورة في القرآن الكريم؟",
+      "questionEn": "What is the name of the first surah in the Quran?",
+      "optionsAr": ["البقرة", "الفاتحة", "الإخلاص", "الكهف"],
+      "optionsEn": ["Al-Baqarah", "Al-Fatihah", "Al-Ikhlas", "Al-Kahf"],
+      "correctIndex": 1
+    },
+    {
+      "id": "quiz-6",
+      "questionAr": "في أي شهر نزل القرآن الكريم؟",
+      "questionEn": "In which month was the Quran revealed?",
+      "optionsAr": ["رجب", "شعبان", "رمضان", "ذو الحجة"],
+      "optionsEn": ["Rajab", "Sha'ban", "Ramadan", "Dhul-Hijjah"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-7",
+      "questionAr": "ما عدد أسماء الله الحسنى؟",
+      "questionEn": "How many beautiful names does Allah have?",
+      "optionsAr": ["33", "66", "99", "100"],
+      "optionsEn": ["33", "66", "99", "100"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-8",
+      "questionAr": "ما اسم أم المؤمنين التي تزوجها النبي ﷺ أولًا؟",
+      "questionEn": "What is the name of the first wife of the Prophet (PBUH)?",
+      "optionsAr": ["عائشة", "خديجة", "حفصة", "زينب"],
+      "optionsEn": ["Aisha", "Khadijah", "Hafsa", "Zainab"],
+      "correctIndex": 1
+    },
+    {
+      "id": "quiz-9",
+      "questionAr": "كم عدد آيات سورة الفاتحة؟",
+      "questionEn": "How many verses does Surah Al-Fatihah have?",
+      "optionsAr": ["5", "6", "7", "8"],
+      "optionsEn": ["5", "6", "7", "8"],
+      "correctIndex": 2
+    },
+    {
+      "id": "quiz-10",
+      "questionAr": "ما اسم الليلة التي بدأ فيها نزول الوحي؟",
+      "questionEn": "What is the name of the night the revelation began?",
+      "optionsAr": ["ليلة القدر", "ليلة الإسراء", "ليلة البراءة", "ليلة الجمعة"],
+      "optionsEn": ["Laylat al-Qadr", "Laylat al-Isra", "Laylat al-Bara'ah", "Laylat al-Jumu'ah"],
+      "correctIndex": 0
+    },
+    {
+      "id": "quiz-11",
+      "questionAr": "إلى أين هاجر النبي ﷺ من مكة؟",
+      "questionEn": "Where did the Prophet (PBUH) migrate from Makkah?",
+      "optionsAr": ["الطائف", "المدينة المنورة", "القدس", "مصر"],
+      "optionsEn": ["Ta'if", "Madinah", "Jerusalem", "Egypt"],
+      "correctIndex": 1
+    },
+    {
+      "id": "quiz-12",
+      "questionAr": "كم عدد أجزاء القرآن الكريم؟",
+      "questionEn": "How many parts (juz) does the Quran have?",
+      "optionsAr": ["20", "25", "30", "35"],
+      "optionsEn": ["20", "25", "30", "35"],
+      "correctIndex": 2
+    }
+  ]
+}

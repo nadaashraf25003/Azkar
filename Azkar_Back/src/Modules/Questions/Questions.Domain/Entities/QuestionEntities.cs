@@ -11,20 +11,22 @@ public class Question : AuditableEntity
     public int Upvotes { get; private set; }
     public int Downvotes { get; private set; }
     public bool IsAnswered { get; private set; }
+    public bool IsApproved { get; private set; }
 
     private readonly List<Answer> _answers = [];
     public IReadOnlyCollection<Answer> Answers => _answers.AsReadOnly();
 
     private Question() { }
 
-    public static Question Create(string title, string content, string category, string askerName)
+    public static Question Create(string title, string content, string category, string askerName, bool isApproved = false)
     {
         return new Question
         {
             Title = title,
             Content = content,
             Category = string.IsNullOrWhiteSpace(category) ? "General" : category,
-            AskerName = string.IsNullOrWhiteSpace(askerName) ? "Anonymous" : askerName
+            AskerName = string.IsNullOrWhiteSpace(askerName) ? "Anonymous" : askerName,
+            IsApproved = isApproved
         };
     }
 
@@ -35,6 +37,9 @@ public class Question : AuditableEntity
     }
 
     public void MarkAnswered() => IsAnswered = true;
+    public void UpdateIsAnswered(bool isAnswered) => IsAnswered = isAnswered;
+    public void Approve() => IsApproved = true;
+    public void Reject() => IsApproved = false;
 }
 
 public class Answer : AuditableEntity

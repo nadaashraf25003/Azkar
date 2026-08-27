@@ -79,42 +79,4 @@ public class KidsQuizQuestion : Entity
     }
 }
 
-public class KidsProgress : Entity
-{
-    public string DeviceIdentifier { get; private set; } = string.Empty;
-    public int TotalPoints { get; private set; }
-    public int CompletedStoriesCount { get; private set; }
-    public int CompletedChallengesCount { get; private set; }
-    public int QuizzesTakenCount { get; private set; }
-    public DateTime LastActivityAtUtc { get; private set; } = DateTime.UtcNow;
 
-    private KidsProgress() { }
-
-    public static KidsProgress Create(string deviceIdentifier)
-    {
-        return new KidsProgress
-        {
-            DeviceIdentifier = deviceIdentifier,
-            TotalPoints = 0,
-            LastActivityAtUtc = DateTime.UtcNow
-        };
-    }
-
-    public void AddPoints(int points)
-    {
-        TotalPoints += points;
-        LastActivityAtUtc = DateTime.UtcNow;
-    }
-
-    public void IncrementStories()
-    {
-        CompletedStoriesCount++;
-        LastActivityAtUtc = DateTime.UtcNow;
-    }
-
-    public void IncrementChallenges()
-    {
-        CompletedChallengesCount++;
-        LastActivityAtUtc = DateTime.UtcNow;
-    }
-}

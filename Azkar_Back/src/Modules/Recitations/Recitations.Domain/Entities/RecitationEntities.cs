@@ -61,6 +61,12 @@ public class Recitation : AuditableEntity
         RatingsCount++;
         AverageRating = Math.Round(totalScore / RatingsCount, 2);
     }
+
+    public void SetRating(double averageRating, int ratingsCount)
+    {
+        AverageRating = averageRating;
+        RatingsCount = ratingsCount;
+    }
 }
 
 public class RecitationComment : AuditableEntity
@@ -100,5 +106,11 @@ public class RecitationRating : Entity
             DeviceIdentifier = deviceIdentifier,
             Score = Math.Clamp(score, 1, 5)
         };
+    }
+
+    public void UpdateScore(int score)
+    {
+        Score = Math.Clamp(score, 1, 5);
+        RatedAtUtc = DateTime.UtcNow;
     }
 }

@@ -10,6 +10,8 @@ interface ZikrCardProps {
   onDecrement: (id: string) => void
   onReset: (id: string) => void
   showTypeTitle?: boolean
+  isAdmin?: boolean
+  onDelete?: (zikr: ZikrItem) => void
 }
 
 export function ZikrCard({
@@ -20,6 +22,8 @@ export function ZikrCard({
   onDecrement,
   onReset,
   showTypeTitle = false,
+  isAdmin = false,
+  onDelete,
 }: ZikrCardProps) {
   const { isFavorite, toggleFavorite } = useFavorites()
   const isDone = currentCount >= zikr.count
@@ -69,27 +73,48 @@ export function ZikrCard({
         <p className="font-title text-lg leading-relaxed text-[var(--text-strong)] md:text-xl" dir="rtl">
           {language === 'ar' ? zikr.text : zikr.textEn}
         </p>
-        <button
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation()
-            toggleFavorite(zikr.id)
-          }}
-          className={[
-            'rounded-full border px-3 py-1 text-xs font-semibold transition',
-            isFavorite(zikr.id)
-              ? 'border-[var(--brand-500)] bg-[var(--brand-500)] text-white'
-              : 'border-[var(--line)] text-[var(--muted)] hover:border-[var(--brand-500)]',
-          ].join(' ')}
-        >
-          {isFavorite(zikr.id)
-            ? language === 'ar'
-              ? 'مفضل'
-              : 'Saved'
-            : language === 'ar'
-              ? 'حفظ'
-              : 'Save'}
-        </button>
+
+        <div className="flex shrink-0 items-center gap-1.5">
+          {isAdmin && onDelete ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation()
+                onDelete(zikr)
+              }}
+              title={language === 'ar' ? 'حذف الذكر نهائياً' : 'Delete Zikr permanently'}
+              className="flex items-center gap-1 rounded-full border border-rose-500/30 bg-rose-500/10 px-2.5 py-1 text-xs font-bold text-rose-600 shadow-sm transition hover:bg-rose-500/20 active:scale-95"
+            >
+              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              </svg>
+              <span>{language === 'ar' ? 'حذف' : 'Delete'}</span>
+            </button>
+          ) : null}
+
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation()
+              toggleFavorite(zikr.id)
+            }}
+            className={[
+              'rounded-full border px-3 py-1 text-xs font-semibold transition',
+              isFavorite(zikr.id)
+                ? 'border-[var(--brand-500)] bg-[var(--brand-500)] text-white'
+                : 'border-[var(--line)] text-[var(--muted)] hover:border-[var(--brand-500)]',
+            ].join(' ')}
+          >
+            {isFavorite(zikr.id)
+              ? language === 'ar'
+                ? 'مفضل'
+                : 'Saved'
+              : language === 'ar'
+                ? 'حفظ'
+                : 'Save'}
+          </button>
+        </div>
       </div>
 
       <div className="mb-4 rounded-2xl border border-[var(--line)] bg-[var(--brand-100)] p-3 text-sm">

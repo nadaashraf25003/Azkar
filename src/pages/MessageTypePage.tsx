@@ -2,9 +2,11 @@ import { useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useSettings } from '../context/SettingsContext'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import { useMessagesData } from '../hooks/useMessagesData'
+import { useMessagesData, useDeleteMessage } from '../hooks/useMessagesData'
 import type { MessageItem } from '../types/message'
 import { useFavorites } from '../context/FavoritesContext'
+import { AddMessageModal } from '../components/AddMessageModal'
+import { ConfirmDeleteModal } from '../components/ConfirmDeleteModal'
 
 type SortMode = 'newest' | 'shortest' | 'mostSaved'
 
@@ -28,7 +30,26 @@ export function MessageTypePage() {
   const [savedCounts, setSavedCounts] = useLocalStorage<Record<string, number>>('azkar-message-saves', {})
   const [busyId, setBusyId] = useState<string | null>(null)
 
-  const { data, isLoading, isError } = useMessagesData()
+  // Admin authentication state
+  const [isAdminAuthenticated] = useLocalStorage<boolean>('azkar-qa-admin-auth', false)
+  const [viewerRole] = useLocalStorage<string>('azkar-qa-viewer-role', 'user')
+  const isAdmin = isAdminAuthenticated || viewerRole === 'admin'
+
+  // Modals state
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+  const [deleteTarget, setDeleteTarget] = useState<{
+    isOpen: boolean
+    id: string
+    title: string
+  }>({
+    isOpen: false,
+    id: '',
+    title: '',
+  })
+  const [toastMessage, setToastMessage] = useState<string | null>(null)
+
+  const { data, isLoading, isError, refetch } = useMessagesData()
+  const deleteMutation = useDeleteMessage()
   const { toggleFavorite, isFavorite } = useFavorites()
 
   const filtered = useMemo(() => {
@@ -342,8 +363,50 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
     }
   }
 
+  const showToast = (msg: string) => {
+    setToastMessage(msg)
+    setTimeout(() => {
+      setToastMessage(null)
+    }, 4000)
+  }
+
+  const handleDeleteClick = (item: MessageItem) => {
+    setDeleteTarget({
+      isOpen: true,
+      id: item.id,
+      title: (language === 'ar' ? item.textAr : item.textEn).substring(0, 70) + '...',
+    })
+  }
+
+  const confirmDelete = async () => {
+    if (!deleteTarget.id) return
+    try {
+      await deleteMutation.mutateAsync(deleteTarget.id)
+      setDeleteTarget({ isOpen: false, id: '', title: '' })
+      showToast(
+        language === 'ar'
+          ? 'تم حذف الرسالة بنجاح من الخادم.'
+          : 'Message deleted successfully from backend.'
+      )
+    } catch (err: any) {
+      showToast(
+        err?.message ||
+          (language === 'ar'
+            ? 'تعذر حذف الرسالة من الخادم.'
+            : 'Failed to delete message from backend.')
+      )
+    }
+  }
+
   if (isLoading) {
-    return <p className="text-sm text-[var(--muted)]">{language === 'ar' ? 'جارٍ تحميل الرسائل...' : 'Loading messages...'}</p>
+    return (
+      <div className="py-12 text-center">
+        <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <p className="mt-3 text-sm text-[var(--muted)]">
+          {language === 'ar' ? 'جارٍ تحميل الرسائل من الخادم...' : 'Loading messages from backend...'}
+        </p>
+      </div>
+    )
   }
 
   if (isError || !data) {
@@ -351,18 +414,80 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
   }
 
   return (
-    <section className="space-y-4 md:space-y-6">
-      <div className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 md:p-7">
-        <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-[var(--brand-500)]/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -right-8 h-48 w-48 rounded-full bg-[var(--brand-600)]/20 blur-3xl" />
+    <section className="space-y-4 md:space-y-6" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Toast Notification */}
+      {toastMessage ? (
+        <div className="fixed bottom-6 end-6 z-50 flex items-center gap-3 rounded-2xl border border-emerald-500/30 bg-[var(--panel)] px-4 py-3 text-emerald-600 shadow-2xl transition-all animate-bounce dark:text-emerald-400">
+          <span className="text-lg">✅</span>
+          <span className="text-xs font-bold sm:text-sm">{toastMessage}</span>
+        </div>
+      ) : null}
 
-        <div className="relative mb-2">
+      {/* Admin Status Banner */}
+      {isAdmin ? (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 p-3.5 sm:px-5">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-indigo-500/20 text-xs">
+              ⚡
+            </span>
+            <div>
+              <p className="text-xs font-bold text-indigo-700 dark:text-indigo-400">
+                {language === 'ar'
+                  ? 'وضع تحكم المشرف نشط (الرسائل اليومية)'
+                  : 'Admin Control Active (Daily Messages)'}
+              </p>
+              <p className="text-[10px] text-[var(--muted)]">
+                {language === 'ar'
+                  ? 'يمكنك إضافة رسائل جديدة أو حذفها مباشرة من الخادم'
+                  : 'You can add or delete messages directly from the backend database'}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Link
+              to="/admin/messages"
+              className="inline-flex items-center gap-1 rounded-xl border border-indigo-500/40 bg-[var(--bg)] px-3 py-1.5 text-xs font-bold text-indigo-700 transition hover:bg-indigo-500/10 dark:text-indigo-400"
+            >
+              <span>{language === 'ar' ? 'لوحة تحكم المشرف' : 'Admin Portal'}</span>
+              <span>←</span>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setIsAddModalOpen(true)}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-700 active:scale-95"
+            >
+              <span>+</span>
+              <span>{language === 'ar' ? 'إضافة رسالة جديدة' : 'Add New Message'}</span>
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {/* Header Banner */}
+      <div className="relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 md:p-7">
+        <div className="pointer-events-none absolute -left-16 -top-16 h-40 w-40 rounded-full bg-indigo-500/20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -right-8 h-48 w-48 rounded-full bg-indigo-600/20 blur-3xl" />
+
+        <div className="relative mb-2 flex items-center justify-between">
           <Link
             to="/messages"
             className="text-sm font-semibold text-[var(--brand-600)] transition hover:text-[var(--brand-500)]"
           >
-            {language === 'ar' ? 'العودة إلى كل الأنواع' : 'Back to all types'}
+            {language === 'ar' ? '← العودة إلى كل الأنواع' : '← Back to all types'}
           </Link>
+
+          <button
+            type="button"
+            onClick={() => void refetch()}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-[var(--line)] bg-[var(--bg)] px-3 py-1.5 text-xs font-bold text-[var(--text)] transition hover:border-indigo-500"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+            </svg>
+            <span>{language === 'ar' ? 'تحديث' : 'Refresh'}</span>
+          </button>
         </div>
 
         <div className="relative">
@@ -424,9 +549,19 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-[var(--line)] p-6 text-sm text-[var(--muted)]">
-          {language === 'ar' ? 'لا توجد رسائل لهذا النوع.' : 'No messages found for this type.'}
-        </p>
+        <div className="rounded-3xl border border-dashed border-[var(--line)] p-8 text-center text-sm text-[var(--muted)]">
+          <p>{language === 'ar' ? 'لا توجد رسائل لهذا النوع.' : 'No messages found for this type.'}</p>
+          {isAdmin ? (
+            <button
+              type="button"
+              onClick={() => setIsAddModalOpen(true)}
+              className="mt-3 inline-flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-indigo-700"
+            >
+              <span>+</span>
+              <span>{language === 'ar' ? 'إضافة رسالة لهذا القسم' : 'Add Message to this Type'}</span>
+            </button>
+          ) : null}
+        </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2">
           {filtered.map((item) => (
@@ -438,7 +573,21 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
                 <span className="rounded-full bg-[var(--brand-100)] px-3 py-1 text-xs font-semibold text-[var(--brand-700)]">
                   {getTypeLabel(item.type, language)}
                 </span>
-                <span className="text-xs font-semibold text-[var(--muted)]">#{item.id}</span>
+                
+                {isAdmin ? (
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteClick(item)}
+                    className="inline-flex items-center gap-1 rounded-lg border border-red-500/30 bg-red-500/10 px-2 py-1 text-xs font-bold text-red-600 transition hover:bg-red-500 hover:text-white"
+                    title={language === 'ar' ? 'حذف من الخادم' : 'Delete from backend'}
+                  >
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <polyline points="3 6 5 6 21 6" />
+                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                    </svg>
+                    <span>{language === 'ar' ? 'حذف' : 'Delete'}</span>
+                  </button>
+                ) : null}
               </div>
 
               <h2 className="text-xl font-semibold text-[var(--text-strong)]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
@@ -451,12 +600,11 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
 
               <div className="mt-4 rounded-xl border border-[var(--line)] bg-[var(--bg)] px-3 py-2">
                 <p className="text-sm font-semibold text-[var(--muted)]" dir={language === 'ar' ? 'rtl' : 'ltr'}>
-                  {language === 'ar' ? 'بقلم' : 'By'}: {language === 'ar' ? item.authorAr : item.authorEn}
+                  {language === 'ar' ? 'المصدر / القائل' : 'Source'}: {language === 'ar' ? item.authorAr : item.authorEn}
                 </p>
               </div>
 
-              <div className="mt-3 flex flex-wrap gap-2">
-
+              <div className="mt-3 flex flex-wrap items-center gap-2">
                 <button
                   type="button"
                   onClick={() => toggleFavorite(item.id)}
@@ -473,7 +621,7 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
                       : 'Remove Favorite'
                     : language === 'ar'
                       ? 'أضف إلى المفضلة'
-                      : 'Add to Favorites'}
+                      : 'Add Favorite'}
                 </button>
 
                 <button
@@ -510,6 +658,35 @@ const generateMessageImageBlob = async (item: MessageItem): Promise<Blob | null>
           ))}
         </div>
       )}
+
+      {/* ADD MESSAGE MODAL */}
+      <AddMessageModal
+        isOpen={isAddModalOpen}
+        initialCategory={type || 'religious'}
+        onClose={() => setIsAddModalOpen(false)}
+        onSuccess={() => {
+          showToast(
+            language === 'ar'
+              ? 'تمت إضافة الرسالة بنجاح إلى الخادم.'
+              : 'New message added successfully to the backend server.'
+          )
+        }}
+      />
+
+      {/* CONFIRM DELETE MODAL */}
+      <ConfirmDeleteModal
+        isOpen={deleteTarget.isOpen}
+        isLoading={deleteMutation.isPending}
+        titleAr="تأكيد حذف الرسالة من الخادم"
+        titleEn="Confirm Message Deletion"
+        messageAr="هل أنت متأكد من رغبتك في حذف هذه الرسالة نهائياً من قاعدة البيانات في الخادم؟"
+        messageEn="Are you sure you want to permanently delete this message from the backend database?"
+        itemTitle={deleteTarget.title}
+        confirmTextAr="نعم، حذف من الخادم"
+        confirmTextEn="Yes, Delete from Server"
+        onConfirm={confirmDelete}
+        onClose={() => setDeleteTarget({ isOpen: false, id: '', title: '' })}
+      />
     </section>
   )
 }
@@ -523,3 +700,4 @@ function getTypeLabel(type: string, language: 'ar' | 'en'): string {
 
   return language === 'ar' ? labels.ar : labels.en
 }
+

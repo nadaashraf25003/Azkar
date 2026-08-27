@@ -336,19 +336,6 @@ npm run dev
 npm run build
 ```
 
----
-
-## 🔑 بيانات تسجيل الدخول للمشرف (Admin Credentials)
-
-| الحقل (Field) | القيمة الافتراضية (Default Value) |
-|---|---|
-| **رابط الدخول** | `/admin/login` |
-| **البريد الإلكتروني** | `admin@azkar.app` |
-| **كلمة المرور** | `Azkar@123` |
-
-> 🔒 **ملاحظة أمنية**: يتم تخزين حالة المشرف ومصادقته محلياً مع حماية جميع مسارات `/admin/*` بواسطة مكون الحماية `ProtectedRoute`.
-
----
 
 <div align="center">
   <sub>صُنع بكل حب وابتغاءً للأجر والثواب 🤍 • All Rights Reserved</sub>

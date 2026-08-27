@@ -45,7 +45,7 @@ async function fetchSurahs(): Promise<SurahItem[]> {
     revelationPlace: chapter.revelation_place,
     revelationOrder: chapter.revelation_order,
     versesCount: chapter.verses_count,
-    hasBismillah: chapter.bismillah_pre,
+    hasBismillah: chapter.id === 1 || chapter.bismillah_pre,
   }))
 }
 

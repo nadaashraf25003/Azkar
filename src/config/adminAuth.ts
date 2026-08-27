@@ -1,9 +1,9 @@
 /**
  * Admin Credentials Configuration
- * Sourced securely from environment variables (.env / .env.local).
- * Never commit hardcoded production passwords to GitHub.
+ * Read purely from environment variables (.env / .env.local).
+ * Contains NO hardcoded credentials in the repository.
  */
 export const ADMIN_AUTH = {
-  email: (import.meta.env.VITE_ADMIN_EMAIL || 'admin@azkar.app').trim().toLowerCase(),
-  password: import.meta.env.VITE_ADMIN_PASSWORD || 'Azkar@123',
+  email: (import.meta.env.VITE_ADMIN_EMAIL || '').trim().toLowerCase(),
+  password: String(import.meta.env.VITE_ADMIN_PASSWORD || ''),
 } as const

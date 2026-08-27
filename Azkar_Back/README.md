@@ -1,182 +1,385 @@
-# 📖 Azkar Backend - Modular Clean Architecture (.NET 10)
+# 📖 خادم ومنصة أذكار المسلم | Azkar Backend API
 
-A modern and robust backend for the Azkar and Holy Quran application, built on the **Modular Clean Architecture** pattern using **CQRS**, **MediatR**, and **Entity Framework Core**.
+> **واجهة برمجة تطبيقات ويب حديثة فائقة الأداء والموثوقية** مبنية على بيئة **.NET 10** بنمط المعمارية النظيفة المعيارية (**Modular Clean Architecture**) مع **CQRS** و **MediatR** و **Entity Framework Core** و **SQL Server**.
 
 ---
 
-## 🌟 Architecture Overview
+## 📑 جدول المحتويات | Table of Contents
+1. [🌟 نظرة عامة والمعمارية البرمجية (Architecture Overview)](#-نظرة-عامة-والمعمارية-البرمجية-architecture-overview)
+2. [🏗️ مخطط سريان الطلبات (Clean Request Flow)](#️-مخطط-سريان-الطلبات-clean-request-flow)
+3. [📦 الوحدات البرمجية والخدمات (Modules Breakdown)](#-الوحدات-البرمجية-والخدمات-modules-breakdown)
+   - [وحدة الأذكار اليومية (Adhkar Module)](#1-وحدة-الأذكار-اليومية-adhkar-module)
+   - [وحدة عداد التسبيح (Tasbeeh Module)](#2-وحدة-عداد-التسبيح-tasbeeh-module)
+   - [وحدة منصة الأطفال (Kids Module)](#3-وحدة-منصة-الأطفال-kids-module)
+   - [وحدة المحتوى الإسلامي والرسائل (Content Module)](#4-وحدة-المحتوى-الإسلامي-والرسائل-content-module)
+   - [وحدة الأسئلة والأجوبة الفقهية (Questions Module)](#5-وحدة-الأسئلة-والأجوبة-الفقهية-questions-module)
+   - [وحدة التلاوات القرآنية المجتمعية (Recitations Module)](#6-وحدة-التلاوات-القرآنية-المجتمعية-recitations-module)
+   - [وحدة الإشراف وتقارير الأجهزة (Administration Module)](#7-وحدة-الإشراف-وتقارير-الأجهزة-administration-module)
+4. [📂 هيكل المجلدات والملفات بالكامل (Complete File Structure)](#-هيكل-المجلدات-والملفات-بالكامل-complete-file-structure)
+5. [🔌 دليل جميع نقاط النهاية للـ API (Complete API Endpoints Reference)](#-دليل-جميع-نقاط-النهاية-للـ-api-complete-api-endpoints-reference)
+6. [🗄️ تصميم قاعدة البيانات والجداول (Database Schema & Tables)](#️-تصميم-قاعدة-البيانات-والجداول-database-schema--tables)
+7. [⚙️ التقنيات والمكتبات المستخدمة (Tech Stack)](#️-التقنيات-والمكتبات-المستخدمة-tech-stack)
+8. [🚀 التشغيل والبناء المحلي (Getting Started & Running Locally)](#-التشغيل-والبناء-المحلي-getting-started--running-locally)
 
-The project follows a clean and strict request processing flow (Clean Architecture Request Flow):
+---
+
+## 🌟 نظرة عامة والمعمارية البرمجية (Architecture Overview)
+
+تم تصميم النظام البرمجي للخادم وفق مبادئ **Modular Clean Architecture** لضمان:
+- **الفصل التام للمسؤوليات (Separation of Concerns)**: كل وحدة (Module) مستقلة بذاتها وتتكون من 3 طبقات: `Domain` و `Application` و `Infrastructure`.
+- **نمط CQRS**: فصل مسار القراءة (Queries) عن مسار الكتابة والتعديل والحذف (Commands) باستخدام **MediatR Pipeline**.
+- **معالجة الأخطاء الوظيفية (Result Monad Pattern)**: عدم استخدام الاستثناءات (Exceptions) في منطق الأعمال واستبدالها بنموذج `Result<T>` و `Error`.
+- **التدقيق التلقائي (Automatic Auditing)**: يتم تعبئة حقول `CreatedAtUtc` و `UpdatedAtUtc` تلقائياً عبر `AuditableEntityInterceptor`.
+- **عزل المخططات (Database Schemas)**: كل وحدة لها Schema خاصة بها في قاعدة البيانات (مثل `adhkar`, `tasbeeh`, `kids`, `content`, `questions`, `recitations`, `admin`).
+
+---
+
+## 🏗️ مخطط سريان الطلبات (Clean Request Flow)
 
 ```text
-HTTP Request
-     │
-     ▼
-API Endpoint (Minimal APIs / Route Groups)
-     │
-     ▼
-Command / Query (ICommand<T> / IQuery<T>)
-     │
-     ▼
-Handler (MediatR CQRS Pipeline)
-     │
-     ├── Validation (FluentValidation Auto-Validation)
-     │
-     ├── Business Rules (Result<T> & Error Monads)
-     │
-     ▼
-Domain (Entities, Value Objects, Domain Events)
-     │
-     ▼
-Repository / Infrastructure (EF Core AzkarDbContext & Interceptors)
-     │
-     ▼
-Database (MonsterASP SQL Server - Schemas per Module)
+               ┌────────────────────────────────────────────────────────┐
+               │              HTTP Request (JSON Payload)               │
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │    ASP.NET Core Minimal APIs & Route Groups (Endpoints)│
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │      MediatR Pipeline (ICommand<T> / IQuery<T>)        │
+               │   • ValidationBehavior (FluentValidation)              │
+               │   • Logging & Exception Handling Middlewares           │
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │         Command / Query Handlers (Application)         │
+               │   • Domain Business Invariants Validation              │
+               │   • Factory Method Entity Creation                     │
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │      Domain Entities & Rules (Domain Layer)            │
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │   EF Core DbContext & Interceptors (Infrastructure)    │
+               │   • AuditableEntityInterceptor (Auto Timestamps)       │
+               │   • Explicit Schema Mapping per Module                 │
+               └───────────────────────────┬────────────────────────────┘
+                                           │
+                                           ▼
+               ┌────────────────────────────────────────────────────────┐
+               │            SQL Server Database (Production)            │
+               └────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 📂 Project Structure
+## 📦 الوحدات البرمجية والخدمات (Modules Breakdown)
 
-The project is divided into independent modules with shared layers (BuildingBlocks):
+### 1. وحدة الأذكار اليومية (Adhkar Module)
+- **الكيانات (Entities)**: `Zikr`, `Category`.
+- **العمليات (Operations)**:
+  - جلب قائمة جميع الأذكار (`GetAllAdhkarQuery`).
+  - جلب تصنيفات الأذكار مع عدد عناصر كل فئة (`GetCategoriesQuery`).
+  - جلب الأذكار حسب التصنيف (`GetAdhkarByCategoryQuery`).
+  - إضافة ذكر جديد إلى الخادم من لوحة المشرف (`CreateZikrCommand`).
+  - حذف ذكر نهائياً من قاعدة البيانات (`DeleteZikrCommand`).
+
+### 2. وحدة عداد التسبيح (Tasbeeh Module)
+- **الكيانات (Entities)**: `TasbeehPreset`.
+- **العمليات (Operations)**:
+  - جلب أذكار وتفضيلات التسبيح المحفوظة (`GetTasbeehPresetsQuery`).
+  - إضافة تسبيحة/ذكر جديد بالهدف المخصص والفضل والترجمة (`CreateTasbeehPresetCommand`).
+  - حذف ذكر من العداد للمشرف (`DeleteTasbeehPresetCommand`).
+
+### 3. وحدة منصة الأطفال (Kids Module)
+- **الكيانات (Entities)**: `KidsStory`, `KidsChallenge`, `KidsQuizQuestion`.
+- **العمليات (Operations)**:
+  - إدارة القصص الإسلامية للأطفال مصنفة حسب الفئات العمرية (`Create/Delete KidsStory`).
+  - إدارة التحديات الدينية والسلوكية والنقاط (`Create/Delete KidsChallenge`).
+  - إدارة أسئلة المسابقات التفاعلية والخيارات وشرح الإجابة الصحيحة (`Create/Delete KidsQuizQuestion`).
+
+### 4. وحدة المحتوى الإسلامي والرسائل (Content Module)
+- **الكيانات (Entities)**: `DailyMessage`, `SeerahEvent`, `ReligiousInfoItem`.
+- **العمليات (Operations)**:
+  - **الرسائل والخواطر**: جلب رسالة اليوم العشوائية، التصفية حسب التصنيف (10 تصنيفات)، والإضافة والحذف.
+  - **السيرة النبوية**: جلب التسلسل الزمني للأحداث (العهد المكي والمدني)، والإضافة والحذف.
+  - **المعلومات الدينية**: جلب البطاقات المعرفية الموثقة بالمصادر والتصنيفات، والإضافة والحذف.
+
+### 5. وحدة الأسئلة والأجوبة الفقهية (Questions Module)
+- **الكيانات (Entities)**: `Question`, `Answer`, `Vote`.
+- **العمليات (Operations)**:
+  - طرح سؤال من المستخدمين (`AskQuestionCommand`).
+  - الإجابة على الأسئلة مع توثيق المصدر الفقهي (`AnswerQuestionCommand`).
+  - التصويت على الأسئلة (`VoteQuestionCommand`).
+  - اعتماد الأسئلة المعلقة (`ApproveQuestionCommand`) وحذف الأسئلة والأجوبة.
+
+### 6. وحدة التلاوات القرآنية المجتمعية (Recitations Module)
+- **الكيانات (Entities)**: `Recitation`, `RecitationComment`, `RecitationRating`.
+- **العمليات (Operations)**:
+  - رفع وتخزين ملفات التلاوات الصوتية (`SubmitRecitationCommand`).
+  - دورة تدقيق واعتماد التلاوات (`Approve/Reject Recitation`).
+  - تقييم التلاوات بالنجوم والتعليق عليها وحذف التعليقات المخالفة.
+
+### 7. وحدة الإشراف وتقارير الأجهزة (Administration Module)
+- **الكيانات (Entities)**: `ContentReport`, `AuditLog`.
+- **العمليات (Operations)**:
+  - تقارير وإحصائيات الأجهزة الفريدة الزائرة (`GetDeviceReportsQuery`).
+  - ملخص وتوزيع الزيارات والأنظمة (`GetDeviceReportSummaryQuery`).
+  - تسجيل نشاط ودخول الأجهزة تلقائياً (`LogDeviceActivityCommand`).
+  - تنظيف السجلات القديمة الأقدم من 90 يوماً (`ClearOldAuditLogsCommand`).
+  - استقبال وبلاغات المستخدمين عن المحتوى المخالف وحلها (`Report/Resolve Content`).
+
+---
+
+## 📂 هيكل المجلدات والملفات بالكامل (Complete File Structure)
 
 ```text
 Azkar_Back/
-├── Azkar.slnx
+├── Azkar.slnx                               # Solution file
+├── publish/                                 # Build & deployment artifacts
 │
-├── src/
-│   ├── Host/
-│   │   └── Azkar.Api/                         # Entry point, Server startup and Swagger
-│   │       ├── Endpoints/                     # API routes for all modules
-│   │       ├── Middleware/                    # Error handling and logging
-│   │       ├── Program.cs                     # Service configuration and app startup
-│   │       └── appsettings.json               # Database connection strings
-│   │
-│   ├── BuildingBlocks/
-│   │   ├── BuildingBlocks.Domain/             # Core entities (Entity, Result, Error, IDomainEvent)
-│   │   ├── BuildingBlocks.Application/        # CQRS pattern and Validation Behaviors
-│   │   └── BuildingBlocks.Infrastructure/     # General DB context and Design Factory (AzkarDbContext)
-│   │
-│   └── Modules/
-│       ├── Adhkar/           (Adhkar.Domain, Adhkar.Application, Adhkar.Infrastructure)
-│       ├── Quran/            (Quran.Domain, Quran.Application, Quran.Infrastructure)
-│       ├── Recitations/      (Recitations.Domain, Recitations.Application, Recitations.Infrastructure)
-│       ├── Tasbeeh/          (Tasbeeh.Domain, Tasbeeh.Application, Tasbeeh.Infrastructure)
-│       ├── Questions/        (Questions.Domain, Questions.Application, Questions.Infrastructure)
-│       ├── Content/          (Content.Domain, Content.Application, Content.Infrastructure)
-│       ├── Kids/             (Kids.Domain, Kids.Application, Kids.Infrastructure)
-│       ├── Prayer/           (Prayer.Domain, Prayer.Application, Prayer.Infrastructure)
-│       ├── Favorites/        (Favorites.Domain, Favorites.Application, Favorites.Infrastructure)
-│       ├── Notifications/    (Notifications.Domain, Notifications.Application, Notifications.Infrastructure)
-│       └── Administration/   (Administration.Domain, Administration.Application, Administration.Infrastructure)
+└── src/
+    ├── BuildingBlocks/                      # المشتركات الأساسية المعمارية
+    │   ├── BuildingBlocks.Domain/           # الكيانات والقواعد المجردة الأساسية
+    │   │   ├── Entity.cs                    # الكيان الأساسي مع معرف Guid والـ Domain Events
+    │   │   ├── AuditableEntity.cs           # كيان يتضمن تاريخ الإنشاء والتعديل التلقائي
+    │   │   ├── Result.cs                    # نموذج Result Monad للنتائج الناجحة والفاشلة
+    │   │   ├── Error.cs                     # تصنيفات الأخطاء ونوع الخطأ
+    │   │   └── IDomainEvent.cs              # واجهة أحداث النطاق (Domain Events)
+    │   │
+    │   ├── BuildingBlocks.Application/      # خطوط معالجة الـ CQRS والتحقق
+    │   │   ├── CQRS/                        # ICommand, IQuery, ICommandHandler, IQueryHandler
+    │   │   └── Behaviors/                   # خطافات MediatR للتحقق عبر FluentValidation
+    │   │
+    │   └── BuildingBlocks.Infrastructure/   # طبقة البيانات الموحدة
+    │       ├── Persistence/
+    │       │   ├── AzkarDbContext.cs        # سياق قاعدة البيانات الرئيسي وتكوين الـ Schemas
+    │       │   ├── AzkarDbContextFactory.cs # مُنشئ السياق وقت التصميم لـ EF Core Migrations
+    │       │   └── Migrations/              # سجل هجرات وتعديلات قاعدة البيانات
+    │       └── Interceptors/
+    │           └── AuditableEntityInterceptor.cs # معالج تحديث التواريخ التلقائية UTC
+    │
+    ├── Host/
+    │   └── Azkar.Api/                       # تطبيق ومسارات الـ Web API
+    │       ├── Endpoints/                   # جميع نقاط النهاية المجمعة (Minimal APIs)
+    │       │   ├── AdhkarEndpoints.cs       # مسارات الأذكار اليومية
+    │       │   ├── AdminEndpoints.cs        # مسارات المشرف وتقارير الأجهزة
+    │       │   ├── ContentEndpoints.cs      # مسارات الرسائل والسيرة والمعلومات
+    │       │   ├── KidsEndpoints.cs         # مسارات قصص وتحديات ومسابقات الأطفال
+    │       │   ├── QuestionsEndpoints.cs    # مسارات الأسئلة والأجوبة الفقهية
+    │       │   ├── RecitationsEndpoints.cs  # مسارات التلاوات المجتمعية والتعليقات
+    │       │   └── TasbeehEndpoints.cs      # مسارات عداد التسبيح
+    │       │
+    │       ├── Middleware/                  # البرمجيات الوسيطة
+    │       │   ├── ExceptionHandlingMiddleware.cs # المعالجة المركزية للأخطاء غير المتوقعة
+    │       │   └── RequestLoggingMiddleware.cs    # تسجيل تفاصيل وزمن استجابة الطلبات
+    │       │
+    │       ├── Program.cs                   # إعداد حقن التبعيات (DI)، الـ CORS، و Swagger
+    │       └── appsettings.json             # نصوص الاتصال بقاعدة البيانات والإعدادات
+    │
+    └── Modules/                             # الوحدات الوظيفية المستقلة
+        ├── Adhkar/                          # وحدة الأذكار اليومية
+        │   ├── Adhkar.Domain/               # Zikr, Category
+        │   ├── Adhkar.Application/          # Commands, Queries, Handlers, DTOs
+        │   └── Adhkar.Infrastructure/       # Context Interface & Repository mappings
+        │
+        ├── Administration/                  # وحدة إدارة النظام وتقارير الأجهزة
+        │   ├── Administration.Domain/       # ContentReport, AuditLog
+        │   ├── Administration.Application/  # Device Reports, Dashboard Stats, Handlers
+        │   └── Administration.Infrastructure/
+        │
+        ├── Content/                         # وحدة المحتوى (الرسائل، السيرة، المعلومات)
+        │   ├── Content.Domain/              # DailyMessage, SeerahEvent, ReligiousInfoItem
+        │   ├── Content.Application/         # CQRS Commands & Handlers
+        │   └── Content.Infrastructure/
+        │
+        ├── Kids/                            # وحدة منصة الأطفال
+        │   ├── Kids.Domain/                 # KidsStory, KidsChallenge, KidsQuizQuestion
+        │   ├── Kids.Application/            # CQRS Handlers & Validation
+        │   └── Kids.Infrastructure/
+        │
+        ├── Questions/                       # وحدة الأسئلة والأجوبة
+        │   ├── Questions.Domain/            # Question, Answer, Vote
+        │   ├── Questions.Application/       # Q&A Commands & Moderation Handlers
+        │   └── Questions.Infrastructure/
+        │
+        ├── Recitations/                     # وحدة التلاوات الصوتية
+        │   ├── Recitations.Domain/          # Recitation, RecitationComment, RecitationRating
+        │   ├── Recitations.Application/     # Audio Upload & Moderation Handlers
+        │   └── Recitations.Infrastructure/
+        │
+        └── Tasbeeh/                         # وحدة عداد التسبيح
+            ├── Tasbeeh.Domain/              # TasbeehPreset
+            ├── Tasbeeh.Application/         # Preset Management Handlers
+            └── Tasbeeh.Infrastructure/
 ```
 
 ---
 
-## 🗄️ Database Schemas
+## 🔌 دليل جميع نقاط النهاية للـ API (Complete API Endpoints Reference)
 
-The database is connected to **MonsterASP SQL Server** with tables separated into logical schemas:
+### 📿 1. الأذكار اليومية (Adhkar)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/adhkar` | جلب جميع الأذكار اليومية |
+| `GET` | `/adhkar/categories` | جلب تصنيفات الأذكار مع إحصائيات العناصر |
+| `GET` | `/adhkar/by-category/{categoryId}` | جلب أذكار تصنيف محدد |
+| `GET` | `/adhkar/{id}` | جلب تفاصيل ذكر محدد |
+| `POST` | `/adhkar` | إضافة ذكر جديد (Admin) |
+| `DELETE` | `/adhkar/{id}` | حذف ذكر محدد من قاعدة البيانات (Admin) |
+| `POST` | `/adhkar/device-open` | تسجيل نشاط فتح التطبيق للجهاز |
 
-| Module | Schema | Tables |
-| :--- | :--- | :--- |
-| **Adhkar** | `adhkar` | `Categories`, `Adhkar`, `DailyProgress` |
-| **Quran** | `quran` | `Surahs`, `Ayat`, `Tafsir`, `Reciters` |
-| **Recitations** | `recitations` | `Recitations`, `RecitationComments`, `RecitationRatings` |
-| **Tasbeeh** | `tasbeeh` | `TasbeehPresets`, `TasbeehSessions` |
-| **Questions** | `questions` | `Questions`, `Answers`, `VoteRecords` |
-| **Content** | `content` | `AsmaaAllah`, `SeerahEvents`, `ReligiousInfo`, `Messages` |
-| **Kids** | `kids` | `Stories`, `Challenges`, `QuizQuestions`, `KidsProgress` |
-| **Prayer** | `prayer` | `PrayerSettings` |
-| **Favorites** | `favorites` | `Favorites` |
-| **Notifications** | `notifications`| `PushSubscriptions` |
-| **Administration** | `administration`| `ContentReports`, `AuditLogs` |
+### 📿 2. عداد التسبيح (Tasbeeh)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/tasbeeh/presets` | جلب أذكار وتفضيلات العداد |
+| `POST` | `/tasbeeh/presets` | إضافة ذكر للعداد بالهدف المخصص والفضل (Admin) |
+| `DELETE` | `/tasbeeh/presets/{id}` | حذف ذكر من العداد (Admin) |
 
-> 🔒 **Privacy Note**: The system does not store any login credentials or passwords. All interactive features (Favorites, Adhkar tracking, Kids points) work via an anonymous device ID (`DeviceIdentifier`).
+### 🎈 3. منصة الأطفال (Kids)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/kids/stories` | جلب جميع القصص الإسلامية للأطفال |
+| `POST` | `/kids/stories` | إضافة قصة إسلامية جديدة للأطفال (Admin) |
+| `DELETE` | `/kids/stories/{id}` | حذف قصة أطفال (Admin) |
+| `GET` | `/kids/challenges` | جلب التحديات الدينية والسلوكية |
+| `POST` | `/kids/challenges` | إضافة تحدي جديد للأطفال (Admin) |
+| `DELETE` | `/kids/challenges/{id}` | حذف تحدي (Admin) |
+| `GET` | `/kids/quizzes` | جلب أسئلة المسابقات التفاعلية للأطفال |
+| `POST` | `/kids/quizzes` | إضافة سؤال مسابقة جديد (Admin) |
+| `DELETE` | `/kids/quizzes/{id}` | حذف سؤال مسابقة (Admin) |
+
+### 💌 4. المحتوى والرسائل والسيرة (Content)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/content/daily-message` | جلب رسالة اليوم العشوائية |
+| `GET` | `/content/messages` | جلب جميع الرسائل والخواطر |
+| `GET` | `/content/messages/category/{category}` | جلب رسائل تصنيف محدد |
+| `POST` | `/content/messages` | إضافة رسالة جديدة للخادم (Admin) |
+| `DELETE` | `/content/messages/{id}` | حذف رسالة من الخادم (Admin) |
+| `GET` | `/content/seerah` | جلب أحداث ومحطات السيرة النبوية |
+| `POST` | `/content/seerah` | إضافة حدث في السيرة النبوية (Admin) |
+| `DELETE` | `/content/seerah/{id}` | حذف حدث من السيرة (Admin) |
+| `GET` | `/content/religious-info` | جلب المقالات والمعلومات الدينية |
+| `POST` | `/content/religious-info` | إضافة مقال ومعلومة دينية (Admin) |
+| `DELETE` | `/content/religious-info/{id}` | حذف معلومة دينية (Admin) |
+
+### ❓ 5. الأسئلة والأجوبة الفقهية (Questions)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/questions` | جلب الأسئلة المعتمدة |
+| `GET` | `/questions/pending` | جلب الأسئلة المعلقة بانتظار الاعتماد (Admin) |
+| `GET` | `/questions/{id}` | جلب تفاصيل سؤال مع إجاباته |
+| `POST` | `/questions` | طرح سؤال جديد من المستخدم |
+| `POST` | `/questions/{id}/answer` | إضافة إجابة موثقة بالمراجع على سؤال |
+| `POST` | `/questions/{id}/vote` | التصويت على سؤال |
+| `POST` | `/questions/{id}/approve` | اعتماد سؤال ونشره (Admin) |
+| `DELETE` | `/questions/{id}` | حذف سؤال نهائياً (Admin) |
+| `DELETE` | `/questions/answers/{answerId}` | حذف إجابة محددة (Admin) |
+
+### 🎙️ 6. التلاوات القرآنية المجتمعية (Recitations)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/recitations` | جلب التلاوات القرآنية المعتمدة |
+| `GET` | `/recitations/pending` | جلب التلاوات المعلقة بانتظار الاعتماد (Admin) |
+| `POST` | `/recitations` | رفع تلاوة صوتية جديدة |
+| `POST` | `/recitations/{id}/approve` | اعتماد تلاوة ونشرها (Admin) |
+| `POST` | `/recitations/{id}/reject` | رفض تلاوة مع بيان السبب (Admin) |
+| `POST` | `/recitations/{id}/comments` | إضافة تعليق على تلاوة |
+| `POST` | `/recitations/{id}/rate` | تقييم تلاوة بالنجوم (1 إلى 5) |
+| `DELETE` | `/recitations/{id}` | حذف تلاوة (Admin) |
+| `DELETE` | `/recitations/comments/{commentId}` | حذف تعليق مخالف (Admin) |
+
+### 📊 7. الإشراف وتقارير الأجهزة (Administration)
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/admin/stats` | جلب إحصائيات عامة للنظام |
+| `GET` | `/admin/devices` | جلب تقارير وسجلات الأجهزة التي دخلت التطبيق مع البحث |
+| `GET` | `/admin/devices/summary` | ملخص إحصائي للأجهزة وتوزيع الأنظمة (OS) |
+| `POST` | `/admin/devices/log` | تسجيل نشاط ودخول جهاز للتطبيق |
+| `POST` | `/admin/devices/clear` | تنظيف وحذف سجلات الأجهزة الأقدم من عدد أيام محدد |
+| `GET` | `/admin/reports` | جلب بلاغات المحتوى المعلقة |
+| `POST` | `/admin/reports` | إرسال بلاغ عن محتوى مخالف |
 
 ---
 
-## 🚀 How to Test & Run
+## 🗄️ تصميم قاعدة البيانات والجداول (Database Schema & Tables)
 
-### 1️⃣ Apply Database Migration on MonsterASP
-To automatically apply tables and schemas on the MonsterASP server:
+| المخطط (Schema) | الجدول (Table) | الوصف (Description) |
+|---|---|---|
+| `adhkar` | `Categories` | تصنيفات الأذكار (الصباح، المساء، النوم، إلخ) |
+| `adhkar` | `Adhkar` | نصوص الأذكار والترجمة والفضل وعدد التكرار |
+| `tasbeeh` | `Presets` | أذكار العداد الإلكتروني والهدف المخصص |
+| `kids` | `Stories` | قصص الأطفال الإسلامية والعبر المستفادة |
+| `kids` | `Challenges` | التحديات اليومية والأسبوعية والنقاط للأطفال |
+| `kids` | `QuizQuestions` | أسئلة مسابقات الأطفال والخيارات والشرح |
+| `content` | `DailyMessages` | الرسائل والخواطر وتصنيفاتها |
+| `content` | `SeerahEvents` | محطات وأحداث السيرة النبوية الشريفة |
+| `content` | `ReligiousInfoItems` | البطاقات والمعلومات الدينية والمصادر |
+| `questions` | `Questions` | أسئلة المستخدمين وحالة الاعتماد والتصويت |
+| `questions` | `Answers` | إجابات الأسئلة والمراجع الفقهية |
+| `questions` | `Votes` | سجل تصويت المستخدمين |
+| `recitations` | `Recitations` | التلاوات القرآنية الصوتية وتفاصيل السور والآيات |
+| `recitations` | `Comments` | تعليقات المستخدمين على التلاوات |
+| `recitations` | `Ratings` | تقييمات التلاوات بالنجوم |
+| `admin` | `ContentReports` | بلاغات المستخدمين وحالة حلها |
+| `admin` | `AuditLogs` | سجلات الأجهزة، الزيارات، والتتبع التحليلي |
 
+---
+
+## ⚙️ التقنيات والمكتبات المستخدمة (Tech Stack)
+
+- **Target Framework**: .NET 10 (C# 13)
+- **Web API**: ASP.NET Core Minimal APIs & Route Groups
+- **Mediator Pattern**: MediatR 12
+- **Validation**: FluentValidation 11 with MediatR Pipeline Behavior
+- **ORM & Database Provider**: Entity Framework Core 10 with Microsoft SQL Server
+- **API Documentation**: Swagger / OpenAPI with Swashbuckle
+- **Logging & Diagnostics**: Built-in ILogger with Structured Request Middleware
+
+---
+
+## 🚀 التشغيل والبناء المحلي (Getting Started & Running Locally)
+
+### 1. المتطلبات الأساسية (Prerequisites)
+- تثبيت **.NET 10 SDK**.
+- خادم **SQL Server** محلي أو سحابي.
+
+### 2. إعداد قاعدة البيانات (Database Configuration)
+قم بتعديل نص الاتصال في `src/Host/Azkar.Api/appsettings.json`:
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=YOUR_SERVER;Database=AzkarDb;User Id=YOUR_USER;Password=YOUR_PASSWORD;TrustServerCertificate=True;"
+  }
+}
+```
+
+### 3. بناء المشروع (Build Solution)
 ```bash
-cd c:\Users\user\Desktop\Azkar_website\Azkar_Back
-dotnet ef database update --project src/BuildingBlocks/BuildingBlocks.Infrastructure/BuildingBlocks.Infrastructure.csproj --startup-project src/Host/Azkar.Api/Azkar.Api.csproj
+dotnet build Azkar.slnx
 ```
 
----
-
-### 2️⃣ Run Locally
-
+### 4. تطبيق هجرات قاعدة البيانات (Apply Migrations)
 ```bash
-cd c:\Users\user\Desktop\Azkar_website\Azkar_Back\src\Host\Azkar.Api
-dotnet run
+dotnet ef database update --project src/BuildingBlocks/BuildingBlocks.Infrastructure --startup-project src/Host/Azkar.Api
 ```
 
-Upon running, you will see a message showing the ports (e.g., `http://localhost:5000` or `https://localhost:5001` or `http://localhost:5242`).
-
----
-
-### 3️⃣ Open Swagger UI and Test Endpoints
-
-Open your browser to the main server URL:
-```
-http://localhost:5242/
-```
-(Or the URL displayed in the terminal)
-
-The interactive **Swagger UI** will open, containing all organized endpoints:
-
-#### Example API Endpoints:
-
-* **Adhkar**:
-  * `GET /api/adhkar/categories` - Get all Adhkar categories
-  * `GET /api/adhkar/by-category/{categoryId}` - Get Adhkar of a specific category
-  * `GET /api/adhkar/progress/today?deviceId=test-device-1` - Get today's progress
-  * `POST /api/adhkar/progress` - Update Adhkar progress
-
-* **Quran**:
-  * `GET /api/quran/surahs` - Get list of 114 Surahs
-  * `GET /api/quran/surahs/1/ayat` - Get Ayat of a specific Surah (Al-Fatiha)
-  * `GET /api/quran/tafsir?surahNumber=1&ayahNumber=1` - Get Tafsir of an Ayah
-  * `GET /api/quran/reciters` - Get list of Reciters
-
-* **Electronic Rosary (Tasbeeh)**:
-  * `GET /api/tasbeeh/presets` - Get ready-made Tasbeehs
-  * `POST /api/tasbeeh/session` - Log a new Tasbeeh session
-  * `GET /api/tasbeeh/stats?deviceId=test-device-1` - Tasbeeh statistics
-
-* **Islamic Q&A (Questions)**:
-  * `GET /api/questions` - Get questions
-  * `POST /api/questions` - Ask a new question
-  * `POST /api/questions/answers` - Add an answer
-
-* **Islamic Content (Content)**:
-  * `GET /api/content/asmaa-allah` - 99 Names of Allah and their meanings
-  * `GET /api/content/seerah` - Events of the Prophet's Biography (Seerah)
-  * `GET /api/content/daily-message` - Daily message
-
-* **Kids Corner (Kids)**:
-  * `GET /api/kids/stories` - Kids' stories
-  * `GET /api/kids/challenges` - Daily challenges
-  * `GET /api/kids/quizzes` - Quiz questions
-  * `POST /api/kids/points` - Add points and achievements
-
-* **Prayer Times and Qibla (Prayer)**:
-  * `GET /api/prayer/times?lat=30.0444&lng=31.2357` - Calculate prayer times
-  * `GET /api/prayer/qibla?lat=30.0444&lng=31.2357` - Qibla direction and distance to Kaaba
-
-* **Favorites (Favorites)**:
-  * `GET /api/favorites?deviceId=test-device-1` - Get favorite items
-  * `POST /api/favorites/toggle` - Add/remove from favorites
-
----
-
-### 4️⃣ Build Verification
-To ensure the entire project code is sound:
+### 5. تشغيل خادم الـ API
 ```bash
-cd c:\Users\user\Desktop\Azkar_website\Azkar_Back
-dotnet build
+dotnet run --project src/Host/Azkar.Api
 ```
-Result: `Build succeeded. 0 Warning(s), 0 Error(s)`.
+- واجهة **Swagger UI** متاحة على: `http://localhost:5000` أو `https://localhost:5001`.
+
+---
+
+<div align="center">
+  <sub>صُنع بكل حب وابتغاءً للأجر والثواب 🤍 • Azkar API Team</sub>
+</div>

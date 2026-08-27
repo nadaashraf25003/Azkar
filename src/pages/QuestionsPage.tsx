@@ -50,8 +50,12 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
   const location = useLocation();
   const isDirectAdminUrl = isAdminRoute || location.pathname === "/admin";
 
-  const [viewerRole, setViewerRole] = useLocalStorage<UserRole>("azkar-qa-viewer-role", isDirectAdminUrl ? "admin" : "user");
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useLocalStorage<boolean>("azkar-qa-admin-auth", false);
+  const [viewerRole, setViewerRole] = useLocalStorage<UserRole>(
+    "azkar-qa-viewer-role",
+    isDirectAdminUrl ? "admin" : "user",
+  );
+  const [isAdminAuthenticated, setIsAdminAuthenticated] =
+    useLocalStorage<boolean>("azkar-qa-admin-auth", false);
 
   const isAdminMode = isDirectAdminUrl || viewerRole === "admin";
 
@@ -111,7 +115,7 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
       setSubmitError(
         language === "ar"
           ? "يرجى كتابة عنوان وسؤال تفصيلي."
-          : "Please enter both a title and question details."
+          : "Please enter both a title and question details.",
       );
       return;
     }
@@ -133,13 +137,13 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
       setSubmitSuccess(
         language === "ar"
           ? "تم إرسال سؤالك إلى الخادم بنجاح! وسيكون ظاهراً للجميع فور اعتماد المشرف."
-          : "Your question was stored on the server! It will be published once approved by admin."
+          : "Your question was stored on the server! It will be published once approved by admin.",
       );
     } catch {
       setSubmitError(
         language === "ar"
           ? "حدث خطأ أثناء إرسال السؤال. يرجى المحاولة لاحقاً."
-          : "Failed to post question to server. Please try again."
+          : "Failed to post question to server. Please try again.",
       );
     }
   };
@@ -218,14 +222,18 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
     }
 
     setAdminLoginError(
-      language === "ar" ? "بيانات تسجيل الدخول غير صحيحة." : "Invalid admin credentials."
+      language === "ar"
+        ? "بيانات تسجيل الدخول غير صحيحة."
+        : "Invalid admin credentials.",
     );
   };
 
   if (isLoading) {
     return (
       <p className="text-sm text-[var(--muted)]">
-        {language === "ar" ? "جارٍ تحميل الأسئلة من الخادم..." : "Loading questions from server..."}
+        {language === "ar"
+          ? "جارٍ تحميل الأسئلة من الخادم..."
+          : "Loading questions from server..."}
       </p>
     );
   }
@@ -267,7 +275,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
       {(isDirectAdminUrl || isAdminMode) && !isAdminAuthenticated ? (
         <article className="mx-auto max-w-md rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-6 shadow-lg">
           <h2 className="text-xl font-bold text-[var(--text-strong)]">
-            {language === "ar" ? "تسجيل دخول المشرف (Admin)" : "Admin Authentication"}
+            {language === "ar"
+              ? "تسجيل دخول المشرف (Admin)"
+              : "Admin Authentication"}
           </h2>
           <p className="mt-1 text-xs text-[var(--muted)]">
             {language === "ar"
@@ -303,7 +313,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
             </div>
 
             {adminLoginError ? (
-              <p className="text-xs font-semibold text-[var(--warn)]">{adminLoginError}</p>
+              <p className="text-xs font-semibold text-[var(--warn)]">
+                {adminLoginError}
+              </p>
             ) : null}
 
             <button
@@ -316,7 +328,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
           </div>
         </article>
       ) : (
-        <div className={isAdminMode ? "space-y-4" : "grid gap-4 lg:grid-cols-3"}>
+        <div
+          className={isAdminMode ? "space-y-4" : "grid gap-4 lg:grid-cols-3"}
+        >
           {/* LEFT COLUMN: ASK QUESTION FORM - ONLY VISIBLE FOR USERS, HIDDEN FOR ADMIN */}
           {!isAdminMode ? (
             <article className="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 md:p-5 lg:col-span-1">
@@ -329,7 +343,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                   value={authorName}
                   onChange={(event) => setAuthorName(event.target.value)}
                   placeholder={
-                    language === "ar" ? "اسمك (اختياري)" : "Your name (optional)"
+                    language === "ar"
+                      ? "اسمك (اختياري)"
+                      : "Your name (optional)"
                   }
                   className="w-full rounded-xl border border-[var(--line)] bg-transparent px-3 py-2 text-sm outline-none focus:border-[var(--brand-500)]"
                 />
@@ -412,13 +428,20 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
           ) : null}
 
           {/* QUESTIONS LIST / MODERATION PANEL */}
-          <article className={["rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 md:p-5", isAdminMode ? "w-full" : "lg:col-span-2"].join(" ")}>
+          <article
+            className={[
+              "rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 md:p-5",
+              isAdminMode ? "w-full" : "lg:col-span-2",
+            ].join(" ")}
+          >
             <div className="mb-4 flex flex-wrap gap-2">
               <input
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
                 placeholder={
-                  language === "ar" ? "بحث في الأسئلة..." : "Search questions..."
+                  language === "ar"
+                    ? "بحث في الأسئلة..."
+                    : "Search questions..."
                 }
                 className="w-full rounded-xl border border-[var(--line)] bg-transparent px-3 py-2 text-sm outline-none focus:border-[var(--brand-500)] sm:min-w-56 sm:flex-1"
               />
@@ -494,14 +517,19 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                         ) : null}
 
                         {/* ADMIN APPROVAL BUTTON (VISIBLE IN ADMIN MODE) */}
-                        {isAdminMode && isAdminAuthenticated && !question.isApproved ? (
+                        {isAdminMode &&
+                        isAdminAuthenticated &&
+                        !question.isApproved ? (
                           <button
                             type="button"
                             disabled={approveQuestionMutation.isPending}
                             onClick={() => handleApprove(question.id)}
                             className="rounded-xl bg-green-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-green-700 active:scale-95 disabled:opacity-50"
                           >
-                            ✓ {language === "ar" ? "اعتماد السؤال" : "Approve Question"}
+                            ✓{" "}
+                            {language === "ar"
+                              ? "اعتماد السؤال"
+                              : "Approve Question"}
                           </button>
                         ) : null}
 
@@ -510,11 +538,23 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                           <button
                             type="button"
                             disabled={deleteQuestionMutation.isPending}
-                            onClick={() => openDeleteQuestionModal(question.id, question.title)}
+                            onClick={() =>
+                              openDeleteQuestionModal(
+                                question.id,
+                                question.title,
+                              )
+                            }
                             className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-xs font-bold text-rose-600 shadow-sm transition hover:bg-rose-500 hover:text-white dark:text-rose-400 active:scale-95 disabled:opacity-50"
-                            title={language === "ar" ? "حذف السؤال نهائياً من قاعدة البيانات" : "Delete Question Permanently"}
+                            title={
+                              language === "ar"
+                                ? "حذف السؤال نهائياً من قاعدة البيانات"
+                                : "Delete Question Permanently"
+                            }
                           >
-                            🗑️ {language === "ar" ? "حذف السؤال" : "Delete Question"}
+                            🗑️{" "}
+                            {language === "ar"
+                              ? "حذف السؤال"
+                              : "Delete Question"}
                           </button>
                         ) : null}
                       </div>
@@ -551,7 +591,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                               <div className="flex items-center gap-2">
                                 {answer.isVerifiedScholar ? (
                                   <span className="rounded-full bg-[var(--brand-500)] px-2 py-0.5 text-[10px] font-bold text-white">
-                                    {language === "ar" ? "إجابة موثقة" : "Verified"}
+                                    {language === "ar"
+                                      ? "إجابة موثقة"
+                                      : "Verified"}
                                   </span>
                                 ) : null}
 
@@ -560,9 +602,18 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                                   <button
                                     type="button"
                                     disabled={deleteAnswerMutation.isPending}
-                                    onClick={() => openDeleteAnswerModal(answer.id, answer.content)}
+                                    onClick={() =>
+                                      openDeleteAnswerModal(
+                                        answer.id,
+                                        answer.content,
+                                      )
+                                    }
                                     className="rounded-lg border border-rose-500/30 bg-rose-500/10 px-2 py-0.5 text-[11px] font-bold text-rose-600 transition hover:bg-rose-500 hover:text-white dark:text-rose-400 disabled:opacity-50"
-                                    title={language === "ar" ? "حذف الإجابة نهائياً من قاعدة البيانات" : "Delete Answer Permanently"}
+                                    title={
+                                      language === "ar"
+                                        ? "حذف الإجابة نهائياً من قاعدة البيانات"
+                                        : "Delete Answer Permanently"
+                                    }
                                   >
                                     🗑️ {language === "ar" ? "حذف" : "Delete"}
                                   </button>
@@ -611,7 +662,10 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
                         />
                         <button
                           type="button"
-                          disabled={addAnswerMutation.isPending || !answerDrafts[question.id]?.trim()}
+                          disabled={
+                            addAnswerMutation.isPending ||
+                            !answerDrafts[question.id]?.trim()
+                          }
                           onClick={() => submitAnswer(question.id)}
                           className="w-full rounded-xl bg-[var(--brand-500)] px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-[var(--brand-600)] sm:w-auto disabled:opacity-50"
                         >
@@ -636,7 +690,9 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
       {/* CONFIRM DELETE MODAL */}
       <ConfirmDeleteModal
         isOpen={deleteTarget.isOpen}
-        isLoading={deleteQuestionMutation.isPending || deleteAnswerMutation.isPending}
+        isLoading={
+          deleteQuestionMutation.isPending || deleteAnswerMutation.isPending
+        }
         titleAr={
           deleteTarget.type === "question"
             ? "تأكيد حذف السؤال"
@@ -664,5 +720,3 @@ export function QuestionsPage({ isAdminRoute = false }: QuestionsPageProps) {
     </section>
   );
 }
-
-

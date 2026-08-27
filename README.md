@@ -1,199 +1,355 @@
-# Azkar Web App
+# 🕌 منصة وتطبيق أذكار المسلم | Azkar Web Application
 
-A modern multilingual Islamic web application built with React, TypeScript, and Vite.
+> **تطبيق إسلامي ويب متكامل وحديث** مبني باستخدام **React 18**، **TypeScript**، **Vite**، و **Tailwind CSS / Modern CSS Variables**، ومرتبط مباشرة بـ **ASP.NET Core 10 Web API Backend** بنمط المعمارية النظيفة (Clean Architecture & CQRS).
 
-The app combines daily azkar, Quran tools, religious information, community interactions, prayer utilities, and kids learning features in one responsive experience.
+---
 
-## Key Features
+## 📑 جدول المحتويات | Table of Contents
+1. [🌟 نظرة عامة على المشروع (Project Overview)](#-نظرة-عامة-على-المشروع-project-overview)
+2. [✨ الميزات والخصائص الشاملة (Full Features)](#-الميزات-والخصائص-الشاملة-full-features)
+   - [أذكارك اليومية (Daily Azkar)](#1-أذكارك-اليومية-daily-azkar)
+   - [القرآن الكريم والتلاوات (Quran & Ayat)](#2-القرآن-الكريم-والتلاوات-quran--ayat)
+   - [منصة التلاوات الصوتية المجتمعية (Community Recitations)](#3-منصة-التلاوات-الصوتية-المجتمعية-community-recitations)
+   - [عداد التسبيح الإلكتروني (Tasbeeh Counter)](#4-عداد-التسبيح-الإلكتروني-tasbeeh-counter)
+   - [منصة الأطفال التعليمية (Kids Platform)](#5-منصة-الأطفال-التعليمية-kids-platform)
+   - [الرسائل والخواطر اليومية (Daily Messages)](#6-الرسائل-والخواطر-اليومية-daily-messages)
+   - [السيرة النبوية العطرة (Prophetic Seerah)](#7-السيرة-النبوية-العطرة-prophetic-seerah)
+   - [المعلومات الدينية والإسلامية (Religious Info)](#8-المعلومات-الدينية-والإسلامية-religious-info)
+   - [الأسئلة والأجوبة الفقهية (Q&A Platform)](#9-الأسئلة-والأجوبة-الفقهية-qa-platform)
+   - [أسماء الله الحسنى (Asmaa Allah Al-Husna)](#10-أسماء-الله-الحسنى-asmaa-allah-al-husna)
+   - [مواقيت الصلاة والأذان (Prayer Times)](#11-مواقيت-الصلاة-والأذان-prayer-times)
+   - [الأذكار المفضلة (Favorites)](#12-الأذكار-المفضلة-favorites)
+   - [نظام الإشعارات والتنبيهات (Daily Reminders)](#13-نظام-الإشعارات-والتنبيهات-daily-reminders)
+3. [🛡️ لوحة تحكم المشرفين والحماية (Admin Portal & Protected Routes)](#️-لوحة-تحكم-المشرفين-والحماية-admin-portal--protected-routes)
+4. [📊 نظام تقارير الأجهزة والزيارات (Device Analytics & Reports)](#-نظام-تقارير-الأجهزة-والزيارات-device-analytics--reports)
+5. [📂 هيكل المجلدات والملفات بالكامل (Complete File Structure)](#-هيكل-المجلدات-والملفات-بالكامل-complete-file-structure)
+6. [⚙️ التقنيات المستخدمة (Tech Stack)](#️-التقنيات-المستخدمة-tech-stack)
+7. [🚀 التشغيل والإعداد (Getting Started & Setup)](#-التشغيل-والإعداد-getting-started--setup)
+8. [🔑 بيانات تسجيل الدخول للمشرف (Admin Credentials)](#-بيانات-تسجيل-الدخول-للمشرف-admin-credentials)
 
-- Arabic and English interface with RTL and LTR support.
-- Light and dark theme support.
-- Global accent color switching across the whole app.
-- Mobile-friendly responsive UI.
-- Persistent user preferences and progress using localStorage.
+---
 
-## Feature Modules
+## 🌟 نظرة عامة على المشروع (Project Overview)
 
-### 1) Daily Azkar
+يقدم تطبيق **Azkar** تجربة إسلامية رقمية شاملة وسلسة تجمع بين دقة المحتوى الشرعي وأحدث تقنيات الويب الحديثة:
+- **واجهة متعددة اللغات بالكامل**: دعم كامل للغتين **العربية (RTL)** و **الإنجليزية (LTR)**.
+- **تخصيص كامل للمظهر**: دعم الوضع الداكن (Dark Mode) والوضع الفاتح (Light Mode)، بالإضافة إلى 6 ألوان تمييز رئيسية (Emerald, Teal, Sky, Indigo, Rose, Amber).
+- **مزامنة حقيقية 100% مع الخادم (Pure Backend Sync)**: جميع عمليات الإضافة والحذف والإشراف ترتبط مباشرة بقاعدة بيانات ASP.NET Core API دون الاعتماد على التخزين المحلي فقط لإدارة المحتوى.
+- **تصميم متجاوب بالكامل (Fully Responsive)**: متوافق مع كافة أحجام الشاشات (الهواتف، الأجهزة اللوحية، والشاشات الكبيرة).
 
-- Time-aware default category selection.
-- Category filtering and search.
-- Progress tracking for each zikr.
-- Favorite azkar management.
-- Per-zikr counter controls.
-- Read aloud support using browser speech synthesis.
+---
 
-### 2) Quran Ayat
+## ✨ الميزات والخصائص الشاملة (Full Features)
 
-- Ayat browsing with Arabic and English text.
-- Search by surah and ayah content.
-- Playlist playback mode.
-- Repeat mode for ayah memorization.
-- Full-surah audio playback.
-- Translation toggle per ayah.
-- Tafsir toggle per ayah.
+### 1. أذكارك اليومية (Daily Azkar)
+- عرض أذكار الصباح، أذكار المساء، أذكار الاستيقاظ، أذكار النوم، وأذكار الصلاة.
+- **اختيار تلقائي ذكي**: تحديد تصنيف الأذكار الافتراضي حسب توقيت اليوم الحالي للمستخدم.
+- **عداد تفاعلي لكل ذكر**: مع خاصية الاهتزاز (Haptic Feedback) والصوت عند الضغط.
+- **القراءة الصوتية (TTS)**: الاستماع إلى نص الذكر عبر محرك النطق الصوتي للمتصفح.
+- **إدارة المشرف**: إمكانية إضافة أذكار جديدة وحذف الأذكار عبر الـ Backend مباشرة مع شريط التحكم ونوافذ التأكيد.
 
-### 3) Religious Information
+### 2. القرآن الكريم والتلاوات (Quran & Ayat)
+- تصفح آيات وسور القرآن الكريم بالرسم العثماني مع الترجمة والتفسير الميسر.
+- تشغيل التلاوات الصوتية للآيات والسور كاملة لأشهر القراء.
+- أوضاع تشغيل متقدمة: قائمة تشغيل متتابعة (Playlist Mode)، وتكرار الآيات لتسهيل الحفظ (Repeat Mode).
+- إمكانية نسخ ومشاركة نص الآية والترجمة.
 
-- Dedicated section for concise Islamic knowledge cards.
-- Category filter (Aqeedah, Fiqh, Quran, Seerah, Manners, Dua).
-- Search support.
-- Arabic/English title, content, and source display.
-- Backed by static JSON data.
+### 3. منصة التلاوات الصوتية المجتمعية (Community Recitations)
+- تسجيل التلاوات القرآنية مباشرة من المتصفح عبر الميكروفون وحفظها.
+- رفع التلاوة وتحديد السورة ومجال الآيات.
+- دورة اعتماد كاملة (Pending ⏳ / Approved ✅ / Rejected ❌).
+- تقييم التلاوات بالنجوم وإضافة تعليقات تفاعلية من المستخدمين.
+- لوحة تحكم لاعتماد وحذف التلاوات والتعليقات المخالفة للمشرف.
 
-### 4) Quran Recitations (Community)
+### 4. عداد التسبيح الإلكتروني (Tasbeeh Counter)
+- أوضاع عد متعددة: وضع 33، وضع 100، ووضع الهدف المخصص (Custom Target).
+- أذكار وتسبيحات أساسية ومخصصة محملة مباشرة من قاعدة البيانات.
+- سجل دقيق لجلسات التسبيح مصنف حسب التاريخ والأوقات.
+- تصدير سجل التسبيحات بصيغة **PDF** جاهز للطباعة.
+- تحكم المشرف في إضافة وحذف أذكار العداد مباشرة في الخادم عبر `/admin/tasbeeh`.
 
-- Record recitation directly in the browser.
-- Submit recitation with surah and ayah range details.
-- Moderation flow with statuses: pending, approved, rejected.
-- Role-based visibility for user/admin.
-- Ratings and comments on published recitations.
-- Show/hide ratings globally and per-recitation.
+### 5. منصة الأطفال التعليمية (Kids Platform)
+- **قصص إسلامية تفاعلية**: قصص تربوية مقسمة حسب الفئات العمرية (4-7، 5-8، 8-12 سنة) مع العبر المستفادة.
+- **تحديات يومية وأسبوعية**: مهام أخلاقية وسلوكية لكسب النقاط والأوسمة.
+- **مسابقات تفاعلية سريعة**: أسئلة دينية شيقة مع خيارات وشرح توضيحي للإجابة الصحيحة.
+- **لعبة التسبيح الممتعة**: لعبة نقر ممتعة تشجع الطفل على إتمام 33 تسبيحة.
+- تحكم كامل للمشرف في إضافة وحذف القصص والتحديات والأسئلة عبر `/admin/kids`.
 
-### 5) Messages Center
+### 6. الرسائل والخواطر اليومية (Daily Messages)
+- رسائل وخواطر ملهمة مقسمة إلى 10 تصنيفات (دينية، خواطر، قرآنية، نبوية، أدعية، تحفيزية، شكر، حكمة، مجتمع، عمل).
+- توليد ومشاركة بطاقات صور احترافية للرسائل (Card Image Generator) لمشاركتها على شبكات التواصل.
+- رسالة اليوم المتجددة تلقائياً.
+- تحكم المشرف في إضافة وحذف الرسائل عبر الـ Backend مباشرة من `/admin/messages`.
 
-- Category cards page for message types.
-- Per-type message pages.
-- Type counts and sorting behavior.
-- Save/share features.
-- Generate message image cards for sharing.
+### 7. السيرة النبوية العطرة (Prophetic Seerah)
+- عرض تسلسلي زمني لأحداث ومحطات السيرة النبوية الشريفة.
+- تقسيم الأحداث حسب العهدين: **العهد المكي** و **العهد المدني**.
+- تفاصيل كل حدث والدروس والعبر المستفادة والتاريخ الهجري.
+- إضافة وحذف أحداث السيرة للمشرف عبر `/admin/seerah`.
 
-### 6) Counters and Worship Tools
+### 8. المعلومات الدينية والإسلامية (Religious Info)
+- بطاقات معرفية إسلامية مركزة وموثقة بالمصادر في شتى علوم الشريعة (العقيدة، الفقه، السيرة، القرآن، الأخلاق، الأدعية).
+- ميزة البحث المباشر والتصفية حسب الفئة.
+- إضافة وحذف المقالات المعرفية للمشرف عبر `/admin/religious-info`.
 
-- Separate Tasbeeh and category counter pages.
-- Tasbeeh target modes: 33, 100, or custom value.
-- Preset counters with progress tracking.
-- Optional vibration and sound feedback.
-- Session history with date grouping.
-- Tasbeeh history export to PDF.
+### 9. الأسئلة والأجوبة الفقهية (Q&A Platform)
+- طرح الأسئلة الدينية والاستفسارات الفقهية من قبل المستخدمين.
+- نظام إجابات موثقة مع ذكر المراجع والكتب المعتمدة.
+- دورة إشراف واعتماد للأسئلة والأجوبة المعلقة قبل نشرها.
+- إدارة الأسئلة للمشرف عبر `/admin/questions`.
 
-### 7) Prayer Times and Qibla
+### 10. أسماء الله الحسنى (Asmaa Allah Al-Husna)
+- استعراض الـ 99 اسماً من أسماء الله الحسنى باللغتين العربية والإنجليزية.
+- شرح المعنى والمدلول الإيماني لكل اسم.
+- محرك بحث سريع للبحث في الأسماء ومعانيها.
 
-- Prayer times from Aladhan API.
-- Geolocation-based timing fetch.
-- Calculation method and madhhab preferences.
-- Qibla direction calculation.
-- Compass-based Qibla direction support on compatible devices.
+### 11. مواقيت الصلاة والأذان (Prayer Times)
+- حساب دقيق لمواقيت الصلوات الخمس والشروق حسب الموقع الجغرافي للمستخدم.
+- عداد تنازلي للوقت المتبقي حتى الصلاة القادمة.
+- طرق حساب عالمية متعددة (أم القرى، رابطة العالم الإسلامي، الهيئة المصرية العامة للمساحة، إلخ).
 
-### 8) Questions and Answers
+### 12. الأذكار المفضلة (Favorites)
+- حفظ الأذكار والآيات والأدعية المفضلة للرجوع إليها سريعاً في أي وقت.
+- إمكانية التسبيح والتفاعل مع الأذكار المفضلة مباشرة من الصفحة.
 
-- Ask and answer Islamic questions.
-- Tag-based organization.
-- Search and filter.
-- Voting and moderation capabilities.
-- Seed data loading from static JSON.
+### 13. نظام الإشعارات والتنبيهات (Daily Reminders)
+- تنبيهات متصفح دورية لأذكار الصباح والمساء والصلوات.
+- تخصيص أوقات التنبيه وتفعيلها أو إيقافها من صفحة الإعدادات.
 
-### 9) Kids Platform
+---
 
-- Islamic stories for children.
-- Interactive quiz and score flow.
-- Weekly challenge tracking.
-- Tap-based tasbeeh mini game.
+## 🛡️ لوحة تحكم المشرفين والحماية (Admin Portal & Protected Routes)
 
-### 10) Settings and Navigation
+تم تأمين لوحة الإشراف بالكامل بنظام حماية ومصادقة محكم:
 
-- Language switch.
-- Theme switch.
-- Accent color selection and nav quick-toggle icon.
-- Daily reminders permission flow.
-- Top navigation tabs across all sections.
+```
+                  ┌────────────────────────────────────────┐
+                  │          المستخدم يطلب /admin/*        │
+                  └───────────────────┬────────────────────┘
+                                      │
+                         هل تم تسجيل الدخول كمشرف؟
+                                     / \
+                                    /   \
+                             (نعم) /     \ (لا)
+                                  v       v
+                   ┌─────────────────┐ ┌──────────────────────────┐
+                   │  السماح بالدخول │ │ إعادة التوجيه التلقائي   │
+                   │  للوحة التحكم   │ │ إلى صفحة /admin/login    │
+                   └─────────────────┘ └──────────────────────────┘
+```
 
-## Routes
+- **حماية المسارات (`ProtectedRoute`)**: فحص تلقائي لحالة الجلسة ومنع الوصول غير المصرح به لأي مسار من مسارات الإدارة.
+- **توجيه ذكي بعد الدخول (`returnUrl`)**: حفظ المسار الذي كان يحاول المشرف زيارته وإعادته إليه مباشرة بعد تسجيل الدخول.
+- **حماية أزرار الحذف والإشراف**: إخفاء أزرار الحذف والإضافة السريعة في الصفحات العامة لغير المشرفين.
 
-- /
-- /ayat
-- /religious-info
-- /recitations
-- /messages
-- /messages/type/:type
-- /favorites
-- /counter
-- /counter/tasbeeh
-- /counter/categories
-- /kids
-- /prayer-times
-- /questions
-- /settings
+### مسارات لوحة التحكم:
+| المسار (Route) | الوصف (Description) |
+|---|---|
+| `/admin/azkar` | إدارة وإضافة وحذف الأذكار اليومية |
+| `/admin/tasbeeh` | إدارة أذكار وأهداف عداد التسبيح |
+| `/admin/kids` | إدارة قصص وتحديات ومسابقات الأطفال |
+| `/admin/messages` | إدارة وتصنيف الرسائل والخواطر اليومية |
+| `/admin/seerah` | إدارة محطات وأحداث السيرة النبوية |
+| `/admin/religious-info` | إدارة المقالات والمعلومات الدينية |
+| `/admin/questions` | اعتماد وإدارة الأسئلة والأجوبة الفقهية |
+| `/admin/recitations` | اعتماد وإدارة التلاوات والتعليقات الصوتية |
+| `/admin/reports` | لوحة تقارير وإحصائيات الأجهزة والزيارات |
 
-## Data Sources
+---
 
-Static files in public/data:
+## 📊 نظام تقارير الأجهزة والزيارات (Device Analytics & Reports)
 
-- azkar.json
-- ayat.json
-- messages.json
-- questions.json
-- kids-content.json
-- religious-info.json
+نظام إحصائي مدمج لتتبع الأجهزة الفريدة وزوار التطبيق وحفظها في قاعدة البيانات:
+- **تتبع تلقائي في الخلفية**: تسجيل معرّف الجهاز (Device ID)، نوع المتصفح، ونظام التشغيل عند فتح التطبيق.
+- **لوحة إحصائية تفاعلية (`/admin/reports`)**:
+  - إجمالي الأجهزة الفريدة.
+  - إجمالي عدد مرات فتح التطبيق.
+  - الأجهزة النشطة اليوم وخلال الأسبوع الحالي.
+  - توزيع الأنظمة (Android 🤖, iOS 🍏, Windows 🪟, macOS 🍎, Linux 🐧).
+  - جدول تفاعلي مع البحث ونسخ معرّف الجهاز وتواريخ أول زيارة وآخر نشاط.
+  - تصدير السجلات بملف **CSV**.
+  - زر تنظيف السجلات الأقدم من 90 يوماً.
 
-External API:
+---
 
-- Aladhan Prayer Times API.
+## 📂 هيكل المجلدات والملفات بالكامل (Complete File Structure)
 
-## Tech Stack
+```text
+Azkar/
+├── public/                       # الملفات الثابتة والرموز والأصوات
+├── src/
+│   ├── API/                      # إعدادات وعناوين الـ API
+│   │   ├── Config.js             # إعداد Axios Client ومعالجة الأخطاء والـ Headers
+│   │   ├── URLs.ts               # جميع مسارات ونقاط نهاية الـ Backend Endpoints
+│   │   ├── token.ts              # توليد وتخزين معرّف الجهاز الفريد (Device Identifier)
+│   │   └── index.ts              # نقطة تصدير موحدة لطبقة الـ API
+│   │
+│   ├── components/               # مكونات واجهة المستخدم القابلة لإعادة الاستخدام
+│   │   ├── AddKidsChallengeModal.tsx # نافذة إضافة تحدي يومي للأطفال
+│   │   ├── AddKidsQuizModal.tsx      # نافذة إضافة سؤال مسابقة للأطفال
+│   │   ├── AddKidsStoryModal.tsx     # نافذة إضافة قصة أطفال إسلامية
+│   │   ├── AddMessageModal.tsx       # نافذة إضافة رسالة أو خاطرة يومية
+│   │   ├── AddReligiousInfoModal.tsx # نافذة إضافة معلومة دينية
+│   │   ├── AddSeerahModal.tsx        # نافذة إضافة حدث في السيرة النبوية
+│   │   ├── AddTasbeehModal.tsx       # نافذة إضافة ذكر للعداد الإلكتروني
+│   │   ├── AddZikrModal.tsx          # نافذة إضافة ذكر يومي جديد
+│   │   ├── AdminLayout.tsx           # المخطط العام للوحة المشرفين
+│   │   ├── AdminTopNav.tsx           # شريط التنقل العلوي المتجاوب للمشرفين
+│   │   ├── AppLayout.tsx             # المخطط الرئيسي للتطبيق للمستخدمين
+│   │   ├── BackendErrorState.tsx     # شاشة عرض أخطاء الاتصال بالخادم مع زر إعادة المحاولة
+│   │   ├── CategoryTabs.tsx          # تبويبات وتصنيفات الأذكار التفاعلية
+│   │   ├── ConfirmDeleteModal.tsx    # نافذة التأكيد قبل الحذف النهائي من الخادم
+│   │   ├── ErrorBoundary.tsx         # صائد الأخطاء البرمجية العام (Error Boundary)
+│   │   ├── Footer.tsx                # التذييل السفلي للتطبيق والروابط السريعة
+│   │   ├── ProtectedRoute.tsx        # حارس المسارات (Route Guard) لحماية لوحة المشرف
+│   │   ├── TopNav.tsx                # شريط التنقل العلوي الرئيسي للتطبيق
+│   │   ├── ZikrCard.tsx              # بطاقة عرض الذكر مع العداد والقراءة الصوتية
+│   │   └── index.ts                  # تصدير جميع المكونات
+│   │
+│   ├── config/                   # ملفات التكوين والإعدادات
+│   │   └── adminAuth.ts          # بيانات مصادقة وحساب المشرف
+│   │
+│   ├── context/                  # سياقات الحالة العامة (React Contexts)
+│   │   ├── FavoritesContext.tsx  # إدارة الأذكار المفضلة والمزامنة
+│   │   ├── SettingsContext.tsx   # إدارة اللغة (عربي/إنجليزي)، المظهر، ولون التمييز
+│   │   └── index.ts
+│   │
+│   ├── hooks/                    # خطافات React المخصصة و React Query Hooks
+│   │   ├── useAdhkar.ts          # جلب وإضافة وحذف الأذكار اليومية والتصنيفات
+│   │   ├── useAsmaaAllah.ts      # جلب أسماء الله الحسنى ومعانيها
+│   │   ├── useDailyMessage.ts    # جلب رسالة اليوم العشوائية
+│   │   ├── useDailyReminders.ts  # إدارة تنبيهات وإشعارات المتصفح
+│   │   ├── useDeviceReports.ts   # جلب تقارير وإحصائيات الأجهزة الزائرة وتسجيلها
+│   │   ├── useKids.ts            # جلب وإضافة وحذف قصص وتحديات ومسابقات الأطفال
+│   │   ├── useLocalStorage.ts    # إدارة البيانات المحفوظة محلياً بشكل متفاعل
+│   │   ├── useMessagesData.ts    # جلب وإضافة وحذف الرسائل والخواطر بجميع أنواعها
+│   │   ├── usePrayerTimes.ts     # حساب وجلب مواقيت الصلاة والموقع
+│   │   ├── useQuestions.ts       # جلب وطرح واعتماد وحذف الأسئلة والأجوبة
+│   │   ├── useRecitations.ts     # جلب ورفع واعتماد التلاوات والتعليقات والتقييمات
+│   │   ├── useReligiousInfo.ts   # جلب وإضافة وحذف المعلومات والمقالات الدينية
+│   │   ├── useSeerah.ts          # جلب وإضافة وحذف أحداث السيرة النبوية
+│   │   ├── useTasbeeh.ts         # جلب وإضافة وحذف أذكار العداد وجلسات التسبيح
+│   │   ├── useTasbeehCounters.ts # إدارة عدادات التسبيح اللحظية
+│   │   └── index.ts
+│   │
+│   ├── pages/                    # صفحات التطبيق (App Pages)
+│   │   ├── AdminAzkarPage.tsx        # لوحة المشرف لإدارة الأذكار اليومية
+│   │   ├── AdminKidsPage.tsx         # لوحة المشرف لإدارة منصة الأطفال
+│   │   ├── AdminLoginPage.tsx        # صفحة تسجيل دخول المشرف
+│   │   ├── AdminMessagesPage.tsx     # لوحة المشرف لإدارة الرسائل والخواطر
+│   │   ├── AdminReligiousInfoPage.tsx# لوحة المشرف لإدارة المعلومات الدينية
+│   │   ├── AdminReportsPage.tsx      # لوحة المشرف لتقارير الأجهزة والزيارات
+│   │   ├── AdminSeerahPage.tsx       # لوحة المشرف لإدارة السيرة النبوية
+│   │   ├── AdminTasbeehPage.tsx      # لوحة المشرف لإدارة عداد التسبيح
+│   │   ├── AsmaaAllahPage.tsx        # صفحة أسماء الله الحسنى
+│   │   ├── AyatPage.tsx              # صفحة تصفح آيات القرآن الكريم
+│   │   ├── CategoryCounterPage.tsx   # صفحة عدادات تصنيفات الأذكار
+│   │   ├── ContactPage.tsx           # صفحة اتصل بنا
+│   │   ├── CounterPage.tsx           # المخطط العام لصفحات العداد
+│   │   ├── FavoritesPage.tsx         # صفحة الأذكار المفضلة
+│   │   ├── HomePage.tsx              # الصفحة الرئيسية للتطبيق
+│   │   ├── KidsPage.tsx              # صفحة منصة الأطفال التعليمية
+│   │   ├── MessagesPage.tsx          # صفحة تصنيفات الرسائل والخواطر
+│   │   ├── MessageTypePage.tsx       # صفحة رسائل تصنيف محدد ومشاركتها
+│   │   ├── PrayerTimesPage.tsx       # صفحة مواقيت الصلاة
+│   │   ├── PrivacyPolicyPage.tsx     # صفحة سياسة الخصوصية
+│   │   ├── QuranRecitationsPage.tsx  # صفحة التلاوات المجتمعية والتسجيل
+│   │   ├── QuestionsPage.tsx         # صفحة الأسئلة والأجوبة الفقهية
+│   │   ├── ReligiousInfoPage.tsx     # صفحة المعلومات والمقالات الدينية
+│   │   ├── SeerahPage.tsx            # صفحة السيرة النبوية العطرة
+│   │   ├── SettingsPage.tsx          # صفحة الإعدادات والتخصيص
+│   │   ├── SurahPage.tsx             # صفحة قراءة واستماع سورة محددة
+│   │   ├── TasbeehCounterPage.tsx    # صفحة عداد التسبيح الإلكتروني وسجل الجلسات
+│   │   └── TermsPage.tsx             # صفحة شروط الاستخدام
+│   │
+│   ├── types/                    # تعريفات TypeScript Types & Interfaces
+│   │   ├── azkar.ts              # تعريفات الأذكار والتصنيفات
+│   │   ├── questions.ts          # تعريفات الأسئلة والأجوبة والردود
+│   │   └── recitations.ts        # تعريفات التلاوات والتعليقات والتقييمات
+│   │
+│   ├── utils/                    # الدوال المساعدة (Utility Functions)
+│   │   ├── arabicDiacritics.ts   # دوال معالجة وإزالة التشكيل للبحث الذكي
+│   │   ├── audio.ts              # مشغل وتأثيرات الصوت
+│   │   ├── cardImageGenerator.ts # مولد بطاقات الصور لمشاركة الرسائل
+│   │   ├── prayerTimes.ts        # خوارزميات حساب مواقيت الصلاة الفلكية
+│   │   └── speech.ts             # مشغل القراءة الصوتية (Speech Synthesis)
+│   │
+│   ├── App.tsx                   # نقطة تجميع المسارات وإعدادات التطبيق
+│   ├── index.css                 # نظام الألوان، المتغيرات، الخطوط والتنسيقات
+│   └── main.tsx                  # نقطة البداية وتشغيل React DOM مع React Query
+│
+├── .env                          # متغيرات البيئة ورابط الـ API
+├── package.json                  # الاعتماديات والمكتبات المستخدمة
+├── tsconfig.json                 # إعدادات مترجم TypeScript
+├── vite.config.ts                # إعدادات حزمة Vite
+└── README.md                     # التوثيق الشامل للتطبيق
+```
 
-- React 19
-- TypeScript
-- Vite
-- React Router
-- TanStack Query
-- Tailwind CSS
-- jsPDF
+---
 
-## Persistence
+## ⚙️ التقنيات المستخدمة (Tech Stack)
 
-The app uses localStorage to persist:
+| المجال (Layer) | التقنيات والمكتبات (Technologies) |
+|---|---|
+| **Core Framework** | React 18 (Hooks, Suspense, Custom Contexts) |
+| **Language** | TypeScript 5 (Strict Type Safety) |
+| **Bundler & Build Tool** | Vite 8 |
+| **State & Server Cache** | TanStack React Query v5 |
+| **Routing** | React Router v7 |
+| **Styling & Theming** | Tailwind CSS + CSS Custom Properties Design Tokens |
+| **HTTP Client** | Axios Client with interceptors & device headers |
+| **PDF Generation** | jsPDF (Session history export) |
+| **Image Generation** | html2canvas + DOM to PNG conversion |
+| **Icons & Media** | Native Modern SVGs & Web Audio API |
 
-- Theme, language, accent color, reminders.
-- Favorites.
-- Counters and tasbeeh history.
-- Questions and role state.
-- Recitations and role state.
-- Kids progress.
-- Prayer preferences.
-- Message save counters.
+---
 
-## Security Note
+## 🚀 التشغيل والإعداد (Getting Started & Setup)
 
-Admin role uses an in-app login gate in the current frontend implementation. For production, move credential validation to a secure backend.
+### 1. المتطلبات الأساسية (Prerequisites)
+- تثبيت **Node.js** (الإصدار 18 أو أحدث).
+- مدير الحزم **npm** أو **pnpm** أو **yarn**.
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm
-
-### Install
-
+### 2. تثبيت الحزم (Installation)
 ```bash
+# الانتقال لمجلد الواجهة الأمامية
+cd Azkar
+
+# تثبيت الاعتماديات
 npm install
 ```
 
-### Development
+### 3. ضبط متغيرات البيئة (Environment Variables)
+تأكد من إعداد ملف `.env` في المجلد الرئيسي للواجهة:
+```env
+VITE_API_BASE_URL=https://azkaar-web.runasp.net
+```
 
+### 4. تشغيل خادم التطوير (Run Development Server)
 ```bash
 npm run dev
 ```
+سيتم تشغيل التطبيق محلياً على: `http://localhost:5173`.
 
-### Build
-
+### 5. بناء الحزمة للإنتاج (Build for Production)
 ```bash
 npm run build
 ```
 
-### Preview Production Build
+---
 
-```bash
-npm run preview
-```
+## 🔑 بيانات تسجيل الدخول للمشرف (Admin Credentials)
 
-### Lint
+| الحقل (Field) | القيمة الافتراضية (Default Value) |
+|---|---|
+| **رابط الدخول** | `/admin/login` |
+| **البريد الإلكتروني** | `admin@azkar.app` |
+| **كلمة المرور** | `Azkar@123` |
 
-```bash
-npm run lint
-```
+> 🔒 **ملاحظة أمنية**: يتم تخزين حالة المشرف ومصادقته محلياً مع حماية جميع مسارات `/admin/*` بواسطة مكون الحماية `ProtectedRoute`.
 
-## Deployment
+---
 
-This app is ready for static hosting providers such as Vercel and Netlify.
+<div align="center">
+  <sub>صُنع بكل حب وابتغاءً للأجر والثواب 🤍 • All Rights Reserved</sub>
+</div>

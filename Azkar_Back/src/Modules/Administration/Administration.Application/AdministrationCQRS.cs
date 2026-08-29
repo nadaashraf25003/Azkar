@@ -37,3 +37,7 @@ public record ResolveContentReportCommand(Guid ReportId, string ResolutionNotes)
 public record LogDeviceActivityCommand(string DeviceIdentifier, string DeviceName, string? Platform = null) : ICommand<bool>;
 public record ClearOldAuditLogsCommand(int DaysOlderThan = 90) : ICommand<int>;
 
+// Authentication DTOs & Commands
+public record AdminAuthResponseDto(string Token, string Email, string Role, DateTime ExpiresAt);
+public record AdminLoginCommand(string Email, string Password) : ICommand<AdminAuthResponseDto>;
+

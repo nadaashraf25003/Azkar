@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { apiClient } from "../API/Config.js";
+import { URLS } from "../API/URLs.ts";
+import { setToken } from "../API/token.ts";
 import { ADMIN_AUTH } from "../config/adminAuth";
 
 export function AdminLoginPage() {
@@ -23,6 +26,7 @@ export function AdminLoginPage() {
   const [adminPassword, setAdminPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [adminLoginError, setAdminLoginError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const returnUrl = (location.state as any)?.from?.pathname || "/admin/azkar";
 
@@ -33,26 +37,49 @@ export function AdminLoginPage() {
     }
   }, [isAdminAuthenticated, viewerRole, navigate, returnUrl]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setAdminLoginError("");
+    setIsSubmitting(true);
 
-    if (
-      adminEmail.trim().toLowerCase() === ADMIN_AUTH.email.toLowerCase() &&
-      adminPassword === ADMIN_AUTH.password
-    ) {
+    try {
+      // Authenticate against backend API and obtain JWT Bearer token
+      const response: any = await apiClient.post(URLS.ADMIN.LOGIN, {
+        email: adminEmail.trim(),
+        password: adminPassword,
+      });
+
+      if (response && response.token) {
+        setToken(response.token);
+      }
+
       setIsAdminAuthenticated(true);
       setQaRole("admin");
       setRecitationRole("admin");
       navigate(returnUrl, { replace: true });
-      return;
-    }
+    } catch (err: any) {
+      // Fallback check against local env credentials if backend is temporarily unreachable
+      if (
+        adminEmail.trim().toLowerCase() === ADMIN_AUTH.email.toLowerCase() &&
+        ADMIN_AUTH.password &&
+        adminPassword === ADMIN_AUTH.password
+      ) {
+        setIsAdminAuthenticated(true);
+        setQaRole("admin");
+        setRecitationRole("admin");
+        navigate(returnUrl, { replace: true });
+        return;
+      }
 
-    setAdminLoginError(
-      language === "ar"
-        ? "بيانات تسجيل الدخول غير صحيحة. يرجى التحقق من البريد وكلمة المرور."
-        : "Invalid admin credentials. Please verify your email and password.",
-    );
+      setAdminLoginError(
+        err?.message ||
+          (language === "ar"
+            ? "بيانات تسجيل الدخول غير صحيحة. يرجى التحقق من البريد وكلمة المرور."
+            : "Invalid admin credentials. Please verify your email and password."),
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -130,9 +157,16 @@ export function AdminLoginPage() {
 
           <button
             type="submit"
-            className="w-full rounded-2xl bg-amber-600 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-amber-700 active:scale-95"
+            disabled={isSubmitting}
+            className="w-full rounded-2xl bg-amber-600 px-4 py-3 text-sm font-bold text-white shadow-md transition hover:bg-amber-700 active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {language === "ar" ? "دخول لوحة الإشراف" : "Enter Admin Panel"}
+            {isSubmitting
+              ? language === "ar"
+                ? "جاري التحقق..."
+                : "Authenticating..."
+              : language === "ar"
+              ? "دخول لوحة الإشراف"
+              : "Enter Admin Panel"}
           </button>
         </form>
 

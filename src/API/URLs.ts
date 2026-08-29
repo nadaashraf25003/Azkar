@@ -92,6 +92,7 @@ export const URLS = {
 
   // Admin Endpoints
   ADMIN: {
+    LOGIN: '/admin/login',
     STATS: '/admin/stats',
     REPORTS: '/admin/reports',
     DEVICES: '/admin/devices',

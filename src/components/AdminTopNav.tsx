@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useSettings } from '../context/SettingsContext'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { removeToken } from '../API/token.ts'
 
 const adminLinks = [
   { to: '/admin/azkar', labelAr: 'الأذكار اليومية', labelEn: 'Daily Azkar', icon: '📖' },
@@ -22,6 +23,7 @@ export function AdminTopNav() {
   const [, setRecitationRole] = useLocalStorage<string>('azkar-recitation-viewer-role', 'user')
 
   const handleLogout = () => {
+    removeToken()
     setIsAdminAuthenticated(false)
     setQaRole('user')
     setRecitationRole('user')

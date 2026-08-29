@@ -41,6 +41,10 @@ coverage/
 !**/packages/build/
 
 ## Secrets & Local Configuration
+appsettings.json
+appsettings.*.json
+!appsettings.example.json
+!appsettings.template.json
 appsettings.local.json
 appsettings.*.local.json
 *.local.json

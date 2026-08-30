@@ -33,6 +33,14 @@ export function SeerahPage() {
   const { data, isLoading, isError, refetch } = useSeerah()
   const deleteMutation = useDeleteSeerahEvent()
 
+  const makkahCount = useMemo(() => {
+    return (data ?? []).filter((e) => e.period?.toLowerCase() === 'makkah').length
+  }, [data])
+
+  const madinahCount = useMemo(() => {
+    return (data ?? []).filter((e) => e.period?.toLowerCase() === 'madinah').length
+  }, [data])
+
   const filteredEvents = useMemo(() => {
     const normalized = search.trim().toLowerCase()
     const all = data ?? []
@@ -228,6 +236,9 @@ export function SeerahPage() {
           >
             <span>🕋</span>
             <span className="ms-1">{language === 'ar' ? 'العهد المكي' : 'Makkah Period'}</span>
+            <span className="ms-1.5 rounded-full bg-black/15 px-1.5 py-0.5 text-[10px]">
+              {makkahCount}
+            </span>
           </button>
 
           <button
@@ -242,6 +253,9 @@ export function SeerahPage() {
           >
             <span>🕌</span>
             <span className="ms-1">{language === 'ar' ? 'العهد المدني' : 'Madinah Period'}</span>
+            <span className="ms-1.5 rounded-full bg-black/15 px-1.5 py-0.5 text-[10px]">
+              {madinahCount}
+            </span>
           </button>
         </div>
 
@@ -295,10 +309,17 @@ export function SeerahPage() {
                     {language === 'ar' ? event.yearLabelAr : event.yearLabelEn}
                   </span>
 
-                  <span className="rounded-full border border-[var(--line)] bg-[var(--bg)] px-3 py-1 text-xs font-semibold text-[var(--muted)]">
-                    {event.period === 'Makkah'
-                      ? (language === 'ar' ? 'العهد المكي' : 'Makkah')
-                      : (language === 'ar' ? 'العهد المدني' : 'Madinah')}
+                  <span
+                    className={[
+                      'rounded-full px-3 py-1 text-xs font-semibold',
+                      event.period?.toLowerCase() === 'madinah'
+                        ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+                        : 'border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300',
+                    ].join(' ')}
+                  >
+                    {event.period?.toLowerCase() === 'madinah'
+                      ? (language === 'ar' ? 'العهد المدني 🕌' : 'Madinah 🕌')
+                      : (language === 'ar' ? 'العهد المكي 🕋' : 'Makkah 🕋')}
                   </span>
                 </div>
 

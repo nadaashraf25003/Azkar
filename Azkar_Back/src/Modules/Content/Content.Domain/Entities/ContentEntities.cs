@@ -54,6 +54,16 @@ public class SeerahEvent : Entity
             LessonsLearned = lessonsLearned
         };
     }
+
+    public void Update(int order, string title, string period, int yearHijri, string description, string lessonsLearned)
+    {
+        Order = order;
+        Title = title;
+        Period = period;
+        YearHijri = yearHijri;
+        Description = description;
+        LessonsLearned = lessonsLearned;
+    }
 }
 
 public class ReligiousInfo : Entity

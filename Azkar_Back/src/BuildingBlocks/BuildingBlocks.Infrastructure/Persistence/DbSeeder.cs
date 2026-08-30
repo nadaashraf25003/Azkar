@@ -111,20 +111,28 @@ public static class DbSeeder
                 }
             }
 
-            // 4. Seed Questions
-            if (!await dbContext.Questions.AnyAsync())
+            // 4. Seed & Update Questions
+            var questionsJson = await ReadEmbeddedJsonAsync("questions.json");
+            if (questionsJson != null)
             {
-                Console.WriteLine("Seeding Questions and Answers...");
-                var json = await ReadEmbeddedJsonAsync("questions.json");
-                if (json != null)
+                var items = JsonSerializer.Deserialize<List<LocalQuestionItem>>(questionsJson);
+                if (items != null && items.Count > 0)
                 {
-                    var items = JsonSerializer.Deserialize<List<LocalQuestionItem>>(json);
-                    if (items != null)
+                    var existingTitles = await dbContext.Questions.Select(q => q.Title.Trim()).ToListAsync();
+                    var addedQCount = 0;
+
+                    foreach (var item in items)
                     {
-                        foreach (var item in items)
+                        if (!existingTitles.Contains(item.title.Trim()))
                         {
                             var category = item.tags != null && item.tags.Count > 0 ? item.tags[0] : "General";
                             var question = Question.Create(item.title, item.body, category, item.authorName, isApproved: true);
+                            
+                            if (item.answers != null && item.answers.Count > 0)
+                            {
+                                question.MarkAnswered();
+                            }
+
                             await dbContext.Questions.AddAsync(question);
                             await dbContext.SaveChangesAsync();
 
@@ -137,7 +145,12 @@ public static class DbSeeder
                                 }
                                 await dbContext.SaveChangesAsync();
                             }
+                            addedQCount++;
                         }
+                    }
+                    if (addedQCount > 0)
+                    {
+                        Console.WriteLine($"Seeded {addedQCount} new Questions and Answers.");
                     }
                 }
             }
@@ -162,24 +175,45 @@ public static class DbSeeder
                 }
             }
 
-            // 7. Seed Seerah
-            if (!await dbContext.SeerahEvents.AnyAsync())
+            // 7. Seed & Update Seerah Events
+            var seerahJson = await ReadEmbeddedJsonAsync("seerah.json");
+            if (seerahJson != null)
             {
-                Console.WriteLine("Seeding Seerah Events...");
-                var json = await ReadEmbeddedJsonAsync("seerah.json");
-                if (json != null)
+                var items = JsonSerializer.Deserialize<List<LocalSeerahItem>>(seerahJson);
+                if (items != null && items.Count > 0)
                 {
-                    var items = JsonSerializer.Deserialize<List<LocalSeerahItem>>(json);
-                    if (items != null)
+                    var existingEvents = await dbContext.SeerahEvents.ToListAsync();
+                    var order = 1;
+                    var addedCount = 0;
+
+                    foreach (var item in items)
                     {
-                        var order = 0;
-                        foreach (var item in items)
+                        var lessons = string.Join("; ", item.lessonsAr ?? []);
+                        var period = !string.IsNullOrWhiteSpace(item.period) ? item.period : "Makkah";
+                        var eventOrder = item.order > 0 ? item.order : order;
+
+                        // Match existing event by title prefix / exact title
+                        var existing = existingEvents.FirstOrDefault(e => 
+                            e.Title.Trim() == item.titleAr.Trim() || 
+                            e.Title.Trim().Contains(item.titleAr.Trim()) || 
+                            item.titleAr.Trim().Contains(e.Title.Trim()));
+
+                        if (existing != null)
                         {
-                            var lessons = string.Join("; ", item.lessonsAr ?? []);
-                            var seerah = SeerahEvent.Create(order++, item.titleAr, "Makkah", 0, item.summaryAr, lessons);
-                            await dbContext.SeerahEvents.AddAsync(seerah);
+                            existing.Update(eventOrder, item.titleAr, period, item.yearHijri, item.summaryAr, lessons);
                         }
-                        await dbContext.SaveChangesAsync();
+                        else
+                        {
+                            var seerah = SeerahEvent.Create(eventOrder, item.titleAr, period, item.yearHijri, item.summaryAr, lessons);
+                            await dbContext.SeerahEvents.AddAsync(seerah);
+                            addedCount++;
+                        }
+                        order++;
+                    }
+                    await dbContext.SaveChangesAsync();
+                    if (addedCount > 0)
+                    {
+                        Console.WriteLine($"Seeded {addedCount} new Seerah events.");
                     }
                 }
             }
@@ -402,9 +436,17 @@ public class LocalReligiousInfoItem
 public class LocalSeerahItem
 {
     public string id { get; set; } = "";
+    public int order { get; set; }
+    public string period { get; set; } = "Makkah";
+    public int yearHijri { get; set; }
+    public string yearLabelAr { get; set; } = "";
+    public string yearLabelEn { get; set; } = "";
     public string titleAr { get; set; } = "";
+    public string titleEn { get; set; } = "";
     public string summaryAr { get; set; } = "";
+    public string summaryEn { get; set; } = "";
     public List<string>? lessonsAr { get; set; } = [];
+    public List<string>? lessonsEn { get; set; } = [];
 }
 
 public class LocalKidsContent

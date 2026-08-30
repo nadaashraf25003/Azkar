@@ -1,154 +1,596 @@
 [
   {
     "id": "birth",
-    "yearLabelAr": "عام الفيل — ٥٧٠م",
-    "yearLabelEn": "Year of the Elephant — 570 CE",
-    "titleAr": "الميلاد في مكة المكرمة",
-    "titleEn": "Birth in Makkah",
-    "summaryAr": "وُلد النبي محمد صلى الله عليه وسلم في مكة في عام الفيل، ونشأ يتيمًا في كنف جده عبد المطلب ثم عمه أبي طالب، وعُرف منذ صغره بالصدق والأمانة حتى لُقِّب بالأمين.",
-    "summaryEn": "Prophet Muhammad (peace be upon him) was born in Makkah in the Year of the Elephant. He grew up as an orphan under his grandfather Abd al-Muttalib and then his uncle Abu Talib, known from an early age for truthfulness and trustworthiness.",
+    "order": 1,
+    "period": "Makkah",
+    "yearHijri": -53,
+    "yearLabelAr": "عام الفيل — ٥٣ ق.هـ (٥٧٠م)",
+    "yearLabelEn": "Year of the Elephant — 53 BH (570 CE)",
+    "titleAr": "الميلاد في مكة المكرمة والنشأة المباركة",
+    "titleEn": "Birth in Makkah and Early Blessed Life",
+    "summaryAr": "وُلد النبي محمد صلى الله عليه وسلم في مكة المكرمة في عام الفيل، ونشأ يتيمًا في كنف جده عبد المطلب ثم عمه أبي طالب. وعُرف منذ صغره بالصدق والأمانة وعفة النفس حتى لقّبته قريش بالصادق الأمين.",
+    "summaryEn": "Prophet Muhammad (peace be upon him) was born in Makkah in the Year of the Elephant. He grew up as an orphan under his grandfather Abd al-Muttalib and then his uncle Abu Talib, renowned for truthfulness, trustworthiness, and pure character, earning the title 'The Trustworthy'.",
     "lessonsAr": [
-      "العناية بالخلق الحسن منذ الصغر",
-      "الصدق طريق الثقة بين الناس",
-      "الصبر على اليتم والشدائد يبني شخصية عظيمة"
+      "العناية بالخلق الحسن والنزاهة منذ الصغر",
+      "الصدق والأمانة هما أعظم رصيد للإنسان بين الناس",
+      "الصبر على اليتم والشدائد يبني شخصية قوية متوكلة على الله"
     ],
     "lessonsEn": [
-      "Good character starts from an early age",
-      "Truthfulness builds trust among people",
-      "Patience through hardship and orphanhood builds great character"
+      "Good character and integrity start from early childhood",
+      "Truthfulness and trustworthiness build lasting trust among people",
+      "Patience through hardship and orphanhood builds resilience and deep reliance on Allah"
     ]
   },
   {
     "id": "revelation",
-    "yearLabelAr": "٦١٠م",
-    "yearLabelEn": "610 CE",
-    "titleAr": "بداية الوحي في غار حراء",
-    "titleEn": "Beginning of Revelation in Cave Hira",
-    "summaryAr": "نزل الوحي على النبي صلى الله عليه وسلم في غار حراء في رمضان، فجاءه جبريل بأول آيات سورة العلق: اقرأ باسم ربك الذي خلق. فعاد النبي ترتجف فرائصه، فثبّتته خديجة رضي الله عنها.",
-    "summaryEn": "Revelation came to the Prophet in Cave Hira during Ramadan. Jibril brought the first verses of Surah Al-Alaq: Read in the name of your Lord who created. The Prophet returned trembling, and Khadijah comforted and steadied him.",
+    "order": 2,
+    "period": "Makkah",
+    "yearHijri": -13,
+    "yearLabelAr": "١٣ ق.هـ (٦١٠م)",
+    "yearLabelEn": "13 BH (610 CE)",
+    "titleAr": "بعثة النبي ونزول الوحي في غار حراء",
+    "titleEn": "The Divine Call and First Revelation in Cave Hira",
+    "summaryAr": "نزل جبريل عليه السلام على النبي ﷺ في غار حراء في شهر رمضان المبارك بأول آيات سورة العلق: ﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾. فرجع النبي ترتجف فرائصه، فثبّتته أم المؤمنين خديجة رضي الله عنها بكلماتها الخالدة: «كلا والله ما يخزيك الله أبدًا، إنك لتصل الرحم، وتحمل الكل، وتكسب المعدوم، وتقري الضيف، وتعين على نوائب الحق».",
+    "summaryEn": "Angel Jibril descended upon the Prophet in Cave Hira during the blessed month of Ramadan with the first verses of Surah Al-Alaq: 'Read in the name of your Lord who created'. Khadijah comforted him with timeless reassurance of his noble virtues.",
     "lessonsAr": [
-      "طلب العلم أساس الهداية",
-      "الثبات على الحق عند بداية الطريق",
-      "دور الزوج والأسرة في دعم أصحاب الرسالات"
+      "طلب العلم والقراءة هما أساس نهضة الأمة وهدايتها",
+      "أصحاب الأخلاق العالية وصنائع المعروف لا يخزيهم الله",
+      "الدور العظيم للمرأة والأسرة الصالحة في التثبيت والدعم المعنوي"
     ],
     "lessonsEn": [
-      "Seeking knowledge is the foundation of guidance",
-      "Remaining steadfast at the beginning of the journey",
-      "The role of family in supporting those with a mission"
+      "Seeking knowledge is the very foundation of guidance and civilization",
+      "Those dedicated to doing good and helping others are preserved by Allah",
+      "The pivotal role of family and supportive spouses during trials"
     ]
   },
   {
     "id": "dawah-makkah",
-    "yearLabelAr": "٦١٠ — ٦٢٢م",
-    "yearLabelEn": "610 — 622 CE",
-    "titleAr": "مرحلة الدعوة في مكة",
-    "titleEn": "The Makkah Dawah Period",
-    "summaryAr": "بدأ النبي الدعوة سرًا ثم جهرًا، فآمن به الأقربون والضعفاء والأحرار. وتحمّل هو وصحابته أشد أنواع الأذى والتعذيب من أجل الثبات على التوحيد.",
-    "summaryEn": "The Prophet began preaching privately then publicly. The early believers included close family, the vulnerable, and free individuals. He and his companions endured severe persecution in steadfastly upholding monotheism.",
+    "order": 3,
+    "period": "Makkah",
+    "yearHijri": -13,
+    "yearLabelAr": "١٣ — ١ ق.هـ (٦١٠ — ٦٢٢م)",
+    "yearLabelEn": "13 — 1 BH (610 — 622 CE)",
+    "titleAr": "مرحلة الدعوة المكية والثبات على التوحيد",
+    "titleEn": "The Makkah Dawah and Steadfastness on Monotheism",
+    "summaryAr": "بدأت الدعوة سرًا في دار الأرقم بن أبي الأرقم لتأسيس النواة الأولى من المؤمنين، ثم أمر الله بالجهر بالدعوة على جبل الصفا. واجه النبي وصحبه ألوانًا من الاضطهاد والتعذيب والحصار، فصبروا صبراً جميلاً وثبتوا على عقيدة التوحيد.",
+    "summaryEn": "Preaching began privately in Dar Al-Arqam to build the spiritual foundation, then openly upon Mount Safa. The Prophet and early believers faced severe persecution, boycott, and torture, enduring with noble patience and absolute faith in Allah.",
     "lessonsAr": [
-      "الدعوة تبدأ بالأقربين",
-      "الثبات على المبدأ أمام الأذى والاضطهاد",
-      "الضعفاء والمستضعفون غالبًا أول من يقبل الحق"
+      "التدرج والحكمة وحسن التخطيط في نشر الخير",
+      "الثبات على المبدأ والعقيدة مهما بلغت التضحيات",
+      "التربية الإيمانية العميقة هي سر الثبات في المحن"
     ],
     "lessonsEn": [
-      "Dawah begins with those closest to you",
-      "Standing firm on principle in the face of persecution",
-      "The vulnerable are often the first to embrace truth"
+      "Gradual progression and strategic planning in doing good",
+      "Steadfastness on righteous principles regardless of worldly hardships",
+      "Deep spiritual nurturing is the anchor during severe trials"
+    ]
+  },
+  {
+    "id": "shib-abu-talib",
+    "order": 4,
+    "period": "Makkah",
+    "yearHijri": -3,
+    "yearLabelAr": "٣ ق.هـ (٦١٩م)",
+    "yearLabelEn": "3 BH (619 CE)",
+    "titleAr": "حصار شِعب أبي طالب وعام الحزن",
+    "titleEn": "The Boycott in the Valley of Abu Talib and the Year of Sorrow",
+    "summaryAr": "فرضت قريش حصاراً اقتصادياً واجتماعياً جائراً على بني هاشم وبني المطلب في شِعب أبي طالب استمر ثلاث سنوات حتى أكلوا أوراق الشجر. وبعد فك الحصار توفي عمه أبو طالب ثم زوجته خديجة رضي الله عنها، فسُمي ذلك العام بعام الحزن.",
+    "summaryEn": "Quraysh imposed a harsh three-year economic and social boycott upon the Muslims in the valley of Abu Talib. Shortly after the boycott was lifted, the Prophet lost his beloved wife Khadijah and his protective uncle Abu Talib.",
+    "lessonsAr": [
+      "المحن والابتلاءات تصقل إيمان الصادقين وتكشف معادن الرجال",
+      "التكافل والمواساة بين الإخوة في وقت الشدة والمجاعة",
+      "الحزن على فراق الأحبة فطرة بشرية لا تنافي الرضا بقضاء الله"
+    ],
+    "lessonsEn": [
+      "Trials purify faith and reveal the true character of believers",
+      "Solidarity and mutual support during crises and deprivation",
+      "Grief over loss is natural and completely compatible with accepting Allah's decree"
     ]
   },
   {
     "id": "isra-miraj",
-    "yearLabelAr": "٦٢١م",
-    "yearLabelEn": "621 CE",
-    "titleAr": "الإسراء والمعراج",
-    "titleEn": "The Night Journey and Ascension",
-    "summaryAr": "أُسري بالنبي ﷺ من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلى. وفُرضت في تلك الليلة الصلوات الخمس هدية للمؤمنين.",
-    "summaryEn": "The Prophet was taken from the Grand Mosque to Al-Aqsa Mosque, then ascended through the heavens. On that night the five daily prayers were prescribed as a gift for the believers.",
+    "order": 5,
+    "period": "Makkah",
+    "yearHijri": -1,
+    "yearLabelAr": "١ ق.هـ (٦٢١م)",
+    "yearLabelEn": "1 BH (621 CE)",
+    "titleAr": "معجزة الإسراء والمعراج وفرض الصلوات الخمس",
+    "titleEn": "The Miraculous Night Journey, Ascension, and Five Prayers",
+    "summaryAr": "أسرى الله بنبيه ﷺ ليلاً من المسجد الحرام إلى المسجد الأقصى، ثم عُرج به إلى السماوات العلى وسدرة المنتهى تكريماً وتثبيتاً له بعد عام الحزن. وفُرضت في تلك الليلة المباركة الصلوات الخمس مباشرة في السماء بدون واسطة لعظم قدرها.",
+    "summaryEn": "The Prophet was miraculously transported at night from the Sacred Mosque in Makkah to Al-Aqsa Mosque in Jerusalem, then ascended through the heavens to Sidrat al-Muntaha. There, the five daily prayers were directly ordained.",
     "lessonsAr": [
-      "الصلاة هدية ربانية تربط العبد بخالقه",
-      "المعجزات تثبيت للقلوب المؤمنة",
-      "القدس في قلب الإسلام"
+      "الصلاة معراج الروح وهي الصلة المباشرة والأعظم بين العبد وخالقه",
+      "الفرج والرفعة يأتيان دائماً بعد أشد المحن والكروب",
+      "الرابطة الوثيقة والقدسية بين المسجد الحرام والمسجد الأقصى"
     ],
     "lessonsEn": [
-      "Prayer is a divine gift connecting the servant to the Creator",
-      "Miracles are a strengthening for believing hearts",
-      "Jerusalem holds a central place in Islam"
+      "Daily prayer is the spiritual ascension connecting believers directly with Allah",
+      "Relief and divine elevation follow after the deepest hardships",
+      "The sacred inseparable bond between the Grand Mosque and Al-Aqsa Mosque"
     ]
   },
   {
-    "id": "hijrah",
-    "yearLabelAr": "٦٢٢م",
-    "yearLabelEn": "622 CE",
-    "titleAr": "الهجرة المباركة إلى المدينة",
-    "titleEn": "The Blessed Migration to Madinah",
-    "summaryAr": "كانت الهجرة تحولًا كبيرًا في تاريخ الإسلام، خرج النبي ﷺ وصاحبه أبو بكر متوكلين على الله. وفي المدينة أسّس النبي المسجد وعقد المؤاخاة بين المهاجرين والأنصار.",
-    "summaryEn": "The Hijrah was a major turning point. The Prophet and Abu Bakr departed relying on Allah. In Madinah, the Prophet established the mosque and created brotherhood between the migrants and the helpers.",
+    "id": "aqabah-pledges",
+    "order": 6,
+    "period": "Makkah",
+    "yearHijri": -1,
+    "yearLabelAr": "١ ق.هـ (٦٢١ — ٦٢٢م)",
+    "yearLabelEn": "1 BH (621 — 622 CE)",
+    "titleAr": "بيعتا العقبة والتمهيد لبناء الدولة",
+    "titleEn": "The Pledges of Aqabah and Paving the Way for Migration",
+    "summaryAr": "التقى النبي ﷺ بوفود من أهل يثرب (الأوس والخزرج) في مواسم الحج بمِنى، فبايعوه في بيعة العقبة الأولى على الإيمان والفضائل، وفي الثانية على النصرة والحماية. وأرسل معهم مصعب بن عمير أول سفير في الإسلام لتعليمهم القرآن وتأسيس دار الهجرة.",
+    "summaryEn": "The Prophet met delegations from Yathrib (the Aws and Khazraj) at Mina, establishing the First and Second Pledges of Aqabah for mutual support, faith, and protection. Mus'ab ibn Umayr was dispatched as Islam's first ambassador to teach the Quran.",
     "lessonsAr": [
-      "التخطيط مع التوكل على الله",
-      "بناء المجتمع بالتعاون والإخاء",
-      "المسجد نواة المجتمع المسلم"
+      "أهمية العمل المنظم وفتح آفاق جديدة خارج البيئة المعاندة",
+      "قوة الشباب المسلم ودور الداعية الحكيم (مصعب بن عمير)",
+      "المعاهدات والبيعات أساس قيام المجتمعات والدول المستقرة"
     ],
     "lessonsEn": [
-      "Plan carefully while fully trusting in Allah",
-      "Build communities through cooperation and brotherhood",
-      "The mosque is the nucleus of the Muslim community"
+      "The importance of strategic organization and exploring new horizons",
+      "The capability of inspired youth and wise ambassadors like Mus'ab ibn Umayr",
+      "Pledges and covenants form the foundation of stable societies"
+    ]
+  },
+  {
+    "id": "hijrah-madinah",
+    "order": 7,
+    "period": "Madinah",
+    "yearHijri": 1,
+    "yearLabelAr": "١ هـ (٦٢٢م)",
+    "yearLabelEn": "1 AH (622 CE)",
+    "titleAr": "الهجرة المباركة وبناء المسجد النبوي الشريف",
+    "titleEn": "The Blessed Hijrah and Foundation of the Prophet's Mosque",
+    "summaryAr": "هاجر النبي ﷺ وصاحبه الصديق أبو بكر متوكلين على الله مع إحكام الخطة. وعند وصولهما إلى المدينة المنورة استقبلهما الأنصار بأهازيج الفرح والترحاب. وكان أول عمل قام به النبي ﷺ هو بناء المسجد النبوي الشريف ليكون مركزاً للعبادة والعلم والشورى وإدارة شؤون الأمة.",
+    "summaryEn": "The Prophet and Abu Bakr migrated to Madinah with flawless planning and complete trust in Allah. The Ansar welcomed him with unmatched joy. The Prophet's very first action was establishing the Prophet's Mosque as the nucleus for worship, education, governance, and community life.",
+    "lessonsAr": [
+      "الجمع بين الأخذ بكافة الأسباب المادية والتوكل المطلق على الله",
+      "المسجد هو القلب النابض وحجر الأساس في بناء المجتمع المسلم",
+      "الفرح بنعمة الهداية ونصرة الحق واجب إيماني"
+    ],
+    "lessonsEn": [
+      "Combining thorough practical planning with absolute reliance upon Allah",
+      "The mosque is the vibrant nucleus and cornerstone of the community",
+      "Rejoicing in guidance and championing the truth with open hearts"
+    ]
+  },
+  {
+    "id": "muakhat-constitution",
+    "order": 8,
+    "period": "Madinah",
+    "yearHijri": 1,
+    "yearLabelAr": "١ هـ (٦٢٢ — ٦٢٣م)",
+    "yearLabelEn": "1 AH (622 — 623 CE)",
+    "titleAr": "المؤاخاة بين المهاجرين والأنصار ووثيقة المدينة الدستورية",
+    "titleEn": "Brotherhood Between Muhajirun & Ansar and the Madinah Charter",
+    "summaryAr": "أرسى النبي ﷺ أعظم نموذج للتكافل البشري بالمؤاخاة بين المهاجرين الذين تركوا أموالهم والأنصار الذين شاطروهم بيوتهم وأموالهم بإيثار منقطع النظير. وكتب ﷺ 'وثيقة المدينة'، وهي أول دستور مدني ينظم حقوق المواطنة والتعايش السلمي والدفاع المشترك بين المسلمين وسائر الطوائف واليهود.",
+    "summaryEn": "The Prophet established an unprecedented brotherhood between the Muhajirun and Ansar, who selflessly shared their homes and livelihoods. He drafted the famous 'Madinah Charter', the first written constitution guaranteeing citizenship, justice, religious freedom, and mutual defense.",
+    "lessonsAr": [
+      "الإيثار والتكافل الاجتماعي ركيزة أساسية لاستقرار المجتمعات",
+      "دولة القانون والعدل تحترم العهود وتضمن حقوق جميع أطياف المجتمع",
+      "رابطة الأخوة الإيمانية تعلو على العصبيات القبلية والعرقية"
+    ],
+    "lessonsEn": [
+      "Selfless empathy and social solidarity are vital for communal strength",
+      "A just society honors covenants and protects rights for all citizens",
+      "Faith-based brotherhood transcends all tribal, racial, and national divisions"
+    ]
+  },
+  {
+    "id": "qiblah-change",
+    "order": 9,
+    "period": "Madinah",
+    "yearHijri": 2,
+    "yearLabelAr": "٢ هـ (٦٢٤م)",
+    "yearLabelEn": "2 AH (624 CE)",
+    "titleAr": "تحويل القبلة إلى المسجد الحرام",
+    "titleEn": "The Changing of the Qiblah to the Sacred Mosque",
+    "summaryAr": "بعد ستة عشر شهراً من الصلاة تجاه بيت المقدس، نزل قوله تعالى: ﴿قَدْ نَرَى تَقَلُّبَ وَجْهِكَ فِي السَّمَاءِ فَلَنُوَلِّيَنَّكَ قِبْلَةً تَرْضَاهَا فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ﴾، فاستدار المسلمون وهم في صلاتهم نحو الكعبة المشرفة بمكة المكرمة استجابة فورية لأمر الله ورسوله.",
+    "summaryEn": "After 16 months of praying towards Jerusalem, Allah revealed the command to face the Kaaba in Makkah. The companions immediately turned around mid-prayer in unconditional obedience to the divine command.",
+    "lessonsAr": [
+      "سرعة الاستجابة والتسليم الكامل لأمر الله ورسوله دون تردد",
+      "مكانة الكعبة المشرفة ومركزيتها في هوية ووحدة الأمة الإسلامية",
+      "الاستقلالية الحضارية والروحية للمسلمين"
+    ],
+    "lessonsEn": [
+      "Immediate, unconditional submission to Allah's guidance",
+      "The centrality and sanctity of the Kaaba in unifying Muslim identity",
+      "Distinct spiritual and civilizational identity of the Ummah"
+    ]
+  },
+  {
+    "id": "fasting-prescribed",
+    "order": 10,
+    "period": "Madinah",
+    "yearHijri": 2,
+    "yearLabelAr": "٢ هـ (شعبان ٦٢٤م)",
+    "yearLabelEn": "2 AH (Sha'ban 624 CE)",
+    "titleAr": "فرض صيام شهر رمضان المبارك وزكاة الفطر",
+    "titleEn": "Ordainment of Fasting Ramadan and Zakat al-Fitr",
+    "summaryAr": "فُرض صيام شهر رمضان المبارك في السنة الثانية للهجرة بقوله تعالى: ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ﴾، كما شُرعت زكاة الفطر طهرة للصائم وطعمة للمساكين، وشُرعت صلاة العيدين فرحاً بإتمام العبادة.",
+    "summaryEn": "Fasting the month of Ramadan was prescribed in the 2nd year of Hijrah to nurture God-consciousness (Taqwa). Zakat al-Fitr was also instituted to purify fasting and provide food for the needy, along with Eid prayers.",
+    "lessonsAr": [
+      "الغاية الكبرى من العبادات هي تزكية النفس وتحقيق التقوى",
+      "الصيام يربي على الصبر وضبط الشهوات والإحساس بحاجة الفقراء",
+      "شريعة الإسلام متوازنة تجمع بين العبادة الروحية والتكافل المالي"
+    ],
+    "lessonsEn": [
+      "The ultimate objective of worship is spiritual purification and Taqwa",
+      "Fasting builds self-discipline, patience, and empathy for the less fortunate",
+      "Islam balances personal spirituality with societal welfare"
     ]
   },
   {
     "id": "badr",
-    "yearLabelAr": "٢ هجري — ٦٢٤م",
-    "yearLabelEn": "2 AH — 624 CE",
-    "titleAr": "غزوة بدر الكبرى",
-    "titleEn": "The Great Battle of Badr",
-    "summaryAr": "التقى ٣١٣ مسلمًا بألف مقاتل من قريش. نصر الله المسلمين وأيّدهم بالملائكة. كان يوم بدر فاصلًا سمّاه الله يوم الفرقان.",
-    "summaryEn": "313 Muslims faced 1,000 Qurayshi fighters. Allah gave the Muslims victory and supported them with angels. Allah called Badr the Day of Distinction.",
+    "order": 11,
+    "period": "Madinah",
+    "yearHijri": 2,
+    "yearLabelAr": "٢ هـ (١٧ رمضان ٦٢٤م)",
+    "yearLabelEn": "2 AH (17 Ramadan 624 CE)",
+    "titleAr": "غزوة بدر الكبرى (يوم الفرقان)",
+    "titleEn": "The Great Battle of Badr (The Day of Distinction)",
+    "summaryAr": "أول لقاء فاصل بين الحق والباطل، التقى فيه ٣١٣ مسلماً بجيش المشركين البالغ ألف مقاتل. استشار النبي أصحابه فأجمعوا على النصرة، ورفع يديه بالدعاء والتضرع حتى سقط رداؤه. نصر الله المسلمين وأيدهم بمدد من الملائكة، وقُتل كبار صناديد قريش ومنهم أبو جهل وأمية بن خلف.",
+    "summaryEn": "The pivotal battle where 313 Muslims faced 1,000 well-equipped Qurayshi warriors. The Prophet consulted his companions and fervently supplicated Allah for victory. Allah granted the believers triumph and aided them with angels.",
     "lessonsAr": [
-      "النصر مع الصبر والتوكل لا مع الكثرة",
-      "الإعداد والتخطيط واجب قبل المواجهة",
-      "اليقين بنصر الله في أحلك الظروف"
+      "النصر من عند الله بالتوكل والتقوى والصبر، وليس بالكثرة والعتاد",
+      "أهمية الشورى والأخذ بآراء الخبراء والجنود قبل اتخاذ القرارات المصيرية",
+      "الافتقار إلى الله واللجوء إليه بالدعاء الصادق في أوقات الأزمات"
     ],
     "lessonsEn": [
-      "Victory comes with patience and reliance on Allah, not numbers",
-      "Preparation and planning are required before any confrontation",
-      "Certainty in Allah's victory even in the darkest circumstances"
+      "True victory comes from Allah through faith, patience, and sincerity, not numbers",
+      "The critical importance of consultation (Shura) before major decisions",
+      "Humbling oneself before Allah in earnest prayer during crucial moments"
+    ]
+  },
+  {
+    "id": "uhud",
+    "order": 12,
+    "period": "Madinah",
+    "yearHijri": 3,
+    "yearLabelAr": "٣ هـ (شوال ٦٢٥م)",
+    "yearLabelEn": "3 AH (Shawwal 625 CE)",
+    "titleAr": "غزوة أُحُد ودرس طاعة القيادة النبوية",
+    "titleEn": "The Battle of Uhud and the Lesson of Obedience",
+    "summaryAr": "خرجت قريش بثلاثة آلاف مقاتل للثأر لبدر، فواجههم المسلمون عند جبل أحد. انتصر المسلمون في البداية حتى خالف الرماة أمر النبي الصريح بعدم مغادرة الجبل ونزلوا لجمع الغنائم، فاستغل خالد بن الوليد الثغرة والتف بالفرسان، وأُصيب النبي ﷺ واستشهد ٧٠ صحابياً في مقدمتهم أسد الله حمزة بن عبد المطلب.",
+    "summaryEn": "Quraysh mobilized 3,000 fighters to seek revenge. Muslims gained the upper hand until archers disobeyed the Prophet's explicit command and left their post to collect spoils. The enemy circled back, causing heavy casualties including 70 martyrs, among them Hamzah ibn Abd al-Muttalib.",
+    "lessonsAr": [
+      "خطورة معصية الأوامر الشرعية والانشغال بحطام الدنيا على حساب الواجب",
+      "الابتلاء سنة كونية لتمحيص الصفوف وتطهير القلوب",
+      "الشجاعة النبوية الفذة والثبات العظيم في أحلك ساعات المعركة"
+    ],
+    "lessonsEn": [
+      "The severe danger of disobeying leadership and pursuing worldly gains",
+      "Hardships and setbacks serve as divine purification for the faithful",
+      "The extraordinary bravery and steadfastness of the Prophet during crisis"
+    ]
+  },
+  {
+    "id": "raji-bir-mauna",
+    "order": 13,
+    "period": "Madinah",
+    "yearHijri": 4,
+    "yearLabelAr": "٤ هـ (٦٢٥م)",
+    "yearLabelEn": "4 AH (625 CE)",
+    "titleAr": "حادثة بئر معونة والرجيع وشهادة القراء",
+    "titleEn": "The Tragic Incidents of Bi'r Ma'unah and Raji'",
+    "summaryAr": "طلبت بعض القبائل معلمين ليعلموهم القرآن، فأرسل النبي ﷺ سبعين من خيرة القراء والعلماء من الصحابة، فغدرت بهم قبائل رِعل وذكوان وعُصية عند بئر معونة وقتلوهم جميعاً غدراً، فحزن عليهم النبي ﷺ حزناً شديداً وظل يقنت شهراً يدعو على الغادرين.",
+    "summaryEn": "Tribes deceptively requested teachers to learn the Quran. The Prophet dispatched 70 top scholars and reciters among the companions, but they were ambushed and murdered at Bi'r Ma'unah. The Prophet grieved deeply and supplicated for a month.",
+    "lessonsAr": [
+      "مكانة العلم والقرآن وأهله والتضحية في سبيل تبليغ رسالة الله",
+      "الغدر ونقض العهود من أقبح الجرائم التي تجلب سخط الله",
+      "الاستعانة بالدعاء والقنوت عند نزول النوازل والمصائب بالأمة"
+    ],
+    "lessonsEn": [
+      "The honorable station of scholars and Quran teachers who sacrifice for truth",
+      "Treachery and breaking covenants are among the most detested actions",
+      "Turning to Qunut supplication during major communal tragedies"
+    ]
+  },
+  {
+    "id": "bani-nadir",
+    "order": 14,
+    "period": "Madinah",
+    "yearHijri": 4,
+    "yearLabelAr": "٤ هـ (٦٢٥م)",
+    "yearLabelEn": "4 AH (625 CE)",
+    "titleAr": "غزوة بني النضير وتأمين الجبهة الداخلية",
+    "titleEn": "The Expulsion of Banu Nadir for Internal Treason",
+    "summaryAr": "حاول يهود بني النضير اغتيال النبي ﷺ بإلقاء صخرة عليه من فوق جدار أثناء زيارته لهم، فنزل جبريل وأخبره بالمؤامرة. وبعد نقضهم الصريح لبنود وثيقة المدينة، حاصرهم المسلمون حتى استسلموا وأُجلوا عن المدينة حاملين ما استطاعت إبلهم دون سلاح، ونزلت فيهم سورة الحشر.",
+    "summaryEn": "Banu Nadir plotted to assassinate the Prophet by dropping a boulder from a rooftop. After this direct violation of the Madinah Charter, the Prophet besieged their fortress until they surrendered and were peacefully expelled, carrying whatever their camels could bear.",
+    "lessonsAr": [
+      "اليقظة وحماية أمن الدولة من المؤامرات والخيانة الداخلية",
+      "حفظ الله ورعايته لرسوله ولدينه في كل زمان",
+      "الحزم والعدل في محاسبة من ينقضون العهود والمواثيق"
+    ],
+    "lessonsEn": [
+      "Vigilance and safeguarding communal security against internal treason",
+      "Divine protection encompasses the sincere messengers of truth",
+      "Decisiveness and justice when dealing with treaty violators"
+    ]
+  },
+  {
+    "id": "khandaq",
+    "order": 15,
+    "period": "Madinah",
+    "yearHijri": 5,
+    "yearLabelAr": "٥ هـ (شوال ٦٢٧م)",
+    "yearLabelEn": "5 AH (Shawwal 627 CE)",
+    "titleAr": "غزوة الخندق (الأحزاب) وتلاحم المؤمنين",
+    "titleEn": "The Battle of the Trench (Al-Ahzab) and Divine Deliverance",
+    "summaryAr": "تحالفت قريش وغطفان وقبائل العرب بعشرة آلاف مقاتل لاستئصال الإسلام، فأشار سلمان الفارسي بحفر خندق شمال المدينة، وشارك النبي ﷺ بنفسه في الحفر وبشّرهم بفتوح فارس والروم. واشتد الحصار والخوف والبرد، حتى أرسل الله ريحاً عاتية وجنوداً زلزلت معسكر الأحزاب وفرقت جمعهم.",
+    "summaryEn": "A confederacy of 10,000 allied fighters besieged Madinah. Salman al-Farsi suggested digging a defensive trench. The Prophet personally labored with his companions in bitter cold and hunger. Allah sent a fierce freezing wind and invisible hosts, completely scattering the allied army.",
+    "lessonsAr": [
+      "الانفتاح على الأفكار والخبرات العسكرية الإبداعية (فكرة الخندق)",
+      "المشاركة الميدانية والتواضع من أعظم صفات القائد الناجح",
+      "اليقين بوعد الله ونصره عند اشتداد الكرب وبلوغ القلوب الحناجر"
+    ],
+    "lessonsEn": [
+      "Embracing innovative problem-solving and outside expertise",
+      "Participatory leadership: sharing hardship side by side with the community",
+      "Unshakable conviction in divine aid when challenges reach their peak"
+    ]
+  },
+  {
+    "id": "bani-qurayzah",
+    "order": 16,
+    "period": "Madinah",
+    "yearHijri": 5,
+    "yearLabelAr": "٥ هـ (ذو القعدة ٦٢٧م)",
+    "yearLabelEn": "5 AH (Dhu al-Qi'dah 627 CE)",
+    "titleAr": "غزوة بني قريظة وإبطال الخيانة العظمى",
+    "titleEn": "The Expedition of Banu Qurayza and Resolution of Treason",
+    "summaryAr": "أثناء حصار الأحزاب للمدينة، تآمرت بنو قريظة مع المشركين لمهاجمة نساء وأطفال المسلمين من الخلف نقضاً للعهد. وبعد هزيمة الأحزاب أمر جبريل بالتوجه إليهم، فحاصرهم المسلمون حتى نزلوا على حكم سعد بن معاذ رضي الله عنه الذي حكم فيهم بحكم شريعتهم.",
+    "summaryEn": "During the Battle of the Trench, Banu Qurayza broke their covenant and conspired to attack Muslim homes from within. After the siege was lifted, Muslims besieged their fortress, and their fate was judged according to their own biblical law by Sa'd ibn Mu'adh.",
+    "lessonsAr": [
+      "الخيانة وقت الحرب تعرض المجتمع كله للإبادة وتستوجب الحزم الصارم",
+      "تحكيم أهل العدل والفضل في النزاعات المعقدة",
+      "توافق حكم العبد الصادق مع حكم الله تعالى كما قال النبي لسعد"
+    ],
+    "lessonsEn": [
+      "Betrayal during warfare endangers entire societies and demands firm justice",
+      "Appointing respected, just arbiters to resolve intricate crises",
+      "The divine blessing bestowed upon truthful, conscientious judges"
+    ]
+  },
+  {
+    "id": "hudaybiyyah",
+    "order": 17,
+    "period": "Madinah",
+    "yearHijri": 6,
+    "yearLabelAr": "٦ هـ (ذو القعدة ٦٢٨م)",
+    "yearLabelEn": "6 AH (Dhu al-Qi'dah 628 CE)",
+    "titleAr": "صلح الحديبية وبيعة الرضوان والفتح المبين",
+    "titleEn": "The Treaty of Hudaybiyyah and the Great Moral Victory",
+    "summaryAr": "خرج النبي ﷺ مع ١٤٠٠ من أصحابه معتمرين غير محاربين، فمنعتهم قريش. وعقد النبي بيعة الرضوان تحت الشجرة بعد شائعة مقتل عثمان، ثم أبرم صلح الحديبية الذي تضمن هدنة لعشر سنوات. ورغم قسوة الشروط ظاهرياً، إلا أنه كان فتحاً عظيماً أتاح حرية الدعوة ودخول أضعاف الناس في دين الله.",
+    "summaryEn": "The Prophet marched peacefully with 1,400 companions to perform Umrah. Blocked by Quraysh, he took the Pledge of Ridwan and negotiated the Treaty of Hudaybiyyah establishing a 10-year truce. The Quran declared this diplomatic masterpiece 'A Manifest Victory'.",
+    "lessonsAr": [
+      "تقديم السلام والحكمة وبُعد النظر الاستراتيجي على المواجهة العسكرية",
+      "الوفاء التام بالشروط والعهود سمة المؤمنين الصادقين",
+      "النتائج العظيمة التي يجنيها العمل السلمي وحرية نشر الفكر والدعوة"
+    ],
+    "lessonsEn": [
+      "Prioritizing peace, wisdom, and long-term vision over conflict",
+      "Meticulous adherence to signed agreements and diplomatic treaties",
+      "Peaceful dialogue and freedom of thought enable exponential spiritual growth"
+    ]
+  },
+  {
+    "id": "letters-kings",
+    "order": 18,
+    "period": "Madinah",
+    "yearHijri": 7,
+    "yearLabelAr": "٧ هـ (٦٢٨م)",
+    "yearLabelEn": "7 AH (628 CE)",
+    "titleAr": "مكاتبة ملوك وأمراء العالم ودعوتهم إلى الإسلام",
+    "titleEn": "Letters to World Emperors and Global Proclamation of Faith",
+    "summaryAr": "استثمر النبي ﷺ الهدنة الناتجة عن صلح الحديبية لإرسال رسائل وسفراء إلى ملوك وحكام العالم آنذاك، منهم: قيصر الروم، كسرى فارس، النجاشي ملك الحبشة، والمقوقس حاكم مصر، يدعوهم فيها إلى توحيد الله وعبادته، مؤكداً عالمية الرسالة الإسلامية ورحمتها للبشرية جمعاء.",
+    "summaryEn": "Utilizing the peace secured at Hudaybiyyah, the Prophet dispatched ambassadors with official letters to major world rulers including Heraclius (Byzantine Emperor), Khosrow (Persian King), the Negus of Abyssinia, and the Muqawqis of Egypt, inviting them to Islam.",
+    "lessonsAr": [
+      "عالمية رسالة الإسلام وأنها هداية ورحمة للناس كافة في كل زمان ومكان",
+      "استخدام الدبلوماسية الراقية والخطاب العقلاني المهذب مع قادة الدول",
+      "الشجاعة والهمة العالية في مخاطبة القوى العظمى بالحق"
+    ],
+    "lessonsEn": [
+      "The universal scope of Islam as a mercy for all humanity",
+      "Employing dignified diplomatic correspondence and respectful communication with leaders",
+      "Courage and unwavering vision in presenting truth to world superpowers"
+    ]
+  },
+  {
+    "id": "khaybar",
+    "order": 19,
+    "period": "Madinah",
+    "yearHijri": 7,
+    "yearLabelAr": "٧ هـ (محرم ٦٢٨م)",
+    "yearLabelEn": "7 AH (Muharram 628 CE)",
+    "titleAr": "غزوة خيبر وتأمين الجبهة الشمالية واستقرار الدولة",
+    "titleEn": "The Conquest of Khaybar and Northern Frontier Security",
+    "summaryAr": "توجه المسلمون لفتح حصون خيبر التي كانت مركزاً للتحريض وتمويل الجيوش ضد المدينة. فُتحت الحصون حصناً بعد حصن ببطولة الصحابة وبراية علي بن أبي طالب رضي الله عنه. وصالحهم النبي على البقاء في أراضيهم والعمل فيها مقابل نصف الثمار، محققاً استقراراً اقتصادياً وأمنياً كبيراً للدولة.",
+    "summaryEn": "Muslims advanced towards the formidable fortresses of Khaybar, the primary hub of agitation against Madinah. Under the leadership of Ali ibn Abi Talib, the fortresses were taken. The Prophet permitted the inhabitants to farm the land in exchange for half the produce.",
+    "lessonsAr": [
+      "إبطال بؤر التآمر لحماية استقرار وأمن المجتمع",
+      "العدل والرحمة في التعامل الاقتصادي والزراعي مع المهزومين",
+      "فضل الشجاعة والاحتساب وإعطاء الراية لمن يحب الله ورسوله"
+    ],
+    "lessonsEn": [
+      "Eliminating threat networks to preserve national safety",
+      "Fair economic agreements ensuring mutual prosperity even with former adversaries",
+      "The virtue of dedicated leadership loving Allah and His Messenger"
+    ]
+  },
+  {
+    "id": "umrat-qada",
+    "order": 20,
+    "period": "Madinah",
+    "yearHijri": 7,
+    "yearLabelAr": "٧ هـ (ذو القعدة ٦٢٩م)",
+    "yearLabelEn": "7 AH (Dhu al-Qi'dah 629 CE)",
+    "titleAr": "عمرة القضاء ووفاء المؤمنين بالعهود",
+    "titleEn": "The Fulfilled Pilgrimage (Umrat al-Qada)",
+    "summaryAr": "وفاءً لبنود صلح الحديبية، خرج النبي ﷺ مع المسلمين في العام التالي لأداء العمرة في مكة المكرمة وقضاء ما فاتهم. دخلوا المسجد الحرام مهللين ومكبرين وطافوا بالكعبة المشرفة بأمن وسلام، مما كان له أثر بالغ في ترقيق قلوب أهل مكة وإسلام عظماء مثل خالد بن الوليد وعمرو بن العاص.",
+    "summaryEn": "In adherence to the Treaty of Hudaybiyyah, the Prophet and his companions traveled to Makkah the following year to perform Umrah. Their dignified presence and reverence softened hearts, leading noble figures like Khalid ibn al-Walid and Amr ibn al-Aas to embrace Islam.",
+    "lessonsAr": [
+      "الالتزام الصادق بالمواثيق والمعاهدات يكسب احترام وثقة الجميع",
+      "الهدي الظاهر والأخلاق الحسنة في العبادة هي أعظم وسيلة للدعوة",
+      "تحقق وعد الله ورؤيا النبي ﷺ في دخول المسجد الحرام آمنين"
+    ],
+    "lessonsEn": [
+      "Honoring commitments generates enduring trust and moral respect",
+      "Dignified personal conduct and sincere worship serve as powerful forms of Dawah",
+      "The fulfillment of divine promises: entering the Sacred Mosque in security"
+    ]
+  },
+  {
+    "id": "mutah",
+    "order": 21,
+    "period": "Madinah",
+    "yearHijri": 8,
+    "yearLabelAr": "٨ هـ (جمادى الأولى ٦٢٩م)",
+    "yearLabelEn": "8 AH (Jumada I 629 CE)",
+    "titleAr": "معركة مؤتة وبطولة القادة وعبقرية سيف الله المسلول",
+    "titleEn": "The Battle of Mu'tah and the Genius of Khalid ibn al-Walid",
+    "summaryAr": "بعد مقتل سفير النبي ﷺ إلى بصرى الشام، أرسل جيشاً من ٣ آلاف مقاتل. التقى الجيش بمئتي ألف من الروم وحلفائهم في مؤتة جنوب الأردن. استشهد القادة الثلاثة: زيد بن حارثة، وجعفر بن أبي طالب، وعبد الله بن رواحة، ثم حمل الراية خالد بن الوليد وناور بعبقرية عسكرية فذة حتى أنقذ الجيش دون خسائر.",
+    "summaryEn": "After a Muslim envoy was murdered, 3,000 Muslim soldiers faced an overwhelming Roman coalition of 200,000 at Mu'tah. After the martyrdom of Zayd ibn Harithah, Ja'far ibn Abi Talib, and Ibn Rawahah, Khalid ibn al-Walid assumed command and executed a brilliant tactical withdrawal.",
+    "lessonsAr": [
+      "حرمة السفراء وحماية الدبلوماسيين مبدأ إسلامي وقانوني أصيل",
+      "البطولة والتضحية والإقدام حتى في مواجهة الفوارق العددية الضخمة",
+      "العبقرية العسكرية وحسن التراجع التكتيكي حفاظاً على دماء الجنود"
+    ],
+    "lessonsEn": [
+      "The sanctity and legal protection of diplomats and emissaries",
+      "Heroic resilience in the face of staggering numerical odds",
+      "Tactical brilliance and strategic retreat to preserve lives is a hallmark of great leadership"
     ]
   },
   {
     "id": "fath-makkah",
-    "yearLabelAr": "٨ هجري — ٦٣٠م",
-    "yearLabelEn": "8 AH — 630 CE",
-    "titleAr": "فتح مكة المكرمة",
-    "titleEn": "The Conquest of Makkah",
-    "summaryAr": "دخل النبي ﷺ مكة منتصرًا بعشرة آلاف مسلم. وقف أمام أهل مكة الذين آذوه وقال: اذهبوا فأنتم الطلقاء. كان يومًا عظيمًا في الرحمة والعفو.",
-    "summaryEn": "The Prophet entered Makkah victorious with ten thousand Muslims. Standing before those who had harmed him, he said: Go, you are free. It was a monumental day of mercy and forgiveness.",
+    "order": 22,
+    "period": "Madinah",
+    "yearHijri": 8,
+    "yearLabelAr": "٨ هـ (٢٠ رمضان ٦٣٠م)",
+    "yearLabelEn": "8 AH (20 Ramadan 630 CE)",
+    "titleAr": "فتح مكة المكرمة (الفتح الأعظم) والعفو العام",
+    "titleEn": "The Conquest of Makkah (The Supreme Opening) and Universal Pardon",
+    "summaryAr": "بعد نقض قريش لصلح الحديبية بالاعتداء على حلفاء المسلمين، سار النبي ﷺ بعشرة آلاف صحابي ودخل مكة فاتحاً مطأطئاً رأسه تواضعاً وشكراً لله دون إراقة دماء. طهّر الكعبة من ٣٦٠ صنماً وهو يتلو: ﴿وَقُلْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ﴾، وقال لأهل مكة الذين عذبوه وآذوه: «ما ترون أني فاعل بكم؟ قالوا: أخ كريم وابن أخ كريم، قال: اذهبوا فأنتم الطلقاء».",
+    "summaryEn": "After Quraysh violated the truce, the Prophet marched with 10,000 companions, entering Makkah peacefully with head bowed in deep humility and gratitude. He cleansed the Kaaba of 360 idols and declared an unconditional universal pardon to his former persecutors: 'Go, for you are free.'",
     "lessonsAr": [
-      "العفو عند المقدرة من أعظم الأخلاق",
-      "النصر الحقيقي مرتبط بالرحمة لا بالانتقام",
-      "الصبر الطويل يُعقبه الفرج القريب"
+      "العفو عند المقدرة والترفع عن الانتقام من أعظم شيم النبوة والأخلاق الإنسانية",
+      "التواضع لله عند تحقيق أعظم الانتصارات والإنجازات",
+      "تطهير بيوت الله ومحاربة الشرك والخرافات وإعلاء كلمة التوحيد"
     ],
     "lessonsEn": [
-      "Forgiveness at the moment of power is one of the noblest virtues",
-      "True victory is tied to mercy, not revenge",
-      "Long patience is always followed by relief"
+      "Forgiveness at the peak of power is the highest hallmark of noble character",
+      "Humility before Allah during moments of triumph and immense achievement",
+      "Purifying places of worship from falsehood and elevating pure monotheism"
+    ]
+  },
+  {
+    "id": "hunayn-taif",
+    "order": 23,
+    "period": "Madinah",
+    "yearHijri": 8,
+    "yearLabelAr": "٨ هـ (شوال ٦٣٠م)",
+    "yearLabelEn": "8 AH (Shawwal 630 CE)",
+    "titleAr": "غزوة حُنَين وحصار الطائف والدرس في عدم الغرور بالكثرة",
+    "titleEn": "The Battle of Hunayn, Siege of Ta'if, and Lesson on Reliance",
+    "summaryAr": "خرج المسلمون بجيش قوامه ١٢ ألفاً، فقال بعضهم: 'لن نُغلب اليوم من قِلة'. فباغتهم هوازن وثقيف وتراجع كثير من المقاتلين، فثبت النبي ﷺ بشجاعة نادرة منادياً: «أنا النبي لا كذب، أنا ابن عبد المطلب»، حتى اجتمع الصحابة حوله وتحول الموقف إلى نصر عظيم، ثم حاصر الطائف ودعا لأهلها بالهداية.",
+    "summaryEn": "A Muslim force of 12,000 felt overconfident due to their large numbers. Ambushed in the valley of Hunayn, chaos ensued until the Prophet stood firmly declaring his identity and gathering his men, turning the tide into victory before laying siege to Ta'if.",
+    "lessonsAr": [
+      "الكثرة العددية لا تغني شيئاً بغير توفيق الله وعونه (﴿وَيَوْمَ حُنَيْنٍ إِذْ أَعْجَبَتْكُمْ كَثْرَتُكُمْ﴾)",
+      "الشجاعة والثبات القيادي للنبي ﷺ في أصعب لحظات المعركة",
+      "الدعاء بالهداية والرحمة للأعداء بدلاً من استئصالهم"
+    ],
+    "lessonsEn": [
+      "Numbers and equipment mean nothing without divine favor and spiritual humility",
+      "The unparalleled bravery and resolute leadership of the Prophet during retreat",
+      "Praying for guidance and mercy for opponents rather than their destruction"
+    ]
+  },
+  {
+    "id": "tabuk",
+    "order": 24,
+    "period": "Madinah",
+    "yearHijri": 9,
+    "yearLabelAr": "٩ هـ (رجب ٦٣٠م)",
+    "yearLabelEn": "9 AH (Rajab 630 CE)",
+    "titleAr": "غزوة تبوك (جيش العسرة) ونفير المؤمنين في شدة الحر",
+    "titleEn": "The Expedition of Tabuk (Army of Hardship) and Total Dedication",
+    "summaryAr": "في شدة الحر وجدب الأرض وبعد المسافة، استنفر النبي ﷺ المسلمين لملاقاة الروم في تبوك شمال الجزيرة. تسابق الصحابة في الإنفاق؛ فأنفق عثمان بن عفان مالاً عظيماً جهز به ثلث الجيش، وجاء أبو بكر بكل ماله. سار ثلاثون ألفاً ورابطوا في تبوك فهابهم الروم وتراجعوا، ونزلت سورة التوبة لتبين صدق المؤمنين وفضح نفاق المنافقين.",
+    "summaryEn": "During intense summer heat and severe drought, the Prophet called for mobilization to Tabuk to face the Byzantines. Companions sacrificed enormously: Uthman equipped one third of the army and Abu Bakr donated all his wealth. The Byzantines retreated without battle.",
+    "lessonsAr": [
+      "البذل والتضحية بالمال والنفس لدعم القضايا العادلة وحماية الأمة",
+      "التمايز بين الصادقين المخلصين وأصحاب الأعذار الزائفة والمنافقين",
+      "قوة الهيبة والردع الاستراتيجي في حماية السلم والأمن القومي"
+    ],
+    "lessonsEn": [
+      "Willingness to sacrifice wealth and self for justice and communal protection",
+      "Distinction between genuine dedicated believers and hypocrites who offer hollow excuses",
+      "Strategic deterrence and preparedness as mechanisms for lasting peace"
+    ]
+  },
+  {
+    "id": "wufud",
+    "order": 25,
+    "period": "Madinah",
+    "yearHijri": 9,
+    "yearLabelAr": "٩ هـ (٦٣١م)",
+    "yearLabelEn": "9 AH (631 CE)",
+    "titleAr": "عام الوفود وإقبال قبائل العرب على دين الله أفواجاً",
+    "titleEn": "The Year of Delegations and Acceptance of Faith by Arab Tribes",
+    "summaryAr": "بعد فتح مكة وغزوة تبوك، توافدت وفود القبائل من كل أرجاء الجزيرة العربية إلى المدينة المنورة معلنة إسلامها ومبايعتها لرسول الله ﷺ، مصداقاً لقوله تعالى: ﴿وَرَأَيْتَ النَّاسَ يَدْخُلُونَ فِي دِينِ اللَّهِ أَفْوَاجًا﴾. فاستقبلهم النبي بحسن الخلق وأرسل المعلمين لتعليمهم القرآن وتفقيههم في الدين.",
+    "summaryEn": "Following the conquest of Makkah and Tabuk, delegations from every corner of the Arabian peninsula flocked to Madinah to declare faith, fulfilling the verse: 'And you see the people entering into the religion of Allah in multitudes.' The Prophet sent teachers to educate them.",
+    "lessonsAr": [
+      "ثمار الصبر والدعوة الصادقة تتحقق بتوفيق الله ولو بعد سنين طويلة",
+      "أهمية التعليم والتفقه في الدين ونشر الوعي بين عموم الناس",
+      "حسن الاستقبال والضيافة والتأليف بين القلوب"
+    ],
+    "lessonsEn": [
+      "The fruit of steadfast Dawah and sincere patience manifests in due time",
+      "The imperative of widespread education and sound religious understanding",
+      "Hospitality, warm reception, and unifying diverse peoples"
     ]
   },
   {
     "id": "farewell-hajj",
-    "yearLabelAr": "١٠ هجري — ٦٣٢م",
-    "yearLabelEn": "10 AH — 632 CE",
-    "titleAr": "حجة الوداع",
-    "titleEn": "The Farewell Pilgrimage",
-    "summaryAr": "أدّى النبي ﷺ حجة الوداع مع أكثر من مئة ألف صحابي. وألقى خطبة الوداع الشهيرة التي جمعت أعظم مبادئ الإسلام في حقوق الإنسان والعدل والمساواة.",
-    "summaryEn": "The Prophet performed the Farewell Hajj with over one hundred thousand companions and delivered the famous Farewell Sermon, which gathered the greatest Islamic principles of human rights, justice, and equality.",
+    "order": 26,
+    "period": "Madinah",
+    "yearHijri": 10,
+    "yearLabelAr": "١٠ هـ (ذو الحجة ٦٣٢م)",
+    "yearLabelEn": "10 AH (Dhu al-Hijjah 632 CE)",
+    "titleAr": "حجة الوداع وخطبة البلاغ والرحمة وإعلان حقوق الإنسان",
+    "titleEn": "The Farewell Pilgrimage and the Universal Declaration of Human Rights",
+    "summaryAr": "حج النبي ﷺ مع أكثر من مائة ألف من الصحابة، وعلّمهم مناسك الحج قائلاً: «لتأخذوا مناسككم». وألقى خطبة الوداع التاريخية العظيمة التي أرسى فيها حرمة الدماء والأموال والأعراض، وأبطل الربا وعادات الجاهلية، وأوصى بالنساء خيراً، وأكد على المساواة الإنسانية: «لا فضل لعربي على أعجمي إلا بالتقوى»، ونزل قوله تعالى: ﴿الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ﴾.",
+    "summaryEn": "The Prophet performed the Farewell Hajj with over 100,000 companions. In his momentous Farewell Sermon, he established the sanctity of human life, property, and honor, abolished usury and tribal blood-feuds, championed women's rights, and declared universal equality: 'No Arab has superiority over a non-Arab except through piety.'",
     "lessonsAr": [
-      "إكمال الدين نعمة ربانية",
-      "مبادئ الإسلام في حقوق الإنسان سبقت كل القوانين",
-      "العالِم يُوصي قبل رحيله"
+      "إرساء أعظم ميثاق عالمي لحقوق الإنسان والعدالة والمساواة قبل المواثيق الحديثة بقرون",
+      "حرمة الدماء والأموال والأعراض وجعلها من أعظم المحرمات والكبائر",
+      "إتمام الرسالة والنعمة الإلهية ببيان معالم الدين الشاملة"
     ],
     "lessonsEn": [
-      "The completion of the religion is a divine blessing",
-      "Islam's principles of human rights preceded all modern laws",
-      "A scholar leaves a legacy before departing"
+      "Establishing the earliest comprehensive charter of human rights, justice, and racial equality",
+      "The absolute sanctity of human life, property, dignity, and family",
+      "The completion of the divine message and timeless guidance for all generations"
+    ]
+  },
+  {
+    "id": "prophet-passing",
+    "order": 27,
+    "period": "Madinah",
+    "yearHijri": 11,
+    "yearLabelAr": "١١ هـ (١٢ ربيع الأول ٦٣٢م)",
+    "yearLabelEn": "11 AH (12 Rabi' I 632 CE)",
+    "titleAr": "انتقال الحبيب المصطفى ﷺ إلى الرفيق الأعلى وثبات الأمة",
+    "titleEn": "The Passing of the Beloved Prophet ﷺ and Steadfastness of the Ummah",
+    "summaryAr": "بعد أن أدى الأمانة وبلغ الرسالة ونصح الأمة وجاهد في الله حق جهاده، خُيّر النبي ﷺ فاختار الرفيق الأعلى، وفاضت روحه الطاهرة وهو يقول: «بل الرفيق الأعلى من الجنة». أصاب المسلمين حزن عظيم، فثبتهم الله بكلمات الصديق أبي بكر: «ألا من كان يعبد محمداً فإن محمداً قد مات، ومن كان يعبد الله فإن الله حي لا يموت»، ثم قرأ: ﴿وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ﴾.",
+    "summaryEn": "Having completed his divine mission, the Prophet was given the choice and chose the Highest Companionship, uttering: 'Rather, the Highest Companionship of Paradise.' Amidst overwhelming grief, Abu Bakr anchored the community with his famous words: 'Whoever worshiped Muhammad, Muhammad has died; but whoever worships Allah, Allah is Ever-Living and never dies.'",
+    "lessonsAr": [
+      "رسالة الإسلام خالدة وباقية متصلة بالله الحي القيوم لا تنقطع بموت أحد",
+      "الثبات ورباطة الجأش والحكمة عند أعظم المصائب والنوازل",
+      "وجوب التمسك بكتاب الله وسنة رسوله ﷺ إلى قيام الساعة"
+    ],
+    "lessonsEn": [
+      "The message of Islam is eternal, anchored in the Ever-Living Creator",
+      "Emotional resilience, wisdom, and steadfast unity during profound loss",
+      "The enduring obligation to hold fast to the Quran and the Prophetic Sunnah"
     ]
   }
 ]

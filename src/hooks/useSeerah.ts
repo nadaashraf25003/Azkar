@@ -39,20 +39,37 @@ export interface CreateSeerahEventDto {
 export async function fetchSeerah(): Promise<SeerahEvent[]> {
   const backendData = await apiClient.get<BackendSeerahEventDto[]>(URLS.CONTENT.SEERAH)
   if (Array.isArray(backendData)) {
-    return backendData.map((item) => ({
-      id: item.id,
-      order: item.order,
-      period: item.period || 'Makkah',
-      yearHijri: item.yearHijri,
-      yearLabelAr: `${item.yearHijri} هـ`,
-      yearLabelEn: `${item.yearHijri} AH`,
-      titleAr: item.title,
-      titleEn: item.title,
-      summaryAr: item.description,
-      summaryEn: item.description,
-      lessonsAr: item.lessonsLearned ? item.lessonsLearned.split(';').map((s) => s.trim()).filter(Boolean) : [],
-      lessonsEn: item.lessonsLearned ? item.lessonsLearned.split(';').map((s) => s.trim()).filter(Boolean) : [],
-    }))
+    return backendData.map((item) => {
+      let yearLabelAr = ''
+      let yearLabelEn = ''
+
+      if (item.yearHijri > 0) {
+        yearLabelAr = `${item.yearHijri} هـ`
+        yearLabelEn = `${item.yearHijri} AH`
+      } else if (item.yearHijri < 0) {
+        yearLabelAr = `${Math.abs(item.yearHijri)} ق.هـ (قبل الهجرة)`
+        yearLabelEn = `${Math.abs(item.yearHijri)} BH`
+      } else {
+        const isMadinah = item.period && item.period.toLowerCase() === 'madinah'
+        yearLabelAr = isMadinah ? 'العهد المدني' : 'العهد المكي'
+        yearLabelEn = isMadinah ? 'Madinah Period' : 'Makkah Period'
+      }
+
+      return {
+        id: item.id,
+        order: item.order,
+        period: item.period || 'Makkah',
+        yearHijri: item.yearHijri,
+        yearLabelAr,
+        yearLabelEn,
+        titleAr: item.title,
+        titleEn: item.title,
+        summaryAr: item.description,
+        summaryEn: item.description,
+        lessonsAr: item.lessonsLearned ? item.lessonsLearned.split(';').map((s) => s.trim()).filter(Boolean) : [],
+        lessonsEn: item.lessonsLearned ? item.lessonsLearned.split(';').map((s) => s.trim()).filter(Boolean) : [],
+      }
+    })
   }
   return []
 }

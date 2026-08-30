@@ -337,10 +337,17 @@ export function AdminSeerahPage() {
                     {language === 'ar' ? item.yearLabelAr : item.yearLabelEn}
                   </span>
 
-                  <span className="rounded-full border border-[var(--line)] bg-[var(--bg)] px-3 py-1 text-xs font-semibold text-[var(--muted)]">
-                    {item.period === 'Makkah'
-                      ? (language === 'ar' ? 'العهد المكي' : 'Makkah')
-                      : (language === 'ar' ? 'العهد المدني' : 'Madinah')}
+                  <span
+                    className={[
+                      'rounded-full px-3 py-1 text-xs font-semibold',
+                      item.period?.toLowerCase() === 'madinah'
+                        ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
+                        : 'border border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300',
+                    ].join(' ')}
+                  >
+                    {item.period?.toLowerCase() === 'madinah'
+                      ? (language === 'ar' ? 'العهد المدني 🕌' : 'Madinah 🕌')
+                      : (language === 'ar' ? 'العهد المكي 🕋' : 'Makkah 🕋')}
                   </span>
 
                   <span className="text-[11px] text-[var(--muted)]">
